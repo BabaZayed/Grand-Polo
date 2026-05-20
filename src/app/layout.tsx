@@ -73,7 +73,7 @@ const localBusinessSchema = {
   geo: { "@type": "GeoCoordinates", latitude: 24.9, longitude: 55.2 },
   openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "09:00", closes: "19:00" },
   priceRange: "AED 7.34M - AED 20M+",
-  sameAs: ["https://oasisemaar.com", "https://www.emaar.com"],
+  sameAs: ["https://www.oasisemaar.com", "https://theoasisemaar.com", "https://www.emaar.com"],
   areaServed: { "@type": "Place", name: "Dubai, UAE" },
 };
 
@@ -106,7 +106,7 @@ const orgSchema = {
   name: "Grand Polo Club & Resort",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.svg`,
-  sameAs: ["https://oasisemaar.com", "https://www.emaar.com"],
+  sameAs: ["https://www.oasisemaar.com", "https://theoasisemaar.com", "https://www.emaar.com"],
   foundingLocation: { "@type": "Place", name: "Dubai, UAE" },
   knowsAbout: ["Equestrian Real Estate", "Luxury Villas Dubai", "Polo Club Community", "Off-Plan Property Dubai"],
 };
@@ -204,7 +204,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#C9A84C" />
+        <meta name="theme-color" content="#5D3A1A" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Grand Polo" />
@@ -224,7 +224,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-[#5D3A1A] text-[#FFFAF3]">
         <UTMTracker />
         {children}
       </body>

@@ -49,38 +49,38 @@
 }
 
 :root {
-  --background: #070B14;
-  --foreground: #FAF6F0;
-  --card: #0C1220;
-  --card-foreground: #FAF6F0;
-  --popover: #0C1220;
-  --popover-foreground: #FAF6F0;
-  --primary: #C9A84C;
-  --primary-foreground: #070B14;
-  --secondary: #121A2E;
-  --secondary-foreground: #FAF6F0;
-  --muted: #121A2E;
-  --muted-foreground: #8B8678;
-  --accent: #1B4D3E;
-  --accent-foreground: #FAF6F0;
+  --background: #5D3A1A;
+  --foreground: #FFFAF3;
+  --card: #3D2510;
+  --card-foreground: #FFFAF3;
+  --popover: #3D2510;
+  --popover-foreground: #FFFAF3;
+  --primary: #D4AF37;
+  --primary-foreground: #2A1506;
+  --secondary: #4A2E15;
+  --secondary-foreground: #FFFAF3;
+  --muted: #4A2E15;
+  --muted-foreground: #8B6B47;
+  --accent: #F5F5F0;
+  --accent-foreground: #2A1506;
   --destructive: #EF4444;
-  --border: rgba(201, 168, 76, 0.2);
-  --input: rgba(201, 168, 76, 0.15);
-  --ring: #C9A84C;
-  --chart-1: #C9A84C;
-  --chart-2: #1B4D3E;
-  --chart-3: #8B8678;
-  --chart-4: #0C1220;
-  --chart-5: #FAF6F0;
+  --border: rgba(212, 175, 55, 0.25);
+  --input: rgba(212, 175, 55, 0.2);
+  --ring: #D4AF37;
+  --chart-1: #D4AF37;
+  --chart-2: #8B6B47;
+  --chart-3: #5D3A1A;
+  --chart-4: #3D2510;
+  --chart-5: #FFFAF3;
   --radius: 0.625rem;
-  --sidebar: #0C1220;
-  --sidebar-foreground: #FAF6F0;
-  --sidebar-primary: #C9A84C;
-  --sidebar-primary-foreground: #070B14;
-  --sidebar-accent: #121A2E;
-  --sidebar-accent-foreground: #FAF6F0;
-  --sidebar-border: rgba(201, 168, 76, 0.15);
-  --sidebar-ring: #C9A84C;
+  --sidebar: #3D2510;
+  --sidebar-foreground: #FFFAF3;
+  --sidebar-primary: #D4AF37;
+  --sidebar-primary-foreground: #2A1506;
+  --sidebar-accent: #4A2E15;
+  --sidebar-accent-foreground: #FFFAF3;
+  --sidebar-border: rgba(212, 175, 55, 0.15);
+  --sidebar-ring: #D4AF37;
 }
 
 @layer base {
@@ -88,7 +88,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-[#070B14] text-[#FAF6F0] antialiased;
+    @apply bg-[#5D3A1A] text-[#FFFAF3] antialiased;
   }
   html {
     @apply font-sans;
@@ -98,69 +98,141 @@
   }
 }
 
-/* Custom Luxury CSS Classes */
+/* ============================================
+   CUSTOM LUXURY CSS CLASSES — BROCHURE THEME
+   ============================================ */
+
+/* Gold gradient with shimmer */
 .gold-gradient {
-  background: linear-gradient(135deg, #A07C2A, #C9A84C, #E0C878, #C9A84C, #A07C2A);
+  background: linear-gradient(135deg, #B8941F, #D4AF37, #E8C84A, #D4AF37, #B8941F);
   background-size: 200% 200%;
   animation: shimmer 3s ease-in-out infinite;
 }
 
 .gold-gradient-static {
-  background: linear-gradient(135deg, #C9A84C, #E0C878, #C9A84C);
+  background: linear-gradient(135deg, #D4AF37, #E8C84A, #D4AF37);
 }
 
+/* Gold text gradient */
 .gold-text {
-  background: linear-gradient(135deg, #C9A84C, #E0C878, #C9A84C);
+  background: linear-gradient(135deg, #D4AF37, #E8C84A, #D4AF37);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Gold borders */
 .gold-border {
-  border: 1px solid rgba(201, 168, 76, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.4);
 }
 
 .gold-border-hover {
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   transition: border-color 0.3s ease;
 }
 .gold-border-hover:hover {
-  border-color: rgba(201, 168, 76, 0.6);
+  border-color: rgba(212, 175, 55, 0.6);
 }
 
+/* Gold accent border - for section separators */
+.gold-accent-border {
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Glass card - chocolate brown glass */
 .glass-card {
-  background: rgba(12, 18, 32, 0.7);
+  background: rgba(61, 37, 16, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .glass-card-hover {
-  background: rgba(12, 18, 32, 0.7);
+  background: rgba(61, 37, 16, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.15);
   transition: all 0.4s ease;
 }
 .glass-card-hover:hover {
-  background: rgba(12, 18, 32, 0.85);
-  border-color: rgba(201, 168, 76, 0.4);
+  background: rgba(61, 37, 16, 0.85);
+  border-color: rgba(212, 175, 55, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(201, 168, 76, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.08);
 }
 
+/* Gold divider line */
 .gold-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
 }
 
+/* Luxury shadows */
 .luxury-shadow {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(201, 168, 76, 0.06);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(212, 175, 55, 0.06);
 }
 
 .luxury-shadow-gold {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(201, 168, 76, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.15);
 }
+
+/* ============================================
+   BROCHURE-SPECIFIC SECTIONS
+   ============================================ */
+
+/* Deep dark brown section */
+.brochure-dark {
+  background-color: #2A1506;
+}
+
+/* Cream/light section */
+.brochure-cream {
+  background-color: #F5F5F0;
+  color: #2A1506;
+}
+
+.brochure-cream h1,
+.brochure-cream h2,
+.brochure-cream h3,
+.brochure-cream h4 {
+  color: #2A1506;
+}
+
+.brochure-cream p,
+.brochure-cream span {
+  color: #5D3A1A;
+}
+
+.brochure-cream .gold-text {
+  background: linear-gradient(135deg, #D4AF37, #B8941F, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Luxury section padding */
+.luxury-section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 640px) {
+  .luxury-section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .luxury-section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
 
 @keyframes shimmer {
   0% { background-position: 0% 50%; }
@@ -178,6 +250,26 @@
   to { opacity: 1; }
 }
 
+@keyframes goldPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes parallaxSlow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -186,29 +278,65 @@
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Scrollbar Styling */
+.animate-gold-pulse {
+  animation: goldPulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: floatUp 6s ease-in-out infinite;
+}
+
+/* Gold shimmer on hover for buttons */
+.gold-shimmer-hover {
+  position: relative;
+  overflow: hidden;
+}
+.gold-shimmer-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -200%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.6s ease;
+}
+.gold-shimmer-hover:hover::after {
+  left: 200%;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #070B14;
+  background: #2A1506;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(201, 168, 76, 0.3);
+  background: rgba(212, 175, 55, 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(201, 168, 76, 0.5);
+  background: rgba(212, 175, 55, 0.5);
 }
 
-/* Selection styling */
+/* ============================================
+   SELECTION STYLING
+   ============================================ */
+
 ::selection {
-  background: rgba(201, 168, 76, 0.3);
-  color: #FAF6F0;
+  background: rgba(212, 175, 55, 0.3);
+  color: #FFFAF3;
 }
 
-/* Focus styles */
+/* ============================================
+   FOCUS STYLES
+   ============================================ */
+
 *:focus-visible {
-  outline: 2px solid rgba(201, 168, 76, 0.5);
+  outline: 2px solid rgba(212, 175, 55, 0.5);
   outline-offset: 2px;
 }

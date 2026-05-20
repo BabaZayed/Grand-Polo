@@ -20,7 +20,7 @@ export default function GalleryContent() {
   return (
     <>
       {/* Category Filter Tabs */}
-      <section className="py-10 lg:py-12 bg-[#0C1220] border-b border-[#C9A84C]/10">
+      <section className="py-10 lg:py-12 bg-[#3D2510] border-b border-[#D4AF37]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-2 justify-center">
             {categories.map((cat) => (
@@ -29,8 +29,8 @@ export default function GalleryContent() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   activeCategory === cat
-                    ? "gold-gradient text-[#070B14]"
-                    : "glass-card text-[#8B8678] hover:text-[#C9A84C] hover:border-[#C9A84C]/30"
+                    ? "gold-gradient text-[#2A1506]"
+                    : "border border-[#D4AF37]/20 text-[#8B6B47] hover:text-[#D4AF37] hover:border-[#D4AF37]/40 bg-[#3D2510]/50"
                 }`}
               >
                 {cat}
@@ -41,9 +41,9 @@ export default function GalleryContent() {
       </section>
 
       {/* Image Grid */}
-      <section className="py-12 lg:py-16 bg-[#0C1220]">
+      <section className="py-12 lg:py-16 bg-[#5D3A1A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[#8B8678] text-sm mb-6">
+          <p className="text-[#8B6B47] text-sm mb-6">
             Showing {filtered.length} image{filtered.length !== 1 ? "s" : ""}
             {activeCategory !== "All" && ` in ${activeCategory}`}
           </p>
@@ -52,7 +52,7 @@ export default function GalleryContent() {
               <button
                 key={img.id}
                 onClick={() => setSelectedImage(img)}
-                className="relative aspect-[4/3] rounded-lg overflow-hidden group cursor-pointer border-0 p-0 bg-transparent"
+                className="relative aspect-[4/3] rounded-lg overflow-hidden group cursor-pointer border border-[#D4AF37]/10 hover:border-[#D4AF37]/40 transition-all duration-300 p-0 bg-transparent"
               >
                 <Image
                   src={img.imageUrl}
@@ -61,10 +61,10 @@ export default function GalleryContent() {
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-[#070B14]/0 group-hover:bg-[#070B14]/40 transition-colors flex items-end">
+                <div className="absolute inset-0 bg-[#2A1506]/0 group-hover:bg-[#2A1506]/40 transition-colors flex items-end">
                   <div className="p-3 w-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    <p className="text-[#FAF6F0] text-xs font-medium">{img.alt}</p>
-                    <p className="text-[#C9A84C] text-[10px]">{img.category}</p>
+                    <p className="text-[#FFFAF3] text-xs font-medium">{img.alt}</p>
+                    <p className="text-[#D4AF37] text-[10px]">{img.category}</p>
                   </div>
                 </div>
               </button>
@@ -72,7 +72,7 @@ export default function GalleryContent() {
           </div>
           {filtered.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-[#8B8678]">No images found in this category.</p>
+              <p className="text-[#8B6B47]">No images found in this category.</p>
             </div>
           )}
         </div>
@@ -80,7 +80,7 @@ export default function GalleryContent() {
 
       {/* Lightbox Dialog */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-5xl w-[95vw] bg-[#0C1220] border-[#C9A84C]/20 p-0 overflow-hidden">
+        <DialogContent className="max-w-5xl w-[95vw] bg-[#3D2510] border-[#D4AF37]/20 p-0 overflow-hidden">
           <DialogTitle className="sr-only">
             {selectedImage?.alt || "Gallery image"}
           </DialogTitle>
@@ -88,7 +88,7 @@ export default function GalleryContent() {
             <div className="relative">
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-[#070B14]/80 flex items-center justify-center text-[#FAF6F0] hover:text-[#C9A84C] transition-colors"
+                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -101,9 +101,9 @@ export default function GalleryContent() {
                   sizes="95vw"
                 />
               </div>
-              <div className="p-4 bg-[#070B14]">
-                <p className="text-[#FAF6F0] font-medium text-sm">{selectedImage.alt}</p>
-                <p className="text-[#C9A84C] text-xs mt-1">{selectedImage.category}</p>
+              <div className="p-4 bg-[#2A1506]">
+                <p className="text-[#FFFAF3] font-medium text-sm">{selectedImage.alt}</p>
+                <p className="text-[#D4AF37] text-xs mt-1">{selectedImage.category}</p>
               </div>
             </div>
           )}

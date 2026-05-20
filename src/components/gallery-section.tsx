@@ -25,8 +25,8 @@ export default function GallerySection() {
   const goPrev = () => setSelectedIndex((prev) => (prev !== null ? (prev - 1 + filtered.length) % filtered.length : null));
 
   return (
-    <section className="py-16 lg:py-24 bg-[#070B14] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/20 to-transparent" />
+    <section className="py-16 lg:py-24 bg-[#2A1506] relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent" />
 
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
@@ -35,14 +35,13 @@ export default function GallerySection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-[#C9A84C] text-xs tracking-[0.3em] uppercase font-medium">Visual Journey</span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FAF6F0] mt-3 mb-4">
+          <span className="text-[#D4AF37] text-xs tracking-[0.3em] uppercase font-medium">Visual Journey</span>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFAF3] mt-3 mb-4">
             The <span className="gold-text">Gallery</span>
           </h2>
           <div className="gold-divider max-w-xs mx-auto mb-4" />
         </motion.div>
 
-        {/* Category filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           {categories.map((cat) => (
             <Button
@@ -50,18 +49,13 @@ export default function GallerySection() {
               variant={activeCategory === cat ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveCategory(cat)}
-              className={
-                activeCategory === cat
-                  ? "gold-gradient text-[#070B14] font-bold"
-                  : "border-[#C9A84C]/20 text-[#8B8678] hover:text-[#C9A84C] hover:border-[#C9A84C]/40"
-              }
+              className={activeCategory === cat ? "gold-gradient text-[#2A1506] font-bold" : "border-[#D4AF37]/20 text-[#8B6B47] hover:text-[#D4AF37] hover:border-[#D4AF37]/40"}
             >
               {cat}
             </Button>
           ))}
         </div>
 
-        {/* Gallery grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
           <AnimatePresence mode="popLayout">
             {filtered.map((image, index) => (
@@ -72,7 +66,7 @@ export default function GallerySection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className={`cursor-pointer rounded-lg overflow-hidden group ${index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
+                className={`cursor-pointer rounded-lg overflow-hidden group border border-[#D4AF37]/10 hover:border-[#D4AF37]/40 transition-all duration-300 ${index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
                 onClick={() => openLightbox(index)}
               >
                 <div className={`relative ${index % 5 === 0 ? "aspect-square" : "aspect-[4/3]"}`}>
@@ -83,16 +77,15 @@ export default function GallerySection() {
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-[#070B14]/0 group-hover:bg-[#070B14]/30 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-[#2A1506]/0 group-hover:bg-[#2A1506]/30 transition-colors duration-300" />
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
 
-        {/* Lightbox */}
         <Dialog open={selectedIndex !== null} onOpenChange={() => closeLightbox()}>
-          <DialogContent className="max-w-5xl bg-[#070B14] border-[#C9A84C]/20 p-0 overflow-hidden">
+          <DialogContent className="max-w-5xl bg-[#3D2510] border-[#D4AF37]/20 p-0 overflow-hidden">
             <DialogTitle className="sr-only">Gallery Image</DialogTitle>
             {selectedIndex !== null && filtered[selectedIndex] && (
               <div className="relative aspect-video">
@@ -103,16 +96,16 @@ export default function GallerySection() {
                   className="object-contain"
                   sizes="100vw"
                 />
-                <button onClick={closeLightbox} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#070B14]/80 flex items-center justify-center text-[#FAF6F0] hover:text-[#C9A84C] transition-colors">
+                <button onClick={closeLightbox} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
                   <X className="w-5 h-5" />
                 </button>
-                <button onClick={goPrev} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#070B14]/80 flex items-center justify-center text-[#FAF6F0] hover:text-[#C9A84C] transition-colors">
+                <button onClick={goPrev} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <button onClick={goNext} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#070B14]/80 flex items-center justify-center text-[#FAF6F0] hover:text-[#C9A84C] transition-colors">
+                <button onClick={goNext} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#FAF6F0]/60 text-sm">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#FFFAF3]/60 text-sm">
                   {selectedIndex + 1} / {filtered.length}
                 </div>
               </div>

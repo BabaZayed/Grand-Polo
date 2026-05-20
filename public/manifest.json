@@ -1,11 +1,11 @@
 {
   "name": "Grand Polo Club & Resort — Authorized Agent",
   "short_name": "Grand Polo",
-  "description": "Luxury equestrian villas by Emaar in Dubai",
+  "description": "Luxury equestrian villas by Emaar in Dubai — 3 polo fields, clubhouse, stables, 6,661 residences",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#070B14",
-  "theme_color": "#C9A84C",
+  "background_color": "#2A1506",
+  "theme_color": "#D4AF37",
   "orientation": "portrait-primary",
   "icons": [{ "src": "/logo.svg", "sizes": "any", "type": "image/svg+xml" }],
   "categories": ["business", "lifestyle"]

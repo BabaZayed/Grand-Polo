@@ -6,6 +6,7 @@ import EquestrianSection from "@/components/equestrian-section";
 import MasterplanSection from "@/components/masterplan-section";
 import AmenitiesSection from "@/components/amenities-section";
 import ContactSection from "@/components/contact-section";
+import NewsletterSection from "@/components/newsletter-section";
 import WhatsAppButton from "@/components/whatsapp-button";
 import SocialProof from "@/components/social-proof";
 import PWAInstallPrompt from "@/components/pwa-install-prompt";
@@ -20,6 +21,7 @@ export default function Home() {
       <MasterplanSection />
       <AmenitiesSection />
       <ContactSection />
+      <NewsletterSection />
       <SiteFooter />
       <WhatsAppButton />
       <SocialProof />
