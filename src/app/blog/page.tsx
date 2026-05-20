@@ -1,0 +1,103 @@
+import type { Metadata } from "next";
+import SiteHeader from "@/components/site-header";
+import SiteFooter from "@/components/site-footer";
+import WhatsAppButton from "@/components/whatsapp-button";
+import { blogPosts } from "@/lib/blog-data";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { SITE_URL } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Blog — Insights & Analysis",
+  description:
+    "Expert insights on Grand Polo Club & Resort, Dubai real estate investment, equestrian communities, and property market analysis.",
+  openGraph: {
+    title: "Blog — Grand Polo Club & Resort",
+    description: "Insights & analysis on Dubai equestrian real estate and Grand Polo investment.",
+    url: `${SITE_URL}/blog`,
+    type: "website",
+  },
+  alternates: { canonical: "/blog" },
+};
+
+export default function BlogPage() {
+  return (
+    <>
+      <SiteHeader />
+      <main className="pt-16 lg:pt-20">
+        {/* Hero */}
+        <section className="relative py-16 lg:py-24 bg-[#070B14] overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 1px 1px, rgba(201,168,76,0.3) 1px, transparent 0)",
+                backgroundSize: "40px 40px",
+              }}
+            />
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <span className="text-[#C9A84C] text-xs tracking-[0.3em] uppercase font-medium">
+              Knowledge Centre
+            </span>
+            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-[#FAF6F0] mt-3 mb-4">
+              Insights & <span className="gold-text">Analysis</span>
+            </h1>
+            <div className="gold-divider max-w-xs mb-4" />
+            <p className="text-[#8B8678] max-w-2xl">
+              Expert insights on Grand Polo Club & Resort, Dubai real estate investment, and equestrian community living. In-depth guides, market analysis, and community comparisons.
+            </p>
+          </div>
+        </section>
+
+        {/* Blog Grid */}
+        <section className="py-16 lg:py-20 bg-[#0C1220]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {blogPosts.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
+                  <article className="glass-card rounded-xl overflow-hidden h-full flex flex-col hover:border-[#C9A84C]/30 transition-all">
+                    <div className="p-6 flex-1 flex flex-col">
+                      <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30 text-xs w-fit mb-3">
+                        {post.category}
+                      </Badge>
+                      <h3 className="font-heading text-lg font-bold text-[#FAF6F0] mb-3 group-hover:text-[#C9A84C] transition-colors line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-[#8B8678] text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between text-xs text-[#8B8678] mt-auto">
+                        <div className="flex items-center gap-3">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            {new Date(post.date).toLocaleDateString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            })}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {post.readTime}
+                          </span>
+                        </div>
+                        <span className="flex items-center gap-1 text-[#C9A84C] font-medium group-hover:gap-2 transition-all">
+                          Read More <ArrowRight className="w-3 h-3" />
+                        </span>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+      <WhatsAppButton />
+    </>
+  );
+}
