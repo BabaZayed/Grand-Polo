@@ -29,3 +29,6 @@ Allow: /ai-agent.md
 # Protected routes
 Disallow: /api/leads
 Disallow: /api/marketplace
+
+# Sitemap
+Sitemap: https://thegrandpolo.com/sitemap.xml

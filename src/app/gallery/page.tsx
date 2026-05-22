@@ -12,16 +12,26 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gallery — Grand Polo Club & Resort",
     description: "Visual journey through Grand Polo's polo fields, luxury villas, and clubhouse.",
-    images: ["/images/gallery/polo-field-1.jpg"],
+    images: [{ url: "/images/gallery/polo-field-1.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort Gallery" }],
     url: `${SITE_URL}/gallery`,
     type: "website",
   },
-  alternates: { canonical: "/gallery" },
+  alternates: { canonical: `${SITE_URL}/gallery` },
 };
 
 export default function GalleryPage() {
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}` },
+      { "@type": "ListItem", position: 2, name: "Gallery", item: `${SITE_URL}/gallery` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
       <main className="pt-16 lg:pt-20">
         {/* Hero */}

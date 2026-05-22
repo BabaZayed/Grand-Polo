@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.excerpt,
       type: "article",
       url: `${SITE_URL}/blog/${slug}`,
+      images: post.imageUrl
+        ? [{ url: post.imageUrl, width: 1200, height: 630, alt: post.title }]
+        : [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
     },
     alternates: { canonical: `/blog/${slug}` },
   };

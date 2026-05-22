@@ -25,7 +25,11 @@ async function sendMetaCAPI(data: {
   eventName: string;
   eventId: string;
 }) {
-  const token = process.env.META_CONVERSIONS_API_TOKEN || "EAAzMLNdMX9EBRYGkZAe6iJTNZBljhA19Nd6ZC1KcaFjQep9L8c0xgvNsJSxxnGsKPk8eeZBI8RK2jp63Ex1NRw4caUk6gZBlifJyV5bTmX51KZA9F2tA3dlxMwIZAectklG1brVaR4UsJlwpTLNf3ojiSG0YFaSPYkjd5J7cbrfgw4GJaPEMbvuOgbpVzjQ4wZDZD";
+  const token = process.env.META_CONVERSIONS_API_TOKEN;
+  if (!token) {
+    console.warn("META_CONVERSIONS_API_TOKEN not set — skipping CAPI event");
+    return;
+  }
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1013154287947335";
 
   try {

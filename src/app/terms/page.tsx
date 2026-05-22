@@ -13,8 +13,9 @@ export const metadata: Metadata = {
     description: "Usage terms, disclaimers, and legal notices for our website.",
     url: `${SITE_URL}/terms`,
     type: "website",
+    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
   },
-  alternates: { canonical: "/terms" },
+  alternates: { canonical: `${SITE_URL}/terms` },
 };
 
 const sections = [

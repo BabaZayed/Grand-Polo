@@ -13,8 +13,9 @@ export const metadata: Metadata = {
     description: "How we collect, use, and protect your personal data.",
     url: `${SITE_URL}/privacy`,
     type: "website",
+    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
   },
-  alternates: { canonical: "/privacy" },
+  alternates: { canonical: `${SITE_URL}/privacy` },
 };
 
 const sections = [

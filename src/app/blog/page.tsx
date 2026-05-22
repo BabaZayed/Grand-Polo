@@ -17,8 +17,9 @@ export const metadata: Metadata = {
     description: "Insights & analysis on Dubai equestrian real estate and Grand Polo investment.",
     url: `${SITE_URL}/blog`,
     type: "website",
+    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
   },
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: `${SITE_URL}/blog` },
 };
 
 export default function BlogPage() {

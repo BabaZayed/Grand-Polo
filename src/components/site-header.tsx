@@ -86,7 +86,7 @@ export default function SiteHeader() {
                 <span className="hidden md:inline">{PHONE_NUMBER}</span>
               </a>
               <Link href="/contact">
-                <Button className="gold-gradient text-[#2A1506] font-semibold text-sm px-5 py-2 rounded-md hover:opacity-90 transition-opacity hidden sm:flex gold-shimmer-hover">
+                <Button className="gold-gradient text-[#2A1506] font-semibold text-sm px-5 py-2 rounded-md hover:opacity-90 transition-opacity flex gold-shimmer-hover">
                   Book Viewing
                 </Button>
               </Link>

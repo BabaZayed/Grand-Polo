@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Masterplan — Grand Polo Club & Resort",
     description: "A visionary 5.54M SqM equestrian community with 22 clusters and 6,661 residences.",
-    images: ["/images/hero/masterplan-bg.jpg"],
+    images: [{ url: "/images/hero/masterplan-bg.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort Masterplan" }],
     url: `${SITE_URL}/masterplan`,
     type: "website",
   },
-  alternates: { canonical: "/masterplan" },
+  alternates: { canonical: `${SITE_URL}/masterplan` },
 };
 
 const iconMap: Record<string, React.ElementType> = {
