@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/whatsapp-button";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { notFound } from "next/navigation";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,11 +30,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.excerpt,
       type: "article",
       url: `${SITE_URL}/blog/${slug}`,
+      publishedTime: post.date,
+      authors: ["Grand Polo Club & Resort"],
+      section: post.category,
+      tags: post.tags,
       images: post.imageUrl
         ? [{ url: post.imageUrl, width: 1200, height: 630, alt: post.title }]
         : [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
     },
-    alternates: { canonical: `/blog/${slug}` },
+    alternates: { canonical: `${SITE_URL}/blog/${slug}` },
   };
 }
 

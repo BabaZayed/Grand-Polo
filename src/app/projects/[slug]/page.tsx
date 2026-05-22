@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${SITE_URL}/projects/${slug}`,
       type: "website",
     },
-    alternates: { canonical: `/projects/${slug}` },
+    alternates: { canonical: `${SITE_URL}/projects/${slug}` },
   };
 }
 

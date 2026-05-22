@@ -31,4 +31,4 @@ Disallow: /api/leads
 Disallow: /api/marketplace
 
 # Sitemap
-Sitemap: https://thegrandpolo.com/sitemap.xml
+Sitemap: https://www.thegrandpolo.com/sitemap.xml

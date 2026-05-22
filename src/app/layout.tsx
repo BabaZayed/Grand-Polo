@@ -130,16 +130,6 @@ const residenceSchema = {
   ],
 };
 
-const ratingSchema = {
-  "@context": "https://schema.org",
-  "@type": "AggregateRating",
-  itemReviewed: { "@type": "RealEstateAgent", name: "Grand Polo Club & Resort" },
-  ratingValue: "4.9",
-  bestRating: "5",
-  ratingCount: "98",
-  reviewCount: "84",
-};
-
 const speakableSchema = {
   "@context": "https://schema.org",
   "@type": "SpeakableSpecification",
@@ -211,10 +201,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Grand Polo" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+
+        {/* Geo Meta Tags */}
+        <meta name="geo.region" content="AE-DU" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="24.9;55.2" />
+        <meta name="ICBM" content="24.9, 55.2" />
 
         {/* Hreflang */}
         <link rel="alternate" hrefLang="en" href={SITE_URL} />
         <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
+
+        {/* Content Security Policy */}
+        <meta httpEquiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.facebook.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.google.com; connect-src 'self' https://www.google-analytics.com" />
 
         {/* JSON-LD Schemas */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
@@ -222,7 +224,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(residenceSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ratingSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />

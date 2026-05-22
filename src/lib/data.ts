@@ -1,7 +1,7 @@
 export type PropertyStatus = "available" | "reserved" | "sold" | "launching-soon";
 export type PropertyType = "villa" | "mansion" | "townhouse" | "apartment" | "penthouse" | "branded-villa";
 
-export const SITE_URL = "https://thegrandpolo.com";
+export const SITE_URL = "https://www.thegrandpolo.com";
 export const SITE_NAME = "Grand Polo Club & Resort";
 export const PHONE_NUMBER = "+971 52 691 9169";
 export const WHATSAPP_LINK = "https://wa.me/971526919169";
