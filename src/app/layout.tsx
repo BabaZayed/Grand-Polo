@@ -62,7 +62,7 @@ const localBusinessSchema = {
   name: "Grand Polo Club & Resort — Authorized Agent",
   description: "Authorized sales agent for Grand Polo Club & Resort by Emaar Properties in Dubai",
   url: SITE_URL,
-  telephone: "+97141234567",
+  telephone: "+971526919169",
   email: "info@thegrandpolo.com",
   address: {
     "@type": "PostalAddress",
