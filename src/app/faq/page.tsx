@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: "Common questions about Grand Polo Club & Resort answered.",
     url: `${SITE_URL}/faq`,
     type: "website",
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
+    images: [{ url: "/images/hero/hero-dark.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort — FAQ" }]
   },
   alternates: { canonical: `${SITE_URL}/faq` },
 };

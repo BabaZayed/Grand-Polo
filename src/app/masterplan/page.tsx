@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Masterplan — Grand Polo Club & Resort",
     description: "A visionary 5.54M SqM equestrian community with 22 clusters and 6,661 residences.",
-    images: [{ url: "/images/hero/masterplan-bg.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort Masterplan" }],
+    images: [{ url: "/images/hero/masterplan-bg.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort Masterplan" }],
     url: `${SITE_URL}/masterplan`,
     type: "website",
   },
@@ -178,7 +178,7 @@ export default function MasterplanPage() {
                 return (
                   <div key={amenity.name} className="rounded-lg p-4 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50 hover:border-[#D4AF37]/30 transition-all">
                     <Icon className="w-6 h-6 text-[#D4AF37] mx-auto mb-2" />
-                    <h4 className="text-[#FFFAF3] text-sm font-medium">{amenity.name}</h4>
+                    <div className="text-[#FFFAF3] text-sm font-medium">{amenity.name}</div>
                   </div>
                 );
               })}

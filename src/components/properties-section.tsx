@@ -58,7 +58,7 @@ export default function PropertiesSection() {
                   <div className="relative h-56 sm:h-64 overflow-hidden">
                     <Image
                       src={project.imageUrl}
-                      alt={project.name}
+                      alt={`${project.name} — ${project.bedrooms}-bedroom luxury villas at Grand Polo Club & Resort Dubai`}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"

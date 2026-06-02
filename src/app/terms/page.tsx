@@ -29,18 +29,10 @@ const sections = [
 ];
 
 export default function TermsPage() {
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}` },
-      { "@type": "ListItem", position: 2, name: "Terms of Service", item: `${SITE_URL}/terms` },
-    ],
-  };
+  // No BreadcrumbList schema — this page is noindex, structured data is unnecessary
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
       <main className="pt-16 lg:pt-20">
         <section className="py-16 lg:py-24 bg-[#5D3A1A]">

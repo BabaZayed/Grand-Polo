@@ -28,7 +28,7 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
           <div className="relative aspect-[4/3] overflow-hidden">
             <Image
               src={property.imageUrl}
-              alt={property.name}
+              alt={`${property.name} — ${property.bedrooms}-bedroom luxury villas at Grand Polo Club & Resort Dubai`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

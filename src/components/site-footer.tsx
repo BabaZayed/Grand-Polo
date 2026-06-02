@@ -37,13 +37,23 @@ export default function SiteFooter() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Quick Links</h4>
+            <div role="heading" aria-level={2} className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Quick Links</div>
             <div className="gold-divider max-w-[60px] mb-4" />
             <ul className="space-y-2">
-              {["Home", "Properties", "Masterplan", "Gallery", "About", "Contact", "Payment Plans", "FAQ", "Blog"].map((link) => (
-                <li key={link}>
-                  <Link href={link === "Home" ? "/" : `/${link.toLowerCase().replace(" ", "-")}`} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors">
-                    {link}
+              {[
+                { label: "Home", href: "/" },
+                { label: "Properties", href: "/projects" },
+                { label: "Masterplan", href: "/masterplan" },
+                { label: "Gallery", href: "/gallery" },
+                { label: "About", href: "/about" },
+                { label: "Contact", href: "/contact" },
+                { label: "Payment Plans", href: "/payment-plan" },
+                { label: "FAQ", href: "/faq" },
+                { label: "Blog", href: "/blog" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors">
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -52,7 +62,7 @@ export default function SiteFooter() {
 
           {/* Properties */}
           <div>
-            <h4 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Properties</h4>
+            <div role="heading" aria-level={2} className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Properties</div>
             <div className="gold-divider max-w-[60px] mb-4" />
             <ul className="space-y-2">
               {projects.filter((p) => p.status !== "Launching Soon").map((p) => (
@@ -70,7 +80,7 @@ export default function SiteFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Contact</h4>
+            <div role="heading" aria-level={2} className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Contact</div>
             <div className="gold-divider max-w-[60px] mb-4" />
             <ul className="space-y-3">
               <li>
@@ -93,7 +103,7 @@ export default function SiteFooter() {
               </li>
             </ul>
             <div className="mt-4 pt-4 border-t border-[#D4AF37]/10">
-              <h5 className="text-[#B89B6E] text-xs tracking-wide mb-2">Trusted Resources</h5>
+              <div role="heading" aria-level={3} className="text-[#B89B6E] text-xs tracking-wide mb-2">Trusted Resources</div>
               {[
                 { name: "Emaar Properties", url: "https://www.emaar.com" },
                 { name: "Dubai Land Dept", url: "https://www.dubailand.gov.ae" },

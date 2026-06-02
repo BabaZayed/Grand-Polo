@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: "Flexible payment structures with just 10% down payment.",
     url: `${SITE_URL}/payment-plan`,
     type: "website",
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
+    images: [{ url: "/images/hero/hero-dark.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort — Payment Plans" }]
   },
   alternates: { canonical: `${SITE_URL}/payment-plan` },
 };

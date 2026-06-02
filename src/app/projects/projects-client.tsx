@@ -51,7 +51,7 @@ export default function ProjectsPageClient() {
                 <Link href={`/projects/${project.slug}`} className="block group">
                   <div className={`rounded-xl overflow-hidden border transition-all duration-400 hover:-translate-y-1 ${project.status !== "Launching Soon" ? "border-[#D4AF37]/15 bg-[#3D2510]/50 hover:border-[#D4AF37]/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3),0_0_20px_rgba(212,175,55,0.08)]" : "border-[#D4AF37]/10 bg-[#3D2510]/30"}`}>
                     <div className="relative h-56 overflow-hidden">
-                      <Image src={project.imageUrl} alt={project.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <Image src={project.imageUrl} alt={`${project.name} — ${project.bedrooms}-bedroom luxury villas at Grand Polo Dubai`} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-transparent to-transparent" />
                       <div className="absolute top-4 left-4">
                         <span className={`text-[10px] font-bold px-3 py-1 rounded-full tracking-wide uppercase ${project.status === "Launching Soon" ? "bg-[#B89B6E] text-[#FFFAF3]" : "gold-gradient text-[#2A1506]"}`}>

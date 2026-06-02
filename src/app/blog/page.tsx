@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: "Insights & analysis on Dubai equestrian real estate and Grand Polo investment.",
     url: `${SITE_URL}/blog`,
     type: "website",
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
+    images: [{ url: "/images/hero/hero-dark.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort — Blog" }]
   },
   alternates: { canonical: `${SITE_URL}/blog` },
 };
@@ -64,9 +64,9 @@ export default function BlogPage() {
                       <Badge className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 text-xs w-fit mb-3">
                         {post.category}
                       </Badge>
-                      <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-3 group-hover:text-[#D4AF37] transition-colors line-clamp-2">
+                      <h2 className="font-heading text-lg font-bold text-[#FFFAF3] mb-3 group-hover:text-[#D4AF37] transition-colors line-clamp-2">
                         {post.title}
-                      </h3>
+                      </h2>
                       <p className="text-[#B89B6E] text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
                         {post.excerpt}
                       </p>

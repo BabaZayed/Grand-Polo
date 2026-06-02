@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "Contact Us — Grand Polo Club & Resort",
     description: "Schedule a private viewing with our property consultants.",
     url: `${SITE_URL}/contact`,
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
+    images: [{ url: "/images/hero/hero-dark.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort — Contact" }],
     type: "website",
   },
   alternates: { canonical: `${SITE_URL}/contact` },

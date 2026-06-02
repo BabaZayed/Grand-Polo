@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Grand Polo Properties — Luxury Equestrian Villas",
     description: "Explore luxury villas at Grand Polo Club & Resort by Emaar. From AED 7.34M.",
     url: `${SITE_URL}/projects`,
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
+    images: [{ url: "/images/hero/hero-dark.webp", width: 1200, height: 630, alt: "Grand Polo Properties — Luxury Equestrian Villas" }]
   },
   alternates: { canonical: `${SITE_URL}/projects` },
 };

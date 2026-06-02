@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "About — Grand Polo Club & Resort",
     description: "An unprecedented vision for equestrian luxury living in Dubai by Emaar Properties.",
     url: `${SITE_URL}/about`,
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
+    images: [{ url: "/images/hero/hero-dark.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort — About" }],
     type: "website",
   },
   alternates: { canonical: `${SITE_URL}/about` },
@@ -157,9 +157,9 @@ export default function AboutPage() {
         <section className="py-16 lg:py-20 bg-[#2A1506]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="rounded-xl p-8 max-w-xl mx-auto border border-[#D4AF37]/15 bg-[#3D2510]/50">
-              <h3 className="font-heading text-xl font-bold text-[#FFFAF3] mb-3">
+              <h2 className="font-heading text-xl font-bold text-[#FFFAF3] mb-3">
                 Explore The Oasis
-              </h3>
+              </h2>
               <p className="text-[#B89B6E] text-sm mb-6">
                 Discover The Oasis by Emaar — another flagship masterplan community featuring a 3.5km crystal lagoon and waterfront living with 7,000+ residences across 9 clusters. A complementary vision for Dubai luxury.
               </p>

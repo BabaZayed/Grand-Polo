@@ -15,10 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/payment-plan", changeFrequency: "monthly", priority: 0.8 },
     { path: "/faq", changeFrequency: "monthly", priority: 0.7 },
     { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
-    // Legal pages — low priority, still indexable
-    { path: "/privacy", changeFrequency: "yearly", priority: 0.2 },
-    { path: "/terms", changeFrequency: "yearly", priority: 0.2 },
-    { path: "/disclaimer", changeFrequency: "yearly", priority: 0.2 },
   ];
 
   // Only include "Available" properties in sitemap — "Launching Soon" pages are noindex

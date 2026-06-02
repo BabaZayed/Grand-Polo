@@ -11,7 +11,7 @@ export default function HeroSection() {
     <section id="hero-section" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image — Next.js Image for optimization + priority for LCP */}
       <Image
-        src="/images/hero/chevalia-estate-2-hero.webp"
+        src="/images/hero/hero-dark.webp"
         alt="Grand Polo Club & Resort — Luxury Equestrian Villas"
         fill
         priority
@@ -125,7 +125,7 @@ export default function HeroSection() {
               className="border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37] px-8 py-3.5 rounded-md text-sm tracking-wide w-full sm:w-auto group"
             >
               <Play className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-              Watch Video
+              Book a Viewing
             </Button>
           </Link>
         </motion.div>

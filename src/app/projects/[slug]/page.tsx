@@ -83,7 +83,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     description: property.description,
     url: `${SITE_URL}/projects/${property.slug}`,
     image: `${SITE_URL}${property.imageUrl}`,
-    datePosted: "2025-01-01",
+    datePosted: property.status === "Launching Soon" ? undefined : "2025-01-15",
     offers: { "@type": "Offer", price: property.startingPrice > 0 ? property.startingPrice : undefined, priceCurrency: "AED", availability: isLaunching ? "PreOrder" : "InStock" },
     address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
   };
@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <SiteHeader />
       <main className="pt-16 lg:pt-20">
         <section className="relative h-[60vh] min-h-[420px]">
-          <Image src={property.imageUrl} alt={property.name} fill className="object-cover" priority sizes="100vw" />
+          <Image src={property.imageUrl} alt={`${property.name} — ${property.bedrooms}-bedroom luxury villas at Grand Polo Club & Resort`} fill className="object-cover" priority sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/60 to-[#2A1506]/30" />
           <div className="absolute inset-0 flex items-end">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 w-full">

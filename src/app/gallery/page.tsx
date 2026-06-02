@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gallery — Grand Polo Club & Resort",
     description: "Visual journey through Grand Polo's polo fields, luxury villas, and clubhouse.",
-    images: [{ url: "/images/gallery/polo-field-1.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort Gallery" }],
+    images: [{ url: "/images/gallery/polo-field-1.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort — Gallery" }],
     url: `${SITE_URL}/gallery`,
     type: "website",
   },

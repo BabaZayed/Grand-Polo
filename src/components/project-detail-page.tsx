@@ -56,7 +56,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   return (
     <div className="pt-16 lg:pt-20">
       <section className="relative h-[60vh] min-h-[400px]">
-        <Image src={property.imageUrl} alt={property.name} fill className="object-cover" priority sizes="100vw" />
+        <Image src={property.imageUrl} alt={`${property.name} — ${property.bedrooms}-bedroom luxury villas at Grand Polo Club & Resort`} fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/50 to-[#2A1506]/30" />
         <div className="absolute inset-0 flex items-end">
           <div className="container mx-auto px-4 lg:px-8 pb-8">

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       tags: post.tags,
       images: post.imageUrl
         ? [{ url: post.imageUrl, width: 1200, height: 630, alt: post.title }]
-        : [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
+        : [{ url: "/images/hero/hero-dark.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }]
     },
     alternates: { canonical: `${SITE_URL}/blog/${slug}` },
   };
@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       if (line.startsWith("# "))
         return <h2 key={i} className="font-heading text-3xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("# ", "")}</h2>;
       if (line.startsWith("## "))
-        return <h2 key={i} className="font-heading text-2xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("## ", "")}</h2>;
+        return <h3 key={i} className="font-heading text-2xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("## ", "")}</h3>;
       if (line.startsWith("### "))
         return <h3 key={i} className="font-heading text-xl font-bold text-[#FFFAF3] mt-8 mb-3">{line.replace("### ", "")}</h3>;
       if (line.startsWith("- "))
