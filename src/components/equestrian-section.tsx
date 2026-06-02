@@ -30,10 +30,14 @@ const features = [
 export default function EquestrianSection() {
   return (
     <section className="relative luxury-section-padding overflow-hidden">
-      {/* Parallax background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/gallery/dubai-polo.webp')" }}
+      {/* Parallax background image — Next.js Image for optimization */}
+      <Image
+        src="/images/gallery/dubai-polo.webp"
+        alt="Dubai Polo — Equestrian Lifestyle"
+        fill
+        quality={70}
+        sizes="100vw"
+        className="object-cover object-center"
       />
       {/* Brown overlay */}
       <div className="absolute inset-0 bg-[#2A1506]/85" />
@@ -87,6 +91,7 @@ export default function EquestrianSection() {
                     src={feature.image}
                     alt={feature.title}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/30 to-transparent" />

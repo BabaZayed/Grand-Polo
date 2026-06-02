@@ -106,7 +106,12 @@
 .gold-gradient {
   background: linear-gradient(135deg, #B8941F, #D4AF37, #E8C84A, #D4AF37, #B8941F);
   background-size: 200% 200%;
-  animation: shimmer 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gold-gradient {
+    animation: shimmer 3s ease-in-out infinite;
+  }
 }
 
 .gold-gradient-static {
@@ -286,6 +291,13 @@
   animation: floatUp 6s ease-in-out infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-gold-pulse,
+  .animate-float {
+    animation: none;
+  }
+}
+
 /* Gold shimmer on hover for buttons */
 .gold-shimmer-hover {
   position: relative;
@@ -351,10 +363,7 @@ html, body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Improve touch scrolling on iOS */
-* {
-  -webkit-overflow-scrolling: touch;
-}
+/* iOS momentum scrolling is default since iOS 13 — removed deprecated -webkit-overflow-scrolling */
 
 /* Ensure minimum touch target size for interactive elements */
 @media (pointer: coarse) {

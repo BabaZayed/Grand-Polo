@@ -4,14 +4,20 @@ import { motion } from "framer-motion";
 import { ChevronDown, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
     <section id="hero-section" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero/chevalia-estate-2-hero.webp')" }}
+      {/* Background Image — Next.js Image for optimization + priority for LCP */}
+      <Image
+        src="/images/hero/chevalia-estate-2-hero.webp"
+        alt="Grand Polo Club & Resort — Luxury Equestrian Villas"
+        fill
+        priority
+        quality={80}
+        sizes="100vw"
+        className="object-cover"
       />
       {/* Rich brown gradient overlay - matching brochure style */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#2A1506]/60 via-[#5D3A1A]/40 to-[#2A1506]" />

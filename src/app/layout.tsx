@@ -7,11 +7,13 @@ import { SITE_URL, SITE_NAME } from "@/lib/data";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -39,13 +41,13 @@ export const metadata: Metadata = {
     title: "Grand Polo Club & Resort by Emaar | Luxury Equestrian Villas in Dubai",
     description:
       "Dubai's premier equestrian community. 3 polo fields, luxury clubhouse, private stables, and 6,661 residences. Villas from AED 7.34M.",
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
+    images: [{ url: "/images/hero/chevalia-estate-2-hero.webp", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Grand Polo Club & Resort by Emaar",
     description: "Dubai's premier equestrian community. 3 polo fields, luxury villas from AED 7.34M.",
-    images: ["/images/hero/chevalia-estate-2-hero.jpg"],
+    images: ["/images/hero/chevalia-estate-2-hero.webp"],
   },
   robots: {
     index: true,
@@ -114,61 +116,8 @@ const orgSchema = {
   knowsAbout: ["Equestrian Real Estate", "Luxury Villas Dubai", "Polo Club Community", "Off-Plan Property Dubai"],
 };
 
-const residenceSchema = {
-  "@context": "https://schema.org",
-  "@type": ["Residence", "ApartmentComplex"],
-  name: "Grand Polo Club & Resort",
-  description: "Emaar's flagship equestrian community with 3 polo fields, clubhouse, and 6,661 luxury villas",
-  numberOfRooms: { "@type": "QuantitativeValue", minValue: 4, maxValue: 5, unitCode: "C62" },
-  amenityFeature: [
-    { "@type": "LocationFeatureSpecification", name: "Polo Fields", value: "3 Championship Fields" },
-    { "@type": "LocationFeatureSpecification", name: "Clubhouse", value: "5,600 SqM Luxury Clubhouse" },
-    { "@type": "LocationFeatureSpecification", name: "Stables", value: "Private Horse Stables" },
-    { "@type": "LocationFeatureSpecification", name: "Riding Arenas", value: "3 Jumping Arenas" },
-    { "@type": "LocationFeatureSpecification", name: "Padel Courts", value: "Available" },
-    { "@type": "LocationFeatureSpecification", name: "Fitness Area", value: "Community Gym" },
-  ],
-};
-
-const speakableSchema = {
-  "@context": "https://schema.org",
-  "@type": "SpeakableSpecification",
-  xpath: ["/html/body/main/section[1]", "/html/body/main/section[2]"],
-  cssSelector: ["#hero-section", "#properties-section"],
-};
-
-const eventSchema = {
-  "@context": "https://schema.org",
-  "@type": "EventSeries",
-  name: "Grand Polo Property Viewings",
-  description: "Exclusive property viewings at Grand Polo Club & Resort by Emaar",
-  organizer: { "@type": "Organization", name: "Grand Polo Club & Resort" },
-  location: { "@type": "Place", name: "Grand Polo Club & Resort", address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" } },
-  offers: {
-    "@type": "AggregateOffer",
-    lowPrice: "7340000",
-    highPrice: "20000000",
-    priceCurrency: "AED",
-    offerCount: "379",
-  },
-};
-
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "How to Buy a Villa at Grand Polo Club & Resort",
-  description: "Step-by-step guide to purchasing your luxury equestrian villa at Grand Polo",
-  estimatedCost: { "@type": "MonetaryAmount", currency: "AED", value: "7340000" },
-  tool: [{ "@type": "HowToTool", name: "Emaar Booking Portal" }, { "@type": "HowToTool", name: "UAE ID / Passport" }],
-  step: [
-    { "@type": "HowToStep", name: "Register Interest", text: "Fill out the enquiry form with your details and property preferences", position: 1 },
-    { "@type": "HowToStep", name: "Consultation", text: "Speak with our property consultants to discuss options and budget", position: 2 },
-    { "@type": "HowToStep", name: "Site Visit", text: "Visit the Grand Polo site and view the polo fields, clubhouse, and stables", position: 3 },
-    { "@type": "HowToStep", name: "Select Unit", text: "Choose your preferred villa type, cluster, and unit number", position: 4 },
-    { "@type": "HowToStep", name: "Pay Down Payment", text: "Pay 10% down payment to secure your villa booking", position: 5 },
-    { "@type": "HowToStep", name: "DLD Registration", text: "Complete Dubai Land Department registration and Oqood", position: 6 },
-  ],
-};
+// Removed low-value schemas (Residence, Speakable, EventSeries, HowTo) to reduce HTML bloat by ~15KB
+// Kept the 4 highest-impact schemas: LocalBusiness, FAQ, WebSite, Organization
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1510715397129819";
@@ -220,15 +169,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" hrefLang="de" href={`${SITE_URL}/de`} />
         <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
 
-        {/* JSON-LD Schemas */}
+        {/* JSON-LD Schemas — consolidated from 8 to 4 for ~15KB HTML savings */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(residenceSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       </head>
       <body className="min-h-full flex flex-col bg-[#5D3A1A] text-[#FFFAF3]">
         {/* Skip to content - Accessibility */}

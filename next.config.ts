@@ -23,6 +23,13 @@ const nextConfig: NextConfig = {
           { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
         ],
       },
+      {
+        // Cache HTML pages briefly with stale-while-revalidate for faster repeat visits
+        source: "/",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=60, s-maxage=300, stale-while-revalidate=600" },
+        ],
+      },
     ];
   },
 };
