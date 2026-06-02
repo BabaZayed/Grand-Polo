@@ -44,6 +44,7 @@ export default function SiteFooter() {
                 { label: "Home", href: "/" },
                 { label: "Properties", href: "/projects" },
                 { label: "Masterplan", href: "/masterplan" },
+                { label: "Brochures & Floor Plans", href: "/brochures" },
                 { label: "Gallery", href: "/gallery" },
                 { label: "About", href: "/about" },
                 { label: "Contact", href: "/contact" },

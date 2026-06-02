@@ -5,7 +5,7 @@ import { projects, paymentPlans, unitTypes, formatPrice, SITE_URL } from "@/lib/
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
-import { BedDouble, Maximize, LandPlot, Users, Calendar, Tag, Check, ArrowLeft, Phone, Mail, ShieldCheck } from "lucide-react";
+import { BedDouble, Maximize, LandPlot, Users, Calendar, Tag, Check, ArrowLeft, Phone, Mail, ShieldCheck, Download, FileText, LayoutGrid } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -194,6 +194,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   </p>
                   <div className="space-y-3">
                     <Link href="/contact" className="inline-flex items-center justify-center w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Check Availability</Link>
+                    <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><FileText className="w-4 h-4" /> Download Brochure</a>
+                    <a href={`/api/download?type=floorplan&file=${property.slug}-floorplan.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><LayoutGrid className="w-4 h-4" /> Download Floor Plan</a>
                     <a href="tel:+971526919169" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Phone className="w-4 h-4" /> Call Now</a>
                     <a href="mailto:info@thegrandpolo.com" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Mail className="w-4 h-4" /> Email Us</a>
                   </div>
@@ -311,6 +313,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <p className="text-[#B89B6E] max-w-xl mx-auto mb-8">{isLaunching ? "Be among the first to receive launch details and priority selection." : "Schedule a private viewing and discover the equestrian luxury lifestyle."}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="inline-flex items-center justify-center h-12 px-8 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Check Availability</Link>
+              <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors gap-2"><Download className="w-4 h-4" /> Download Brochure</a>
               <Link href="/payment-plan" className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors">View Payment Plans</Link>
             </div>
           </div>
