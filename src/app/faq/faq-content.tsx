@@ -15,20 +15,11 @@ export default function FAQContent() {
     })),
   };
 
-  const qaLd = {
-    "@context": "https://schema.org",
-    "@type": "QAPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
+  // QAPage schema removed — FAQPage is the correct schema for a list of FAQs; using both was redundant
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(qaLd) }} />
 
       <section className="py-16 lg:py-20 bg-[#5D3A1A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">

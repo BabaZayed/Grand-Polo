@@ -2,31 +2,31 @@ import { MetadataRoute } from "next";
 import { projects } from "@/lib/data";
 import { blogPosts } from "@/lib/blog-data";
 
-const SUPPORTED_LANGS = ["ar", "zh", "ru", "fr", "de"];
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.thegrandpolo.com";
 
-  const staticPages: { path: string; lastModified: string; changeFrequency: "daily" | "weekly" | "monthly" | "yearly"; priority: number }[] = [
-    { path: "", lastModified: "2026-06-01", changeFrequency: "daily", priority: 1 },
-    { path: "/projects", lastModified: "2026-06-01", changeFrequency: "weekly", priority: 0.9 },
-    { path: "/floor-plans", lastModified: "2026-06-02", changeFrequency: "weekly", priority: 0.9 },
-    { path: "/inventory", lastModified: "2026-06-02", changeFrequency: "weekly", priority: 0.9 },
-    { path: "/masterplan", lastModified: "2026-05-15", changeFrequency: "monthly", priority: 0.7 },
-    { path: "/gallery", lastModified: "2026-05-15", changeFrequency: "monthly", priority: 0.7 },
-    { path: "/about", lastModified: "2026-04-01", changeFrequency: "monthly", priority: 0.6 },
-    { path: "/contact", lastModified: "2026-04-01", changeFrequency: "monthly", priority: 0.6 },
-    { path: "/payment-plan", lastModified: "2026-05-01", changeFrequency: "monthly", priority: 0.8 },
-    { path: "/faq", lastModified: "2026-05-01", changeFrequency: "monthly", priority: 0.7 },
-    { path: "/blog", lastModified: "2026-05-15", changeFrequency: "weekly", priority: 0.7 },
-    { path: "/privacy", lastModified: "2026-01-01", changeFrequency: "yearly", priority: 0.3 },
-    { path: "/terms", lastModified: "2026-01-01", changeFrequency: "yearly", priority: 0.3 },
-    { path: "/disclaimer", lastModified: "2026-01-01", changeFrequency: "yearly", priority: 0.3 },
+  const staticPages: { path: string; changeFrequency: "daily" | "weekly" | "monthly" | "yearly"; priority: number }[] = [
+    { path: "", changeFrequency: "daily", priority: 1 },
+    { path: "/projects", changeFrequency: "weekly", priority: 0.9 },
+    { path: "/masterplan", changeFrequency: "monthly", priority: 0.7 },
+    { path: "/gallery", changeFrequency: "monthly", priority: 0.7 },
+    { path: "/about", changeFrequency: "monthly", priority: 0.6 },
+    { path: "/contact", changeFrequency: "monthly", priority: 0.6 },
+    { path: "/payment-plan", changeFrequency: "monthly", priority: 0.8 },
+    { path: "/faq", changeFrequency: "monthly", priority: 0.7 },
+    { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
+    // Legal pages — low priority, still indexable
+    { path: "/privacy", changeFrequency: "yearly", priority: 0.2 },
+    { path: "/terms", changeFrequency: "yearly", priority: 0.2 },
+    { path: "/disclaimer", changeFrequency: "yearly", priority: 0.2 },
   ];
 
-  const projectPages = projects.map((p) => ({
+  // Only include "Available" properties in sitemap — "Launching Soon" pages are noindex
+  const availableProjects = projects.filter((p) => p.status !== "Launching Soon");
+
+  const projectPages = availableProjects.map((p) => ({
     url: `${baseUrl}/projects/${p.slug}`,
-    lastModified: p.status === "Launching Soon" ? new Date() : new Date("2026-06-01"),
+    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
@@ -40,31 +40,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticEntries = staticPages.map((page) => ({
     url: `${baseUrl}${page.path}`,
-    lastModified: new Date(page.lastModified),
+    lastModified: new Date(),
     changeFrequency: page.changeFrequency,
     priority: page.priority,
   }));
 
-  // Add language-specific URLs for main pages
-  const langEntries: MetadataRoute.Sitemap = [];
-  for (const lang of SUPPORTED_LANGS) {
-    for (const page of staticPages.filter(p => p.priority >= 0.7)) {
-      langEntries.push({
-        url: `${baseUrl}/${lang}${page.path}`,
-        lastModified: new Date(page.lastModified),
-        changeFrequency: page.changeFrequency,
-        priority: page.priority * 0.9,
-      });
-    }
-    for (const p of projects) {
-      langEntries.push({
-        url: `${baseUrl}/${lang}/projects/${p.slug}`,
-        lastModified: p.status === "Launching Soon" ? new Date() : new Date("2026-06-01"),
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-      });
-    }
-  }
-
-  return [...staticEntries, ...projectPages, ...blogPages, ...langEntries];
+  return [...staticEntries, ...projectPages, ...blogPages];
 }

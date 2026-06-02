@@ -60,7 +60,7 @@ export default function ProjectsPageClient() {
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="font-heading text-xl text-[#FFFAF3] mb-2 group-hover:text-[#D4AF37] transition-colors">{project.name}</h3>
+                      <h2 className="font-heading text-xl text-[#FFFAF3] mb-2 group-hover:text-[#D4AF37] transition-colors">{project.name}</h2>
                       <p className="text-[#B89B6E] text-sm mb-4">{project.tagline}</p>
                       {project.startingPrice > 0 && (
                         <div className="grid grid-cols-3 gap-2 mb-4 text-center">

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Grand Polo Club & Resort",
   },
   description:
-    "Grand Polo Club & Resort by Emaar — Dubai's premier equestrian community. 3 polo fields, luxury clubhouse, private stables, and 6,661 residences across 22 clusters. Villas from AED 7.34M. Golden Visa eligible.",
+    "Grand Polo Club & Resort by Emaar — Dubai's premier equestrian community. 3 polo fields, luxury clubhouse, private stables, 6,661 residences. Villas from AED 7.34M.",
   keywords: [
     "grand polo dubai", "emaar polo club", "equestrian villas dubai", "chevalia estate",
     "chevalia fields", "polo fields dubai", "luxury villa dubai", "emaar grand polo",
@@ -82,27 +82,15 @@ const localBusinessSchema = {
   areaServed: { "@type": "Place", name: "Dubai, UAE" },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "What is Grand Polo Club & Resort?", acceptedAnswer: { "@type": "Answer", text: "Grand Polo Club & Resort is Emaar Properties' flagship equestrian-themed masterplan community in Dubai spanning 5.54 million square metres with three polo fields, a luxury clubhouse, private stables, and 6,661 residences across 22 clusters." } },
-    { "@type": "Question", name: "Where is Grand Polo located?", acceptedAnswer: { "@type": "Answer", text: "Grand Polo Club & Resort is located near Al Maktoum International Airport in Dubai, just 5 minutes from the airport, 10 minutes from Expo City, and 30 minutes from Downtown Dubai." } },
-    { "@type": "Question", name: "What are the starting prices at Grand Polo?", acceptedAnswer: { "@type": "Answer", text: "Prices start from AED 7.34 million for a 4-bedroom villa in Chevalia Fields, AED 7.88 million in Chevalia Estate 2, and AED 9 million in Chevalia Estate." } },
-    { "@type": "Question", name: "Is Grand Polo eligible for the Golden Visa?", acceptedAnswer: { "@type": "Answer", text: "Yes, all properties at Grand Polo qualify for the UAE Golden Visa as they are all priced above the AED 2 million threshold. The Golden Visa grants 10-year residency for the property owner and their family." } },
-    { "@type": "Question", name: "What payment plans are available?", acceptedAnswer: { "@type": "Answer", text: "All clusters offer 10% down payment with instalments of 10% at construction milestones and 20% on completion." } },
-    { "@type": "Question", name: "What amenities does Grand Polo offer?", acceptedAnswer: { "@type": "Answer", text: "Grand Polo offers 23 amenities including three polo fields, a luxury clubhouse, private stables, riding arenas, galloping fountain, art pavilion, padel courts, fitness areas, and more." } },
-    { "@type": "Question", name: "Who is the developer?", acceptedAnswer: { "@type": "Answer", text: "Grand Polo Club & Resort is developed by Emaar Properties PJSC, the developer of Burj Khalifa, Dubai Mall, and other iconic Dubai landmarks." } },
-    { "@type": "Question", name: "When is the handover?", acceptedAnswer: { "@type": "Answer", text: "Handover dates vary by cluster: Chevalia Fields Q1 2029, Chevalia Estate 2 Q2 2029, Chevalia Estate Q4 2028." } },
-  ],
-};
+// FAQ schema removed from global layout — it now only renders on the /faq page (faq-content.tsx)
+// This prevents structured data violations (FAQPage should only be on pages with visible Q&A content)
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Grand Polo Club & Resort",
   url: SITE_URL,
-  potentialAction: { "@type": "SearchAction", target: `${SITE_URL}/projects?q={search_term_string}`, "query-input": "required name=search_term_string" },
+  // SearchAction removed — no search functionality exists on /projects yet
 };
 
 const orgSchema = {
@@ -160,18 +148,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.position" content="24.9;55.2" />
         <meta name="ICBM" content="24.9, 55.2" />
 
-        {/* Hreflang - page-level alternates handled per page */}
-        <link rel="alternate" hrefLang="en" href={SITE_URL} />
-        <link rel="alternate" hrefLang="ar" href={`${SITE_URL}/ar`} />
-        <link rel="alternate" hrefLang="zh" href={`${SITE_URL}/zh`} />
-        <link rel="alternate" hrefLang="ru" href={`${SITE_URL}/ru`} />
-        <link rel="alternate" hrefLang="fr" href={`${SITE_URL}/fr`} />
-        <link rel="alternate" hrefLang="de" href={`${SITE_URL}/de`} />
-        <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
+        {/* Hreflang removed — localized pages (/ar, /zh, etc.) don't exist yet. Add back when built. */}
 
-        {/* JSON-LD Schemas — consolidated from 8 to 4 for ~15KB HTML savings */}
+        {/* JSON-LD Schemas — 3 global schemas. FAQ schema only on /faq page */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>

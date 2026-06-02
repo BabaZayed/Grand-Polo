@@ -24,17 +24,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? `from AED ${(property.startingPrice / 1000000).toFixed(property.startingPrice % 1000000 === 0 ? 0 : 2)}M`
     : "Coming Soon";
 
+  const isLaunching = property.status === "Launching Soon";
+
   return {
     title: `${property.name} — ${property.bedrooms} Bed Villas ${priceStr}`,
-    description: property.description.slice(0, 160),
+    description: property.description.slice(0, 155).replace(/\s+\S*$/, "") + (property.description.length > 155 ? "..." : ""),
     openGraph: {
       title: `${property.name} — Grand Polo Club & Resort`,
-      description: property.description.slice(0, 160),
+      description: property.description.slice(0, 155).replace(/\s+\S*$/, "") + (property.description.length > 155 ? "..." : ""),
       images: [property.imageUrl],
       url: `${SITE_URL}/projects/${slug}`,
       type: "website",
     },
     alternates: { canonical: `${SITE_URL}/projects/${slug}` },
+    // Noindex "Launching Soon" pages — they have placeholder content and duplicate images
+    robots: isLaunching ? { index: false, follow: true } : undefined,
   };
 }
 
@@ -277,6 +281,29 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        {/* Related Properties — Internal linking for SEO */}
+        <section className="py-16 lg:py-20 bg-[#3D2510] border-t border-[#D4AF37]/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-2">Explore Other Clusters</h2>
+            <p className="text-[#B89B6E] mb-8">Discover more luxury villa communities at Grand Polo Club & Resort</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {projects.filter((p) => p.slug !== property.slug && p.status !== "Launching Soon").slice(0, 3).map((p) => (
+                <Link key={p.id} href={`/projects/${p.slug}`} className="group rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/50 hover:border-[#D4AF37]/40 transition-all duration-400 hover:-translate-y-1">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image src={p.imageUrl} alt={`${p.name} — luxury villas at Grand Polo Dubai`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-transparent to-transparent" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-heading text-lg text-[#FFFAF3] group-hover:text-[#D4AF37] transition-colors">{p.name}</h3>
+                    <p className="text-[#D4AF37] text-sm font-semibold">{p.startingPrice > 0 ? `From ${formatPrice(p.startingPrice)}` : "Coming Soon"}</p>
+                    <p className="text-[#B89B6E] text-xs mt-1">{p.bedrooms} Beds • {p.facts.totalUnits > 0 ? `${p.facts.totalUnits} Units` : "TBA"}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="py-16 lg:py-20 bg-[#2A1506] border-t border-[#D4AF37]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

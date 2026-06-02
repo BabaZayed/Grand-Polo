@@ -40,7 +40,7 @@ export default function SiteFooter() {
             <h4 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Quick Links</h4>
             <div className="gold-divider max-w-[60px] mb-4" />
             <ul className="space-y-2">
-              {["Home", "Properties", "Masterplan", "Gallery", "About", "Contact", "FAQ", "Blog"].map((link) => (
+              {["Home", "Properties", "Masterplan", "Gallery", "About", "Contact", "Payment Plans", "FAQ", "Blog"].map((link) => (
                 <li key={link}>
                   <Link href={link === "Home" ? "/" : `/${link.toLowerCase().replace(" ", "-")}`} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors">
                     {link}

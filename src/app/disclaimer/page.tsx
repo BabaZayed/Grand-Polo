@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: "Disclaimer",
   description:
     "Disclaimer for Grand Polo Club & Resort — Independent Authorised Brokerage, RERA compliance, and legal notices for Dubai real estate.",
+  robots: { index: false, follow: true },
   openGraph: {
     title: "Disclaimer — Grand Polo Club & Resort",
     description: "Independent Authorised Brokerage disclaimer and legal notices.",
     url: `${SITE_URL}/disclaimer`,
     type: "website",
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
   },
   alternates: { canonical: `${SITE_URL}/disclaimer` },
 };

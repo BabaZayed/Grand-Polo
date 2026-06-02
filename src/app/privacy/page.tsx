@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Privacy policy for Grand Polo Club & Resort — how we collect, use, and protect your personal data in compliance with UAE and DIFC regulations.",
+  robots: { index: false, follow: true },
   openGraph: {
     title: "Privacy Policy — Grand Polo Club & Resort",
     description: "How we collect, use, and protect your personal data.",
     url: `${SITE_URL}/privacy`,
     type: "website",
-    images: [{ url: "/images/hero/chevalia-estate-2-hero.jpg", width: 1200, height: 630, alt: "Grand Polo Club & Resort" }],
   },
   alternates: { canonical: `${SITE_URL}/privacy` },
 };
