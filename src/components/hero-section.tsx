@@ -132,7 +132,7 @@ export default function HeroSection() {
         transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[#8B6B47] text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+        <span className="text-[#B89B6E] text-[10px] tracking-[0.3em] uppercase">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

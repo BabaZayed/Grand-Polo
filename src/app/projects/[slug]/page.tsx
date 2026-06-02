@@ -49,7 +49,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <main className="min-h-screen flex items-center justify-center bg-[#5D3A1A] pt-20">
           <div className="text-center px-4">
             <h1 className="font-heading text-4xl text-[#D4AF37] mb-4">Property Not Found</h1>
-            <Link href="/projects" className="text-[#8B6B47] hover:text-[#D4AF37] transition-colors">Back to Properties</Link>
+            <Link href="/projects" className="text-[#B89B6E] hover:text-[#D4AF37] transition-colors">Back to Properties</Link>
           </div>
         </main>
         <SiteFooter />
@@ -104,11 +104,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/60 to-[#2A1506]/30" />
           <div className="absolute inset-0 flex items-end">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 w-full">
-              <Link href="/projects" className="inline-flex items-center text-[#8B6B47] hover:text-[#D4AF37] text-sm mb-4 transition-colors">
+              <Link href="/projects" className="inline-flex items-center text-[#B89B6E] hover:text-[#D4AF37] text-sm mb-4 transition-colors">
                 <ArrowLeft className="w-4 h-4 mr-1" /> Back to Properties
               </Link>
               <div className="flex items-center gap-3 mb-3">
-                <span className={`px-3 py-1 rounded text-xs font-bold ${isLaunching ? "bg-[#8B6B47] text-[#FFFAF3]" : "gold-gradient text-[#2A1506]"}`}>
+                <span className={`px-3 py-1 rounded text-xs font-bold ${isLaunching ? "bg-[#B89B6E] text-[#FFFAF3]" : "gold-gradient text-[#2A1506]"}`}>
                   {isLaunching ? "Launching Soon" : "Available"}
                 </span>
                 <span className="px-3 py-1 rounded text-xs font-medium border border-[#D4AF37]/30 text-[#D4AF37]">
@@ -134,7 +134,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <div key={stat.label} className="rounded-lg p-4 text-center border border-[#D4AF37]/15 bg-[#2A1506]/50">
                   <stat.icon className="w-5 h-5 text-[#D4AF37] mx-auto mb-2" />
                   <p className="text-[#FFFAF3] text-sm font-bold">{stat.value}</p>
-                  <p className="text-[#8B6B47] text-xs mt-1">{stat.label}</p>
+                  <p className="text-[#B89B6E] text-xs mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -147,14 +147,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <div className="lg:col-span-2">
                 <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-4">About {property.name}</h2>
                 <div className="gold-divider max-w-xs mb-6" />
-                <p className="text-[#8B6B47] leading-relaxed mb-6">{property.description}</p>
+                <p className="text-[#B89B6E] leading-relaxed mb-6">{property.description}</p>
 
                 {property.facts.goldenVisa && (
                   <div className="rounded-lg p-4 border border-[#D4AF37]/30 bg-[#3D2510]/50 mb-8 inline-flex items-center gap-3">
                     <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
                     <div>
                       <p className="text-[#D4AF37] text-sm font-bold">Golden Visa Eligible</p>
-                      <p className="text-[#8B6B47] text-xs">10-year UAE residency for property owner and family</p>
+                      <p className="text-[#B89B6E] text-xs">10-year UAE residency for property owner and family</p>
                     </div>
                   </div>
                 )}
@@ -185,7 +185,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-3">
                     {isLaunching ? "Register Your Interest" : "Check Availability"}
                   </h3>
-                  <p className="text-[#8B6B47] text-sm mb-5">
+                  <p className="text-[#B89B6E] text-sm mb-5">
                     {isLaunching ? "Be the first to receive launch details, pricing, and priority selection when this community opens." : "Schedule a private viewing with our dedicated property consultants."}
                   </p>
                   <div className="space-y-3">
@@ -193,7 +193,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     <a href="tel:+971526919169" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Phone className="w-4 h-4" /> Call Now</a>
                     <a href="mailto:info@thegrandpolo.com" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Mail className="w-4 h-4" /> Email Us</a>
                   </div>
-                  <div className="mt-5 pt-5 border-t border-[#D4AF37]/10 text-xs text-[#8B6B47] space-y-1">
+                  <div className="mt-5 pt-5 border-t border-[#D4AF37]/10 text-xs text-[#B89B6E] space-y-1">
                     <p>Developer: {property.facts.developer}</p>
                     <p>Location: {property.facts.location}</p>
                     <p>Payment Plan: {property.paymentPlan}</p>
@@ -208,7 +208,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <section className="py-16 lg:py-20 bg-[#3D2510] border-t border-[#D4AF37]/10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-2">Unit Types</h2>
-              <p className="text-[#8B6B47] mb-8">Available configurations within {property.name}</p>
+              <p className="text-[#B89B6E] mb-8">Available configurations within {property.name}</p>
               <div className="rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/50">
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -243,23 +243,23 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <section className="py-16 lg:py-20 bg-[#5D3A1A] border-t border-[#D4AF37]/10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-2">Payment Plan</h2>
-              <p className="text-[#8B6B47] mb-8">{property.paymentPlan} — Flexible construction-linked milestones</p>
+              <p className="text-[#B89B6E] mb-8">{property.paymentPlan} — Flexible construction-linked milestones</p>
               <div className="rounded-xl p-6 lg:p-8 max-w-3xl border border-[#D4AF37]/15 bg-[#3D2510]/50">
                 <div className="flex h-4 rounded-full overflow-hidden mb-8 bg-[#2A1506]">
                   {milestones.map((m, i) => (
-                    <div key={i} className={`${i === 0 ? "bg-[#D4AF37]" : i === milestones.length - 1 ? "bg-[#8B6B47]" : "bg-[#D4AF37]/40"}`} style={{ width: `${m.percentage}%` }} />
+                    <div key={i} className={`${i === 0 ? "bg-[#D4AF37]" : i === milestones.length - 1 ? "bg-[#B89B6E]" : "bg-[#D4AF37]/40"}`} style={{ width: `${m.percentage}%` }} />
                   ))}
                 </div>
                 <div className="space-y-0">
                   {milestones.map((milestone, index) => (
                     <div key={index} className="relative">
                       <div className="flex items-center gap-4 py-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${index === 0 ? "gold-gradient text-[#2A1506]" : index === milestones.length - 1 ? "bg-[#8B6B47] text-[#FFFAF3]" : "bg-[#2A1506] border border-[#D4AF37]/30 text-[#D4AF37]"}`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${index === 0 ? "gold-gradient text-[#2A1506]" : index === milestones.length - 1 ? "bg-[#B89B6E] text-[#FFFAF3]" : "bg-[#2A1506] border border-[#D4AF37]/30 text-[#D4AF37]"}`}>
                           {milestone.percentage}%
                         </div>
                         <div className="flex-1">
                           <p className="text-[#FFFAF3] text-sm font-medium">{milestone.label}</p>
-                          <p className="text-[#8B6B47] text-xs">{milestone.date}</p>
+                          <p className="text-[#B89B6E] text-xs">{milestone.date}</p>
                         </div>
                       </div>
                       {index < milestones.length - 1 && <div className="absolute left-[19px] top-[52px] bottom-0 w-px bg-[#D4AF37]/10" />}
@@ -268,9 +268,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </div>
                 <div className="mt-8 pt-6 border-t border-[#D4AF37]/10">
                   <div className="grid grid-cols-3 gap-4 text-center">
-                    <div><p className="text-[#D4AF37] font-heading text-lg font-bold">10%</p><p className="text-[#8B6B47] text-xs">Down Payment</p></div>
-                    <div><p className="text-[#D4AF37] font-heading text-lg font-bold">10%</p><p className="text-[#8B6B47] text-xs">Per Milestone</p></div>
-                    <div><p className="text-[#8B6B47] font-heading text-lg font-bold">20%</p><p className="text-[#8B6B47] text-xs">On Completion</p></div>
+                    <div><p className="text-[#D4AF37] font-heading text-lg font-bold">10%</p><p className="text-[#B89B6E] text-xs">Down Payment</p></div>
+                    <div><p className="text-[#D4AF37] font-heading text-lg font-bold">10%</p><p className="text-[#B89B6E] text-xs">Per Milestone</p></div>
+                    <div><p className="text-[#B89B6E] font-heading text-lg font-bold">20%</p><p className="text-[#B89B6E] text-xs">On Completion</p></div>
                   </div>
                 </div>
               </div>
@@ -281,7 +281,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <section className="py-16 lg:py-20 bg-[#2A1506] border-t border-[#D4AF37]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-4">{isLaunching ? "Register for Priority Access" : "Check Availability at " + property.name}</h2>
-            <p className="text-[#8B6B47] max-w-xl mx-auto mb-8">{isLaunching ? "Be among the first to receive launch details and priority selection." : "Schedule a private viewing and discover the equestrian luxury lifestyle."}</p>
+            <p className="text-[#B89B6E] max-w-xl mx-auto mb-8">{isLaunching ? "Be among the first to receive launch details and priority selection." : "Schedule a private viewing and discover the equestrian luxury lifestyle."}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="inline-flex items-center justify-center h-12 px-8 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Check Availability</Link>
               <Link href="/payment-plan" className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors">View Payment Plans</Link>

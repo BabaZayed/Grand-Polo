@@ -46,21 +46,21 @@ export default function DisclaimerPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <h1 className="font-heading text-4xl sm:text-5xl font-bold text-[#FFFAF3] mb-4">Disclaimer</h1>
             <div className="gold-divider max-w-xs mb-4" />
-            <p className="text-[#8B6B47] text-sm mb-8">Last updated: February 2025</p>
+            <p className="text-[#B89B6E] text-sm mb-8">Last updated: February 2025</p>
             <div className="rounded-xl p-6 lg:p-8 mb-8 border border-[#D4AF37]/30 bg-[#3D2510]/50">
               <p className="text-[#D4AF37] font-heading font-bold text-sm mb-2">Independent Authorised Brokerage</p>
-              <p className="text-[#8B6B47] text-sm leading-relaxed">
+              <p className="text-[#B89B6E] text-sm leading-relaxed">
                 This website is operated by an independent authorised brokerage agent, not by Emaar Properties PJSC. All property transactions are subject to Emaar&apos;s terms and conditions. Please read the full disclaimer below carefully.
               </p>
             </div>
             {sections.map((section) => (
               <div key={section.title} className="mb-10">
                 <h2 className="font-heading text-xl font-bold text-[#FFFAF3] mb-3">{section.title}</h2>
-                <p className="text-[#8B6B47] leading-relaxed">{section.content}</p>
+                <p className="text-[#B89B6E] leading-relaxed">{section.content}</p>
               </div>
             ))}
             <div className="mt-12 pt-8 border-t border-[#D4AF37]/10">
-              <p className="text-[#8B6B47] text-sm text-center">
+              <p className="text-[#B89B6E] text-sm text-center">
                 For questions about this disclaimer, contact us at{" "}
                 <a href="mailto:info@thegrandpolo.com" className="text-[#D4AF37] hover:text-[#E8C84A]">info@thegrandpolo.com</a>
               </p>

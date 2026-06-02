@@ -2,12 +2,16 @@ import { MetadataRoute } from "next";
 import { projects } from "@/lib/data";
 import { blogPosts } from "@/lib/blog-data";
 
+const SUPPORTED_LANGS = ["ar", "zh", "ru", "fr", "de"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.thegrandpolo.com";
 
   const staticPages: { path: string; lastModified: string; changeFrequency: "daily" | "weekly" | "monthly" | "yearly"; priority: number }[] = [
     { path: "", lastModified: "2026-06-01", changeFrequency: "daily", priority: 1 },
     { path: "/projects", lastModified: "2026-06-01", changeFrequency: "weekly", priority: 0.9 },
+    { path: "/floor-plans", lastModified: "2026-06-02", changeFrequency: "weekly", priority: 0.9 },
+    { path: "/inventory", lastModified: "2026-06-02", changeFrequency: "weekly", priority: 0.9 },
     { path: "/masterplan", lastModified: "2026-05-15", changeFrequency: "monthly", priority: 0.7 },
     { path: "/gallery", lastModified: "2026-05-15", changeFrequency: "monthly", priority: 0.7 },
     { path: "/about", lastModified: "2026-04-01", changeFrequency: "monthly", priority: 0.6 },
@@ -41,5 +45,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: page.priority,
   }));
 
-  return [...staticEntries, ...projectPages, ...blogPages];
+  // Add language-specific URLs for main pages
+  const langEntries: MetadataRoute.Sitemap = [];
+  for (const lang of SUPPORTED_LANGS) {
+    for (const page of staticPages.filter(p => p.priority >= 0.7)) {
+      langEntries.push({
+        url: `${baseUrl}/${lang}${page.path}`,
+        lastModified: new Date(page.lastModified),
+        changeFrequency: page.changeFrequency,
+        priority: page.priority * 0.9,
+      });
+    }
+    for (const p of projects) {
+      langEntries.push({
+        url: `${baseUrl}/${lang}/projects/${p.slug}`,
+        lastModified: p.status === "Launching Soon" ? new Date() : new Date("2026-06-01"),
+        changeFrequency: "weekly" as const,
+        priority: 0.8,
+      });
+    }
+  }
+
+  return [...staticEntries, ...projectPages, ...blogPages, ...langEntries];
 }

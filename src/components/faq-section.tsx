@@ -43,7 +43,7 @@ export default function FAQSection() {
                 <AccordionTrigger className="text-[#FFFAF3] font-heading text-left hover:text-[#D4AF37] hover:no-underline py-4 text-sm lg:text-base">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#8B6B47] text-sm leading-relaxed pb-4">
+                <AccordionContent className="text-[#B89B6E] text-sm leading-relaxed pb-4">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

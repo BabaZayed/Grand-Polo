@@ -49,7 +49,7 @@ export default function SiteHeader() {
               <span className="font-heading text-xl sm:text-2xl font-bold tracking-[0.2em] text-[#D4AF37]">
                 GRAND POLO
               </span>
-              <span className="text-[9px] sm:text-[10px] tracking-[0.3em] text-[#8B6B47] -mt-1">
+              <span className="text-[9px] sm:text-[10px] tracking-[0.3em] text-[#B89B6E] -mt-1">
                 CLUB &amp; RESORT
               </span>
             </Link>
@@ -93,6 +93,9 @@ export default function SiteHeader() {
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="lg:hidden p-2 text-[#FFFAF3] hover:text-[#D4AF37] transition-colors"
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-menu"
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
               >
                 {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -114,7 +117,7 @@ export default function SiteHeader() {
             className="fixed inset-0 z-40 lg:hidden"
           >
             <div className="absolute inset-0 bg-[#2A1506]/80" onClick={() => setMobileOpen(false)} />
-            <div className="absolute top-0 right-0 bottom-0 w-[280px] bg-[#2A1506] shadow-2xl">
+            <div className="absolute top-0 right-0 bottom-0 w-[280px] bg-[#2A1506] shadow-2xl" id="mobile-menu" role="dialog" aria-label="Navigation menu">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-8">
                   <span className="font-heading text-lg font-bold tracking-[0.15em] text-[#D4AF37]">GRAND POLO</span>

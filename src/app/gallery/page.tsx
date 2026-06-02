@@ -54,7 +54,7 @@ export default function GalleryPage() {
               Designing Natural <span className="gold-text">Dreamscapes</span>
             </h1>
             <div className="gold-divider max-w-xs mb-4" />
-            <p className="text-[#8B6B47] max-w-2xl">
+            <p className="text-[#B89B6E] max-w-2xl">
               Explore the visual story of Grand Polo Club & Resort — from championship polo fields and private stables to luxury villa renders and the exclusive clubhouse.
             </p>
           </div>

@@ -69,7 +69,7 @@ export default function MasterplanPage() {
               A Balanced <span className="gold-text">Masterpiece</span>
             </h1>
             <div className="gold-divider max-w-xs mb-4" />
-            <p className="text-[#8B6B47] max-w-2xl">
+            <p className="text-[#B89B6E] max-w-2xl">
               A visionary 5.54 million square metre community designed around the equestrian lifestyle — where polo fields, private stables, and a luxury clubhouse form the beating heart of 22 residential clusters and 6,661 homes.
             </p>
           </div>
@@ -99,7 +99,7 @@ export default function MasterplanPage() {
             <span className="text-[#D4AF37] text-xs tracking-[0.3em] uppercase font-medium">The Heart</span>
             <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mt-2 mb-4">The Green Core</h2>
             <div className="gold-divider max-w-xs mb-6" />
-            <p className="text-[#8B6B47] max-w-3xl mb-10 leading-relaxed">
+            <p className="text-[#B89B6E] max-w-3xl mb-10 leading-relaxed">
               At the heart of Grand Polo lies the Green Core — 340,000 SqM of polo fields, stables, and the clubhouse. This central green space connects all 22 residential clusters through a network of walking paths, cycling routes, and landscaped gardens.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -110,7 +110,7 @@ export default function MasterplanPage() {
               ].map((item) => (
                 <div key={item.title} className="rounded-xl p-6 border border-[#D4AF37]/15 bg-[#3D2510]/50 hover:border-[#D4AF37]/30 transition-all">
                   <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-2">{item.title}</h3>
-                  <p className="text-[#8B6B47] text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-[#B89B6E] text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -190,7 +190,7 @@ export default function MasterplanPage() {
         <section className="py-16 lg:py-20 bg-[#5D3A1A]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-4">Ready to Explore?</h2>
-            <p className="text-[#8B6B47] max-w-xl mx-auto mb-8">Discover the properties that call Grand Polo home, or speak with our consultants to find your perfect equestrian residence.</p>
+            <p className="text-[#B89B6E] max-w-xl mx-auto mb-8">Discover the properties that call Grand Polo home, or speak with our consultants to find your perfect equestrian residence.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/projects" className="inline-flex items-center justify-center h-12 px-8 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">View Properties</Link>
               <Link href="/contact" className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors">Contact Us</Link>

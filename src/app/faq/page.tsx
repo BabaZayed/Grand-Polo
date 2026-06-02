@@ -44,7 +44,7 @@ export default function FAQPage() {
               Common <span className="gold-text">Questions</span>
             </h1>
             <div className="gold-divider max-w-xs mb-4" />
-            <p className="text-[#8B6B47] max-w-2xl">Everything you need to know about Grand Polo Club & Resort — from property types and pricing to payment plans, Golden Visa eligibility, and community amenities.</p>
+            <p className="text-[#B89B6E] max-w-2xl">Everything you need to know about Grand Polo Club & Resort — from property types and pricing to payment plans, Golden Visa eligibility, and community amenities.</p>
           </div>
         </section>
         <FAQContent />

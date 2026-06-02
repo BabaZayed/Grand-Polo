@@ -82,7 +82,7 @@ export default function MasterplanSection() {
             >
               <p className="font-heading text-2xl sm:text-3xl text-[#D4AF37] mb-1">
                 {stat.value}
-                {stat.unit && <span className="text-base ml-1 text-[#8B6B47]">{stat.unit}</span>}
+                {stat.unit && <span className="text-base ml-1 text-[#B89B6E]">{stat.unit}</span>}
               </p>
               <p className="text-[#5D3A1A] text-xs tracking-wide">{stat.label}</p>
             </motion.div>

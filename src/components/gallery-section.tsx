@@ -49,7 +49,7 @@ export default function GallerySection() {
               variant={activeCategory === cat ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveCategory(cat)}
-              className={activeCategory === cat ? "gold-gradient text-[#2A1506] font-bold" : "border-[#D4AF37]/20 text-[#8B6B47] hover:text-[#D4AF37] hover:border-[#D4AF37]/40"}
+              className={activeCategory === cat ? "gold-gradient text-[#2A1506] font-bold" : "border-[#D4AF37]/20 text-[#B89B6E] hover:text-[#D4AF37] hover:border-[#D4AF37]/40"}
             >
               {cat}
             </Button>

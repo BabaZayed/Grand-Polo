@@ -79,23 +79,23 @@ export default function PropertiesSection() {
                   </div>
                   {/* Content */}
                   <div className="p-6">
-                    <p className="text-[#8B6B47] text-sm mb-4 line-clamp-2">{project.tagline}</p>
+                    <p className="text-[#B89B6E] text-sm mb-4 line-clamp-2">{project.tagline}</p>
                     <div className="grid grid-cols-3 gap-2 mb-4 text-center">
                       <div className="border border-[#D4AF37]/15 rounded-md py-2">
                         <p className="text-[#D4AF37] text-sm font-semibold">{project.bedrooms}</p>
-                        <p className="text-[#8B6B47] text-[10px]">Bedrooms</p>
+                        <p className="text-[#B89B6E] text-[10px]">Bedrooms</p>
                       </div>
                       <div className="border border-[#D4AF37]/15 rounded-md py-2">
                         <p className="text-[#D4AF37] text-sm font-semibold">{project.facts.totalUnits}</p>
-                        <p className="text-[#8B6B47] text-[10px]">Units</p>
+                        <p className="text-[#B89B6E] text-[10px]">Units</p>
                       </div>
                       <div className="border border-[#D4AF37]/15 rounded-md py-2">
                         <p className="text-[#D4AF37] text-sm font-semibold">{project.handover}</p>
-                        <p className="text-[#8B6B47] text-[10px]">Handover</p>
+                        <p className="text-[#B89B6E] text-[10px]">Handover</p>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[#8B6B47] text-xs">{project.status}</span>
+                      <span className="text-[#B89B6E] text-xs">{project.status}</span>
                       <span className="text-[#D4AF37] text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                         View Details <ArrowRight className="w-4 h-4" />
                       </span>
@@ -117,12 +117,12 @@ export default function PropertiesSection() {
           <h3 className="font-heading text-2xl text-[#FFFAF3] mb-3">
             <span className="gold-text">{comingSoon.length} More Clusters</span> Launching Soon
           </h3>
-          <p className="text-[#8B6B47] text-sm mb-6 max-w-lg mx-auto">
+          <p className="text-[#B89B6E] text-sm mb-6 max-w-lg mx-auto">
             Equestra, Equitera, Montura, Selvara, and more — register your interest for priority access at launch.
           </p>
           <div className="flex flex-wrap justify-center gap-2 mb-6">
             {comingSoon.map((p) => (
-              <span key={p.id} className="px-3 py-1 rounded-full text-xs border border-[#D4AF37]/20 text-[#8B6B47]">
+              <span key={p.id} className="px-3 py-1 rounded-full text-xs border border-[#D4AF37]/20 text-[#B89B6E]">
                 {p.name}
               </span>
             ))}

@@ -44,7 +44,7 @@ export default function AmenitiesSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="gold-divider max-w-xs mx-auto mb-6"
           />
-          <p className="text-[#8B6B47] text-sm max-w-2xl mx-auto">
+          <p className="text-[#B89B6E] text-sm max-w-2xl mx-auto">
             Enter a world where recreation becomes art. From the galloping fountain to the art pavilion, each space inspires joy and connection.
           </p>
         </div>

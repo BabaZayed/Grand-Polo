@@ -132,7 +132,7 @@ export default function ContactSection() {
             {/* Golden Visa Badge */}
             <div className="rounded-xl p-6 text-center border border-[#D4AF37]/30 bg-[#3D2510]/50">
               <p className="font-heading text-lg text-[#D4AF37] mb-2">Golden Visa Eligible</p>
-              <p className="text-[#8B6B47] text-sm">All properties at Grand Polo qualify for the UAE 10-Year Golden Visa with family sponsorship</p>
+              <p className="text-[#B89B6E] text-sm">All properties at Grand Polo qualify for the UAE 10-Year Golden Visa with family sponsorship</p>
             </div>
           </motion.div>
 
@@ -145,42 +145,50 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="rounded-xl p-8 border border-[#D4AF37]/15 bg-[#3D2510]/50 space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-[#8B6B47] text-xs mb-1 block">Full Name</label>
+                  <label htmlFor="contact-name" className="text-[#B89B6E] text-xs mb-1 block">Full Name</label>
                   <Input
+                    id="contact-name"
+                    name="name"
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#8B6B47]/50 focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 focus:border-[#D4AF37]/50"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label className="text-[#8B6B47] text-xs mb-1 block">Email</label>
+                  <label htmlFor="contact-email" className="text-[#B89B6E] text-xs mb-1 block">Email</label>
                   <Input
+                    id="contact-email"
+                    name="email"
                     required
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#8B6B47]/50 focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 focus:border-[#D4AF37]/50"
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-[#8B6B47] text-xs mb-1 block">Phone</label>
+                  <label htmlFor="contact-phone" className="text-[#B89B6E] text-xs mb-1 block">Phone</label>
                   <Input
+                    id="contact-phone"
+                    name="phone"
                     required
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#8B6B47]/50 focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 focus:border-[#D4AF37]/50"
                     placeholder="+971 XX XXX XXXX"
                   />
                 </div>
                 <div>
-                  <label className="text-[#8B6B47] text-xs mb-1 block">Property Interest</label>
+                  <label htmlFor="contact-property" className="text-[#B89B6E] text-xs mb-1 block">Property Interest</label>
                   <select
+                    id="contact-property"
+                    name="propertyInterest"
                     value={form.propertyInterest}
                     onChange={(e) => setForm({ ...form, propertyInterest: e.target.value })}
                     className="w-full h-9 rounded-md border border-[#D4AF37]/20 bg-[#2A1506] text-[#FFFAF3] text-sm px-3 focus:border-[#D4AF37]/50"
@@ -193,11 +201,13 @@ export default function ContactSection() {
                 </div>
               </div>
               <div>
-                <label className="text-[#8B6B47] text-xs mb-1 block">Message</label>
+                <label htmlFor="contact-message" className="text-[#B89B6E] text-xs mb-1 block">Message</label>
                 <Textarea
+                  id="contact-message"
+                  name="message"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#8B6B47]/50 min-h-[100px] focus:border-[#D4AF37]/50"
+                  className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 min-h-[100px] focus:border-[#D4AF37]/50"
                   placeholder="Tell us about your requirements..."
                 />
               </div>

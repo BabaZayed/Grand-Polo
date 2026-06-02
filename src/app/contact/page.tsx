@@ -53,7 +53,7 @@ export default function ContactPage() {
               Schedule a <span className="gold-text">Private Viewing</span>
             </h1>
             <div className="gold-divider max-w-xs mb-4" />
-            <p className="text-[#8B6B47] max-w-2xl">
+            <p className="text-[#B89B6E] max-w-2xl">
               Our dedicated property consultants are ready to guide you through every step — from initial enquiry to securing your equestrian residence at Grand Polo Club & Resort.
             </p>
           </div>

@@ -32,7 +32,7 @@ export default function GalleryContent() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   activeCategory === cat
                     ? "gold-gradient text-[#2A1506]"
-                    : "border border-[#D4AF37]/20 text-[#8B6B47] hover:text-[#D4AF37] hover:border-[#D4AF37]/40 bg-[#3D2510]/50"
+                    : "border border-[#D4AF37]/20 text-[#B89B6E] hover:text-[#D4AF37] hover:border-[#D4AF37]/40 bg-[#3D2510]/50"
                 }`}
               >
                 {cat}
@@ -45,7 +45,7 @@ export default function GalleryContent() {
       {/* Image Grid */}
       <section className="py-12 lg:py-16 bg-[#5D3A1A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[#8B6B47] text-sm mb-6">
+          <p className="text-[#B89B6E] text-sm mb-6">
             Showing {filtered.length} image{filtered.length !== 1 ? "s" : ""}
             {activeCategory !== "All" && ` in ${activeCategory}`}
           </p>
@@ -75,7 +75,7 @@ export default function GalleryContent() {
           </div>
           {filtered.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-[#8B6B47]">No images found in this category.</p>
+              <p className="text-[#B89B6E]">No images found in this category.</p>
             </div>
           )}
         </div>

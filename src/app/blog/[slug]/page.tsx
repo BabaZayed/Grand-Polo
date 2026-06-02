@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <main className="min-h-screen flex items-center justify-center bg-[#5D3A1A] pt-20">
           <div className="text-center px-4">
             <h1 className="font-heading text-4xl text-[#D4AF37] mb-4">Article Not Found</h1>
-            <Link href="/blog" className="text-[#8B6B47] hover:text-[#D4AF37] transition-colors">
+            <Link href="/blog" className="text-[#B89B6E] hover:text-[#D4AF37] transition-colors">
               Back to Blog
             </Link>
           </div>
@@ -90,15 +90,15 @@ export default async function BlogPostPage({ params }: PageProps) {
   function renderContent(content: string) {
     return content.split("\n").map((line, i) => {
       if (line.startsWith("# "))
-        return <h1 key={i} className="font-heading text-3xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("# ", "")}</h1>;
+        return <h2 key={i} className="font-heading text-3xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("# ", "")}</h2>;
       if (line.startsWith("## "))
         return <h2 key={i} className="font-heading text-2xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("## ", "")}</h2>;
       if (line.startsWith("### "))
         return <h3 key={i} className="font-heading text-xl font-bold text-[#FFFAF3] mt-8 mb-3">{line.replace("### ", "")}</h3>;
       if (line.startsWith("- "))
-        return <li key={i} className="text-[#8B6B47] ml-6 list-disc mb-1">{line.replace("- ", "")}</li>;
+        return <li key={i} className="text-[#B89B6E] ml-6 list-disc mb-1">{line.replace("- ", "")}</li>;
       if (line.trim() === "") return <div key={i} className="h-2" />;
-      return <p key={i} className="text-[#8B6B47] leading-relaxed mb-4">{line}</p>;
+      return <p key={i} className="text-[#B89B6E] leading-relaxed mb-4">{line}</p>;
     });
   }
 
@@ -109,12 +109,12 @@ export default async function BlogPostPage({ params }: PageProps) {
       <main className="pt-16 lg:pt-20">
         <section className="relative py-16 lg:py-20 bg-[#2A1506]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <Link href="/blog" className="inline-flex items-center text-[#8B6B47] hover:text-[#D4AF37] text-sm mb-6 transition-colors">
+            <Link href="/blog" className="inline-flex items-center text-[#B89B6E] hover:text-[#D4AF37] text-sm mb-6 transition-colors">
               <ArrowLeft className="w-4 h-4 mr-1" /> Back to Blog
             </Link>
             <Badge className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 text-xs mb-4">{post.category}</Badge>
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFAF3] mb-4 leading-tight">{post.title}</h1>
-            <div className="flex items-center gap-4 text-[#8B6B47] text-sm">
+            <div className="flex items-center gap-4 text-[#B89B6E] text-sm">
               <span className="flex items-center gap-1"><Calendar className="w-4 h-4" />{new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
               <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{post.readTime}</span>
             </div>
@@ -145,7 +145,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <div className="rounded-xl p-6 border border-[#D4AF37]/15 bg-[#3D2510]/50 hover:border-[#D4AF37]/30 transition-all">
                       <Badge className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 text-xs mb-3">{related.category}</Badge>
                       <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-2 group-hover:text-[#D4AF37] transition-colors line-clamp-2">{related.title}</h3>
-                      <p className="text-[#8B6B47] text-sm line-clamp-2">{related.excerpt}</p>
+                      <p className="text-[#B89B6E] text-sm line-clamp-2">{related.excerpt}</p>
                     </div>
                   </Link>
                 ))}
@@ -157,7 +157,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <section className="py-16 lg:py-20 bg-[#5D3A1A]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-4">Interested in Grand Polo?</h2>
-            <p className="text-[#8B6B47] max-w-xl mx-auto mb-8">Discover the equestrian luxury lifestyle at Grand Polo Club & Resort. Speak with our consultants to explore available properties.</p>
+            <p className="text-[#B89B6E] max-w-xl mx-auto mb-8">Discover the equestrian luxury lifestyle at Grand Polo Club & Resort. Speak with our consultants to explore available properties.</p>
             <Link href="/contact" className="inline-flex items-center justify-center h-12 px-8 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Contact Us Today</Link>
           </div>
         </section>

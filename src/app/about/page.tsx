@@ -63,7 +63,7 @@ export default function AboutPage() {
               An Unprecedented <span className="gold-text">Vision</span>
             </h1>
             <div className="gold-divider max-w-xs mb-4" />
-            <p className="text-[#8B6B47] max-w-2xl">
+            <p className="text-[#B89B6E] max-w-2xl">
               Grand Polo Club & Resort represents a new chapter in Dubai&apos;s legacy of extraordinary communities — where the equestrian tradition meets contemporary luxury on an unprecedented scale.
             </p>
           </div>
@@ -76,13 +76,13 @@ export default function AboutPage() {
               The Grand Polo Vision
             </h2>
             <div className="gold-divider max-w-xs mb-6" />
-            <p className="text-[#8B6B47] leading-relaxed mb-4">
+            <p className="text-[#B89B6E] leading-relaxed mb-4">
               Grand Polo Club & Resort is a community built to strike a fine balance between lifestyle principles of leisure, nature, connectivity, wellness, and recreation. It is not merely a residential development — it is a lifestyle statement that blends the heritage of captivating equestrian experiences with seamless landscapes exuding modernity.
             </p>
-            <p className="text-[#8B6B47] leading-relaxed mb-4">
+            <p className="text-[#B89B6E] leading-relaxed mb-4">
               With three championship polo fields, a luxury clubhouse, and private stables at its heart, Grand Polo offers a lifestyle that provides an opportunity to be one with nature, every day. A lifestyle that celebrates the equestrian tradition while providing every modern comfort. Spanning 5.54 million square metres with 22 residential clusters and 6,661 residences, it is one of the most ambitious equestrian-themed communities ever conceived.
             </p>
-            <p className="text-[#8B6B47] leading-relaxed">
+            <p className="text-[#B89B6E] leading-relaxed">
               Beyond the gallop, life unfolds as a harmonious interplay between the thrill of sport and the tranquillity of nature. Sunlit days by the Galloping Fountain, exhilarating matches enjoyed from your private vantage, tranquil evenings spent amidst the floral garden and along verdant paths — this is the Grand Polo way of life.
             </p>
           </div>
@@ -122,13 +122,13 @@ export default function AboutPage() {
               Architectural Vision
             </h2>
             <div className="gold-divider max-w-xs mb-6" />
-            <p className="text-[#8B6B47] leading-relaxed mb-4">
+            <p className="text-[#B89B6E] leading-relaxed mb-4">
               The architecture of Grand Polo Club & Resort is defined by clean horizontal and vertical lines that exude grandeur and expansiveness — a design philosophy that runs throughout the masterplan. Each villa is positioned to maximise views of the central Green Core, where three polo fields, the clubhouse, and stables create a panoramic backdrop of equestrian excellence.
             </p>
-            <p className="text-[#8B6B47] leading-relaxed mb-4">
+            <p className="text-[#B89B6E] leading-relaxed mb-4">
               Interiors feature a refined blend of opulence and intent — where polished marble and cascading natural light shape each room into a living masterpiece. Carefully curated material palettes echo the equestrian heritage while embracing contemporary luxury, with joinery finishes that reflect the equestrian tradition and metal finishes in warm tones that complement the community&apos;s identity.
             </p>
-            <p className="text-[#8B6B47] leading-relaxed">
+            <p className="text-[#B89B6E] leading-relaxed">
               The building orientation ensures that natural light floods the living spaces while providing views that connect residents to the equestrian heart of the community. Homes of grandeur, where architecture embodies the elegance of equestrian form, and golden light illuminates meticulously curated landscapes.
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function AboutPage() {
               <h3 className="font-heading text-xl font-bold text-[#FFFAF3] mb-3">
                 Explore The Oasis
               </h3>
-              <p className="text-[#8B6B47] text-sm mb-6">
+              <p className="text-[#B89B6E] text-sm mb-6">
                 Discover The Oasis by Emaar — another flagship masterplan community featuring a 3.5km crystal lagoon and waterfront living with 7,000+ residences across 9 clusters. A complementary vision for Dubai luxury.
               </p>
               <a
@@ -182,7 +182,7 @@ export default function AboutPage() {
               Trusted Resources
             </h2>
             <div className="gold-divider max-w-xs mb-6" />
-            <p className="text-[#8B6B47] mb-8">
+            <p className="text-[#B89B6E] mb-8">
               Authoritative organisations that govern and regulate Dubai&apos;s real estate market, ensuring transparency and investor protection.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -202,7 +202,7 @@ export default function AboutPage() {
                   <h3 className="text-[#FFFAF3] font-medium group-hover:text-[#D4AF37] transition-colors flex items-center gap-2">
                     {item.name} <ExternalLink className="w-3 h-3" />
                   </h3>
-                  <p className="text-[#8B6B47] text-sm mt-1">{item.desc}</p>
+                  <p className="text-[#B89B6E] text-sm mt-1">{item.desc}</p>
                 </a>
               ))}
             </div>

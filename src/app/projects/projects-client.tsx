@@ -29,14 +29,14 @@ export default function ProjectsPageClient() {
           <p className="text-[#D4AF37] text-xs tracking-[0.3em] uppercase mb-3">Equestrian Living</p>
           <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl text-[#FFFAF3] mb-4">Regal <span className="gold-text">Residences</span></h1>
           <div className="gold-divider max-w-xs mx-auto mb-6" />
-          <p className="text-[#8B6B47] text-sm max-w-2xl mx-auto">22 residential clusters. 6,661 luxury residences. Discover your equestrian estate at Grand Polo Club & Resort.</p>
+          <p className="text-[#B89B6E] text-sm max-w-2xl mx-auto">22 residential clusters. 6,661 luxury residences. Discover your equestrian estate at Grand Polo Club & Resort.</p>
         </div>
       </section>
 
       <section className="bg-[#3D2510] border-b border-[#D4AF37]/10 sticky top-16 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-center gap-2">
           {tabs.map((tab) => (
-            <button key={tab} onClick={() => setActiveTab(tab)} aria-pressed={activeTab === tab} aria-label={`Filter by ${tab}`} className={`px-5 py-2 rounded-full text-sm transition-all ${activeTab === tab ? "gold-gradient text-[#2A1506] font-semibold" : "text-[#8B6B47] hover:text-[#D4AF37] border border-[#D4AF37]/20 hover:border-[#D4AF37]/40"}`}>
+            <button key={tab} onClick={() => setActiveTab(tab)} aria-pressed={activeTab === tab} aria-label={`Filter by ${tab}`} className={`px-5 py-2 rounded-full text-sm transition-all ${activeTab === tab ? "gold-gradient text-[#2A1506] font-semibold" : "text-[#B89B6E] hover:text-[#D4AF37] border border-[#D4AF37]/20 hover:border-[#D4AF37]/40"}`}>
               {tab}
             </button>
           ))}
@@ -54,32 +54,32 @@ export default function ProjectsPageClient() {
                       <Image src={project.imageUrl} alt={project.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-transparent to-transparent" />
                       <div className="absolute top-4 left-4">
-                        <span className={`text-[10px] font-bold px-3 py-1 rounded-full tracking-wide uppercase ${project.status === "Launching Soon" ? "bg-[#8B6B47] text-[#FFFAF3]" : "gold-gradient text-[#2A1506]"}`}>
+                        <span className={`text-[10px] font-bold px-3 py-1 rounded-full tracking-wide uppercase ${project.status === "Launching Soon" ? "bg-[#B89B6E] text-[#FFFAF3]" : "gold-gradient text-[#2A1506]"}`}>
                           {project.clusterTag}
                         </span>
                       </div>
                     </div>
                     <div className="p-6">
                       <h3 className="font-heading text-xl text-[#FFFAF3] mb-2 group-hover:text-[#D4AF37] transition-colors">{project.name}</h3>
-                      <p className="text-[#8B6B47] text-sm mb-4">{project.tagline}</p>
+                      <p className="text-[#B89B6E] text-sm mb-4">{project.tagline}</p>
                       {project.startingPrice > 0 && (
                         <div className="grid grid-cols-3 gap-2 mb-4 text-center">
                           <div className="border border-[#D4AF37]/15 rounded-md py-2">
                             <p className="text-[#D4AF37] text-sm font-semibold">{project.bedrooms}</p>
-                            <p className="text-[#8B6B47] text-[10px]">Beds</p>
+                            <p className="text-[#B89B6E] text-[10px]">Beds</p>
                           </div>
                           <div className="border border-[#D4AF37]/15 rounded-md py-2">
                             <p className="text-[#D4AF37] text-sm font-semibold">{project.facts.totalUnits}</p>
-                            <p className="text-[#8B6B47] text-[10px]">Units</p>
+                            <p className="text-[#B89B6E] text-[10px]">Units</p>
                           </div>
                           <div className="border border-[#D4AF37]/15 rounded-md py-2">
                             <p className="text-[#D4AF37] text-sm font-semibold">{formatPrice(project.startingPrice)}</p>
-                            <p className="text-[#8B6B47] text-[10px]">From</p>
+                            <p className="text-[#B89B6E] text-[10px]">From</p>
                           </div>
                         </div>
                       )}
                       <div className="flex items-center justify-between">
-                        <span className="text-[#8B6B47] text-xs">{project.status} {project.handover !== "TBA" ? `• ${project.handover}` : ""}</span>
+                        <span className="text-[#B89B6E] text-xs">{project.status} {project.handover !== "TBA" ? `• ${project.handover}` : ""}</span>
                         <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>

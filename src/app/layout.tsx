@@ -211,8 +211,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.position" content="24.9;55.2" />
         <meta name="ICBM" content="24.9, 55.2" />
 
-        {/* Hreflang */}
+        {/* Hreflang - page-level alternates handled per page */}
         <link rel="alternate" hrefLang="en" href={SITE_URL} />
+        <link rel="alternate" hrefLang="ar" href={`${SITE_URL}/ar`} />
+        <link rel="alternate" hrefLang="zh" href={`${SITE_URL}/zh`} />
+        <link rel="alternate" hrefLang="ru" href={`${SITE_URL}/ru`} />
+        <link rel="alternate" hrefLang="fr" href={`${SITE_URL}/fr`} />
+        <link rel="alternate" hrefLang="de" href={`${SITE_URL}/de`} />
         <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
 
         {/* JSON-LD Schemas */}

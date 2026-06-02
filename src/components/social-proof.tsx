@@ -70,8 +70,8 @@ export default function SocialProof() {
               <div className="flex-1 min-w-0">
                 <p className="text-[#FFFAF3] text-xs leading-relaxed">{n.text}</p>
                 <div className="flex items-center gap-2 mt-1">
-                  <Clock className="w-3 h-3 text-[#8B6B47]" />
-                  <span className="text-[#8B6B47] text-[10px]">Just now</span>
+                  <Clock className="w-3 h-3 text-[#B89B6E]" />
+                  <span className="text-[#B89B6E] text-[10px]">Just now</span>
                   {n.location && (
                     <span className="flex items-center gap-1 text-[10px] text-[#D4AF37]">
                       <MapPin className="w-3 h-3" /> {n.location}

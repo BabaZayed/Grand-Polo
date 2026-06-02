@@ -76,7 +76,7 @@ export default function NewsletterSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="text-[#8B6B47] text-sm mb-6"
+            className="text-[#B89B6E] text-sm mb-6"
           >
             Be the first to receive Grand Polo launch updates, investment insights, and priority access notifications.
           </motion.p>
@@ -94,7 +94,7 @@ export default function NewsletterSection() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#8B6B47]/50 text-sm flex-1 focus:border-[#D4AF37]/50"
+              className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 text-sm flex-1 focus:border-[#D4AF37]/50"
             />
             <Button
               type="submit"

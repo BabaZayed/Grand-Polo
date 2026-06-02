@@ -60,12 +60,12 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/50 to-[#2A1506]/30" />
         <div className="absolute inset-0 flex items-end">
           <div className="container mx-auto px-4 lg:px-8 pb-8">
-            <Link href="/projects" className="inline-flex items-center text-[#8B6B47] hover:text-[#D4AF37] text-sm mb-4 transition-colors">
+            <Link href="/projects" className="inline-flex items-center text-[#B89B6E] hover:text-[#D4AF37] text-sm mb-4 transition-colors">
               <ArrowLeft className="w-4 h-4 mr-1" /> Back to Projects
             </Link>
             <div className="flex items-center gap-3 mb-3">
               {isLaunching ? (
-                <Badge className="bg-[#8B6B47] text-[#FFFAF3] border-0">Launching Soon</Badge>
+                <Badge className="bg-[#B89B6E] text-[#FFFAF3] border-0">Launching Soon</Badge>
               ) : (
                 <Badge className="gold-gradient text-[#2A1506] border-0 font-bold">Available</Badge>
               )}
@@ -96,7 +96,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
                   </div>
                   <div>
                     <p className="text-[#FFFAF3] text-sm font-bold">{stat.value}</p>
-                    <p className="text-[#8B6B47] text-xs">{stat.label}</p>
+                    <p className="text-[#B89B6E] text-xs">{stat.label}</p>
                   </div>
                 </div>
               ))}
@@ -110,7 +110,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             <div className="lg:col-span-2">
               <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-4">About {property.name}</h2>
-              <p className="text-[#8B6B47] leading-relaxed mb-8">{property.description}</p>
+              <p className="text-[#B89B6E] leading-relaxed mb-8">{property.description}</p>
 
               <h3 className="font-heading text-xl font-bold text-[#FFFAF3] mb-4">Key Features</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
@@ -138,7 +138,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
                 <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-4">
                   {isLaunching ? "Register Interest" : "Check Availability"}
                 </h3>
-                <p className="text-[#8B6B47] text-sm mb-4">
+                <p className="text-[#B89B6E] text-sm mb-4">
                   {isLaunching ? "Be the first to know about launch dates, pricing, and priority access." : "Schedule a private viewing with our property consultants."}
                 </p>
                 <div className="space-y-3">
@@ -190,22 +190,22 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         <section className="py-12 lg:py-16 bg-[#5D3A1A] border-t border-[#D4AF37]/10">
           <div className="container mx-auto px-4 lg:px-8">
             <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-2">Payment Plan</h2>
-            <p className="text-[#8B6B47] mb-8">{property.paymentPlan}</p>
+            <p className="text-[#B89B6E] mb-8">{property.paymentPlan}</p>
             <div className="rounded-xl p-6 max-w-2xl border border-[#D4AF37]/15 bg-[#3D2510]/50">
               <div className="flex h-4 rounded-full overflow-hidden mb-6 bg-[#2A1506]">
                 {milestones.map((m, i) => (
-                  <div key={i} className={`${i === 0 ? "bg-[#D4AF37]" : i === milestones.length - 1 ? "bg-[#8B6B47]" : "bg-[#D4AF37]/40"} transition-all`} style={{ width: `${m.percentage}%` }} />
+                  <div key={i} className={`${i === 0 ? "bg-[#D4AF37]" : i === milestones.length - 1 ? "bg-[#B89B6E]" : "bg-[#D4AF37]/40"} transition-all`} style={{ width: `${m.percentage}%` }} />
                 ))}
               </div>
               {milestones.map((milestone, index) => (
                 <div key={index} className="relative">
                   <div className="flex items-center gap-4 py-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${index === 0 ? "gold-gradient text-[#2A1506]" : index === milestones.length - 1 ? "bg-[#8B6B47] text-[#FFFAF3]" : "bg-[#2A1506] border border-[#D4AF37]/30 text-[#D4AF37]"}`}>
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${index === 0 ? "gold-gradient text-[#2A1506]" : index === milestones.length - 1 ? "bg-[#B89B6E] text-[#FFFAF3]" : "bg-[#2A1506] border border-[#D4AF37]/30 text-[#D4AF37]"}`}>
                       {milestone.percentage}%
                     </div>
                     <div className="flex-1">
                       <p className="text-[#FFFAF3] text-sm font-medium">{milestone.label}</p>
-                      <p className="text-[#8B6B47] text-xs">{milestone.date}</p>
+                      <p className="text-[#B89B6E] text-xs">{milestone.date}</p>
                     </div>
                   </div>
                   {index < milestones.length - 1 && <div className="absolute left-[19px] top-[52px] bottom-0 w-px bg-[#D4AF37]/10" />}

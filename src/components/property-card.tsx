@@ -36,7 +36,7 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
             <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-transparent to-transparent" />
             <div className="absolute top-4 left-4">
               {isLaunching ? (
-                <Badge className="bg-[#8B6B47] text-[#FFFAF3] border-0 text-xs">Coming Soon</Badge>
+                <Badge className="bg-[#B89B6E] text-[#FFFAF3] border-0 text-xs">Coming Soon</Badge>
               ) : (
                 <Badge className="gold-gradient text-[#2A1506] border-0 text-xs font-bold">Available</Badge>
               )}
@@ -66,7 +66,7 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
               </div>
             )}
             {isLaunching && (
-              <p className="text-[#8B6B47] text-sm line-clamp-2 mb-4">{property.description}</p>
+              <p className="text-[#B89B6E] text-sm line-clamp-2 mb-4">{property.description}</p>
             )}
             <div className="flex items-center text-[#D4AF37] text-sm font-medium group-hover:gap-3 transition-all">
               {isLaunching ? "Register Interest" : "View Details"}

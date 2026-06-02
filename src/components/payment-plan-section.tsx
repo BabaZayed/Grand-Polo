@@ -24,7 +24,7 @@ export default function PaymentPlanSection() {
             Payment <span className="gold-text">Plans</span>
           </h2>
           <div className="gold-divider max-w-xs mx-auto mb-4" />
-          <p className="text-[#8B6B47] max-w-2xl mx-auto">
+          <p className="text-[#B89B6E] max-w-2xl mx-auto">
             Construction-linked payment plans with just 10% down payment. Pay gradually as your home takes shape.
           </p>
         </motion.div>
@@ -51,17 +51,17 @@ export default function PaymentPlanSection() {
                     <div key={mi} className="relative">
                       <div className="flex items-center gap-4 py-3">
                         <div className="relative z-10">
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${mi === 0 ? "gold-gradient text-[#2A1506]" : mi === milestones.length - 1 ? "bg-[#8B6B47] text-[#FFFAF3]" : "bg-[#2A1506] border border-[#D4AF37]/30 text-[#D4AF37]"}`}>
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${mi === 0 ? "gold-gradient text-[#2A1506]" : mi === milestones.length - 1 ? "bg-[#B89B6E] text-[#FFFAF3]" : "bg-[#2A1506] border border-[#D4AF37]/30 text-[#D4AF37]"}`}>
                             {milestone.percentage}%
                           </div>
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-[#FFFAF3] text-sm font-medium">{milestone.label}</p>
-                          <p className="text-[#8B6B47] text-xs">{milestone.date}</p>
+                          <p className="text-[#B89B6E] text-xs">{milestone.date}</p>
                         </div>
                         <Badge
                           variant="outline"
-                          className={`text-xs shrink-0 ${mi === 0 ? "border-[#D4AF37]/30 text-[#D4AF37]" : mi === milestones.length - 1 ? "border-[#8B6B47]/30 text-[#8B6B47]" : "border-[#8B6B47]/20 text-[#8B6B47]"}`}
+                          className={`text-xs shrink-0 ${mi === 0 ? "border-[#D4AF37]/30 text-[#D4AF37]" : mi === milestones.length - 1 ? "border-[#B89B6E]/30 text-[#B89B6E]" : "border-[#B89B6E]/20 text-[#B89B6E]"}`}
                         >
                           {mi === 0 ? "Booking" : mi === milestones.length - 1 ? "Completion" : "Instalment"}
                         </Badge>

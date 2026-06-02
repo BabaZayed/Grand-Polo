@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
 # AI Crawlers
 User-agent: ChatGPT-User
@@ -25,10 +26,6 @@ Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /ai-agent.md
-
-# Protected routes
-Disallow: /api/leads
-Disallow: /api/marketplace
 
 # Sitemap
 Sitemap: https://www.thegrandpolo.com/sitemap.xml

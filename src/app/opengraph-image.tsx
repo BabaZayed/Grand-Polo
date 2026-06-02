@@ -58,7 +58,7 @@ export default async function Image() {
           style={{
             display: "flex",
             fontSize: 20,
-            color: "#8B6B47",
+            color: "#B89B6E",
             letterSpacing: "0.3em",
             marginBottom: 30,
           }}
@@ -99,17 +99,17 @@ export default async function Image() {
         >
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <span style={{ fontSize: 28, color: "#D4AF37", fontWeight: 700 }}>3</span>
-            <span style={{ fontSize: 12, color: "#8B6B47", letterSpacing: "0.1em" }}>POLO FIELDS</span>
+            <span style={{ fontSize: 12, color: "#B89B6E", letterSpacing: "0.1em" }}>POLO FIELDS</span>
           </div>
           <div style={{ width: 1, height: 40, background: "#D4AF37", opacity: 0.3 }} />
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <span style={{ fontSize: 28, color: "#D4AF37", fontWeight: 700 }}>6,661</span>
-            <span style={{ fontSize: 12, color: "#8B6B47", letterSpacing: "0.1em" }}>RESIDENCES</span>
+            <span style={{ fontSize: 12, color: "#B89B6E", letterSpacing: "0.1em" }}>RESIDENCES</span>
           </div>
           <div style={{ width: 1, height: 40, background: "#D4AF37", opacity: 0.3 }} />
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <span style={{ fontSize: 28, color: "#D4AF37", fontWeight: 700 }}>5.54M</span>
-            <span style={{ fontSize: 12, color: "#8B6B47", letterSpacing: "0.1em" }}>SQM</span>
+            <span style={{ fontSize: 12, color: "#B89B6E", letterSpacing: "0.1em" }}>SQM</span>
           </div>
         </div>
 

@@ -47,7 +47,7 @@ export default function BlogPage() {
               Insights & <span className="gold-text">Analysis</span>
             </h1>
             <div className="gold-divider max-w-xs mb-4" />
-            <p className="text-[#8B6B47] max-w-2xl">
+            <p className="text-[#B89B6E] max-w-2xl">
               Expert insights on Grand Polo Club & Resort, Dubai real estate investment, and equestrian community living. In-depth guides, market analysis, and community comparisons.
             </p>
           </div>
@@ -67,10 +67,10 @@ export default function BlogPage() {
                       <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-3 group-hover:text-[#D4AF37] transition-colors line-clamp-2">
                         {post.title}
                       </h3>
-                      <p className="text-[#8B6B47] text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+                      <p className="text-[#B89B6E] text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
                         {post.excerpt}
                       </p>
-                      <div className="flex items-center justify-between text-xs text-[#8B6B47] mt-auto">
+                      <div className="flex items-center justify-between text-xs text-[#B89B6E] mt-auto">
                         <div className="flex items-center gap-3">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
