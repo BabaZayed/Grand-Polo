@@ -11,7 +11,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero/chevalia-estate-2-hero.jpg')" }}
+        style={{ backgroundImage: "url('/images/hero/chevalia-estate-2-hero.webp')" }}
       />
       {/* Rich brown gradient overlay - matching brochure style */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#2A1506]/60 via-[#5D3A1A]/40 to-[#2A1506]" />

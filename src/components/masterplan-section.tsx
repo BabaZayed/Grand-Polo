@@ -60,7 +60,7 @@ export default function MasterplanSection() {
         >
           <div className="relative aspect-[16/7]">
             <Image
-              src="/images/hero/masterplan-bg.jpg"
+              src="/images/hero/masterplan-bg.webp"
               alt="Grand Polo Masterplan"
               fill
               className="object-cover"

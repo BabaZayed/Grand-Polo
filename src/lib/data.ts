@@ -166,7 +166,7 @@ export const projects: Project[] = [
       "Cycling Paths",
     ],
     imageGradient: "from-emerald-900 via-emerald-700 to-teal-500",
-    imageUrl: "/images/projects/chevalia-estate.jpg",
+    imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Estate Villas",
     subfolders: {},
     facts: {
@@ -216,7 +216,7 @@ export const projects: Project[] = [
       "Floral Garden",
     ],
     imageGradient: "from-amber-900 via-amber-700 to-yellow-600",
-    imageUrl: "/images/projects/chevalia-estate-2.jpg",
+    imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Estate Villas",
     subfolders: {},
     facts: {
@@ -266,7 +266,7 @@ export const projects: Project[] = [
       "Dog Park",
     ],
     imageGradient: "from-green-900 via-emerald-700 to-lime-500",
-    imageUrl: "/images/projects/chevalia-fields.jpg",
+    imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Field Villas",
     subfolders: {},
     facts: {
@@ -295,7 +295,7 @@ export const projects: Project[] = [
     features: ["Equestrian-Inspired Design", "Polo Field Views", "Green Core Proximity", "Luxury Finishes"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Community Parks", "Fitness Areas"],
     imageGradient: "from-indigo-900 via-indigo-700 to-blue-500",
-    imageUrl: "/images/projects/chevalia-fields.jpg",
+    imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Coming Soon",
     subfolders: {},
     facts: {
@@ -324,7 +324,7 @@ export const projects: Project[] = [
     features: ["Equestrian Heritage Design", "Premium Location", "Luxury Interiors", "Community Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Riding School", "Fitness Areas"],
     imageGradient: "from-violet-900 via-violet-700 to-purple-500",
-    imageUrl: "/images/projects/chevalia-estate.jpg",
+    imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Coming Soon",
     subfolders: {},
     facts: {
@@ -353,7 +353,7 @@ export const projects: Project[] = [
     features: ["Equestrian Design", "Green Spaces", "Luxury Villas", "Premium Finishes"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Parks", "Sports Facilities"],
     imageGradient: "from-rose-900 via-rose-700 to-pink-500",
-    imageUrl: "/images/projects/chevalia-estate-2.jpg",
+    imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Coming Soon",
     subfolders: {},
     facts: {
@@ -382,7 +382,7 @@ export const projects: Project[] = [
     features: ["Equestrian Theme", "Polo Lifestyle", "Luxury Villas", "Community Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Parks", "Recreational Facilities"],
     imageGradient: "from-teal-900 via-teal-700 to-cyan-500",
-    imageUrl: "/images/projects/chevalia-fields.jpg",
+    imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Coming Soon",
     subfolders: {},
     facts: {
@@ -411,7 +411,7 @@ export const projects: Project[] = [
     features: ["Equestrian Heritage", "Contemporary Design", "Luxury Villas", "Green Spaces"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Community Centers", "Parks"],
     imageGradient: "from-sky-900 via-sky-700 to-blue-400",
-    imageUrl: "/images/projects/chevalia-estate.jpg",
+    imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Coming Soon",
     subfolders: {},
     facts: {
@@ -440,7 +440,7 @@ export const projects: Project[] = [
     features: ["Equestrian Luxury", "World-Class Finishes", "Green Core Access", "Premium Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Riding School", "Sports Facilities"],
     imageGradient: "from-cyan-900 via-cyan-700 to-teal-400",
-    imageUrl: "/images/projects/chevalia-estate-2.jpg",
+    imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Coming Soon",
     subfolders: {},
     facts: {
@@ -469,7 +469,7 @@ export const projects: Project[] = [
     features: ["Equestrian Design", "Polo Field Access", "Luxury Finishes", "Community Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Parks", "Sports Facilities"],
     imageGradient: `from-${["slate", "zinc", "stone", "neutral"][i]}-900 via-${["slate", "zinc", "stone", "neutral"][i]}-700 to-${["slate", "zinc", "stone", "neutral"][i]}-400`,
-    imageUrl: ["/images/projects/chevalia-estate.jpg", "/images/projects/chevalia-estate-2.jpg", "/images/projects/chevalia-fields.jpg", "/images/projects/chevalia-estate.jpg"][i],
+    imageUrl: ["/images/projects/chevalia-estate.webp", "/images/projects/chevalia-estate-2.webp", "/images/projects/chevalia-fields.webp", "/images/projects/chevalia-estate.webp"][i],
     clusterTag: "Coming Soon",
     subfolders: {},
     facts: {

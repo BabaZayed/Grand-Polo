@@ -8,21 +8,21 @@ const features = [
     title: "The Polo Fields",
     subtitle: "Where Luxury Meets Equestrian Heritage",
     description: "A space crafted to harness the spirit and speed of the horses. Seamless landscapes envisioned to offer a contemporary take on classic polo grounds. Spanning 340,000 SqM, these fields define the monumentality of the vision.",
-    image: "/images/gallery/polo-field-1.jpg",
+    image: "/images/gallery/polo-field-1.webp",
     stat: "340,000 SqM",
   },
   {
     title: "The Clubhouse",
     subtitle: "Homage To Design",
     description: "A fusion of cultural heritage with contemporary design principles emphasising sustainability, honouring the past while addressing modern needs. The elongated, single-storey Clubhouse boasts panoramic views of Polo Fields across 5,600 SqM.",
-    image: "/images/gallery/clubhouse-1.jpg",
+    image: "/images/gallery/clubhouse-1.webp",
     stat: "5,600 SqM",
   },
   {
     title: "The Stables",
     subtitle: "Experience The Exceptional",
     description: "An organic, spiraling design that encircles a large, landscaped courtyard. Set to become a significant global landmark in the equestrian realm — an inviting hidden gem revealed upon entering the building.",
-    image: "/images/gallery/stables-1.jpg",
+    image: "/images/gallery/stables-1.webp",
     stat: "Private Stables",
   },
 ];
@@ -33,7 +33,7 @@ export default function EquestrianSection() {
       {/* Parallax background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/gallery/dubai-polo.jpg')" }}
+        style={{ backgroundImage: "url('/images/gallery/dubai-polo.webp')" }}
       />
       {/* Brown overlay */}
       <div className="absolute inset-0 bg-[#2A1506]/85" />
