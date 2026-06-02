@@ -171,7 +171,7 @@ const howToSchema = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1013154287947335";
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1510715397129819";
   const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-QPQCZZ61FN";
 
   return (
