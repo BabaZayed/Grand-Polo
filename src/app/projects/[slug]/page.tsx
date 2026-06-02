@@ -193,9 +193,16 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     {isLaunching ? "Be the first to receive launch details, pricing, and priority selection when this community opens." : "Schedule a private viewing with our dedicated property consultants."}
                   </p>
                   <div className="space-y-3">
-                    <Link href="/contact" className="inline-flex items-center justify-center w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Check Availability</Link>
-                    <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><FileText className="w-4 h-4" /> Download Brochure</a>
-                    <a href={`/api/download?type=floorplan&file=${property.slug}-floorplan.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><LayoutGrid className="w-4 h-4" /> Download Floor Plan</a>
+                    <Link href="/contact" className="inline-flex items-center justify-center w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">{isLaunching ? "Register Interest" : "Check Availability"}</Link>
+                    {!isLaunching && (
+                      <>
+                        <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><FileText className="w-4 h-4" /> Download Brochure</a>
+                        <a href={`/api/download?type=floorplan&file=${property.slug}-floorplan.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><LayoutGrid className="w-4 h-4" /> Download Floor Plan</a>
+                      </>
+                    )}
+                    {isLaunching && (
+                      <a href="/brochures" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/20 text-[#B89B6E] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] text-sm font-medium transition-colors"><FileText className="w-4 h-4" /> Brochure Coming Soon</a>
+                    )}
                     <a href="tel:+971526919169" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Phone className="w-4 h-4" /> Call Now</a>
                     <a href="mailto:info@thegrandpolo.com" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Mail className="w-4 h-4" /> Email Us</a>
                   </div>
@@ -291,11 +298,16 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-2">Explore Other Clusters</h2>
             <p className="text-[#B89B6E] mb-8">Discover more luxury villa communities at Grand Polo Club & Resort</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {projects.filter((p) => p.slug !== property.slug && p.status !== "Launching Soon").slice(0, 3).map((p) => (
+              {projects.filter((p) => p.slug !== property.slug).slice(0, 3).map((p) => (
                 <Link key={p.id} href={`/projects/${p.slug}`} className="group rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/50 hover:border-[#D4AF37]/40 transition-all duration-400 hover:-translate-y-1">
                   <div className="relative h-48 overflow-hidden">
                     <Image src={p.imageUrl} alt={`${p.name} — luxury villas at Grand Polo Dubai`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-transparent to-transparent" />
+                    {p.status === "Launching Soon" && (
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#B89B6E] text-[#FFFAF3]">Coming Soon</span>
+                      </div>
+                    )}
                   </div>
                   <div className="p-4">
                     <h3 className="font-heading text-lg text-[#FFFAF3] group-hover:text-[#D4AF37] transition-colors">{p.name}</h3>
@@ -314,8 +326,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <p className="text-[#B89B6E] max-w-xl mx-auto mb-8">{isLaunching ? "Be among the first to receive launch details and priority selection." : "Schedule a private viewing and discover the equestrian luxury lifestyle."}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="inline-flex items-center justify-center h-12 px-8 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Check Availability</Link>
-              <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors gap-2"><Download className="w-4 h-4" /> Download Brochure</a>
-              <Link href="/payment-plan" className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors">View Payment Plans</Link>
+              {!isLaunching && (
+                <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors gap-2"><Download className="w-4 h-4" /> Download Brochure</a>
+              )}
+              {!isLaunching && (
+                <Link href="/payment-plan" className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors">View Payment Plans</Link>
+              )}
+              <Link href="/brochures" className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors">All Brochures & Floor Plans</Link>
             </div>
           </div>
         </section>

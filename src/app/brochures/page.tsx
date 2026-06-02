@@ -6,12 +6,12 @@ import Link from "next/link";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
-import { projects, formatPrice, SITE_URL, PHONE_NUMBER } from "@/lib/data";
+import { projects, formatPrice, SITE_URL, PHONE_NUMBER, masterPlanFacts } from "@/lib/data";
 import type { PropertyType } from "@/lib/data";
-import { Download, FileText, LayoutGrid, Phone, ChevronRight } from "lucide-react";
+import { Download, FileText, LayoutGrid, Phone, ChevronRight, MapPin, Bell, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-type TabType = "brochures" | "floorplans";
+type TabType = "brochures" | "floorplans" | "masterplan";
 
 interface DownloadItem {
   slug: string;
@@ -22,39 +22,44 @@ interface DownloadItem {
   startingPrice: number;
   imageUrl: string;
   clusterTag: string;
+  status: string;
   downloadType: "brochure" | "floorplan";
   fileName: string;
+  hasPdf: boolean;
 }
 
-const brochureItems: DownloadItem[] = projects
-  .filter((p) => p.status !== "Launching Soon")
-  .map((p) => ({
-    slug: p.slug,
-    name: p.name,
-    tagline: p.tagline,
-    type: p.type,
-    bedrooms: p.bedrooms,
-    startingPrice: p.startingPrice,
-    imageUrl: p.imageUrl,
-    clusterTag: p.clusterTag,
-    downloadType: "brochure" as const,
-    fileName: `${p.slug}-brochure.pdf`,
-  }));
+// Available projects get real PDFs; Launching Soon get "Register Interest"
+const isAvailable = (p: typeof projects[0]) => p.status !== "Launching Soon";
 
-const floorplanItems: DownloadItem[] = projects
-  .filter((p) => p.status !== "Launching Soon")
-  .map((p) => ({
-    slug: p.slug,
-    name: p.name,
-    tagline: p.tagline,
-    type: p.type,
-    bedrooms: p.bedrooms,
-    startingPrice: p.startingPrice,
-    imageUrl: p.imageUrl,
-    clusterTag: p.clusterTag,
-    downloadType: "floorplan" as const,
-    fileName: `${p.slug}-floorplan.pdf`,
-  }));
+const brochureItems: DownloadItem[] = projects.map((p) => ({
+  slug: p.slug,
+  name: p.name,
+  tagline: p.tagline,
+  type: p.type,
+  bedrooms: p.bedrooms,
+  startingPrice: p.startingPrice,
+  imageUrl: p.imageUrl,
+  clusterTag: p.clusterTag,
+  status: p.status,
+  downloadType: "brochure" as const,
+  fileName: `${p.slug}-brochure.pdf`,
+  hasPdf: isAvailable(p),
+}));
+
+const floorplanItems: DownloadItem[] = projects.map((p) => ({
+  slug: p.slug,
+  name: p.name,
+  tagline: p.tagline,
+  type: p.type,
+  bedrooms: p.bedrooms,
+  startingPrice: p.startingPrice,
+  imageUrl: p.imageUrl,
+  clusterTag: p.clusterTag,
+  status: p.status,
+  downloadType: "floorplan" as const,
+  fileName: `${p.slug}-floorplan.pdf`,
+  hasPdf: isAvailable(p),
+}));
 
 function getDownloadUrl(item: DownloadItem): string {
   return `/api/download?type=${item.downloadType}&file=${item.fileName}`;
@@ -62,7 +67,6 @@ function getDownloadUrl(item: DownloadItem): string {
 
 export default function BrochuresPage() {
   const [activeTab, setActiveTab] = useState<TabType>("brochures");
-  const items = activeTab === "brochures" ? brochureItems : floorplanItems;
 
   return (
     <>
@@ -95,12 +99,12 @@ export default function BrochuresPage() {
         {/* Tab Navigation */}
         <section className="bg-[#3D2510] border-y border-[#D4AF37]/10 sticky top-16 lg:top-20 z-30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex gap-0" role="tablist" aria-label="Document type">
+            <div className="flex gap-0 overflow-x-auto" role="tablist" aria-label="Document type">
               <button
                 onClick={() => setActiveTab("brochures")}
                 role="tab"
                 aria-selected={activeTab === "brochures"}
-                className={`flex items-center gap-2 px-6 sm:px-10 py-4 text-sm sm:text-base font-medium transition-all duration-300 border-b-2 ${
+                className={`flex items-center gap-2 px-6 sm:px-10 py-4 text-sm sm:text-base font-medium transition-all duration-300 border-b-2 whitespace-nowrap ${
                   activeTab === "brochures"
                     ? "text-[#D4AF37] border-[#D4AF37] bg-[#D4AF37]/5"
                     : "text-[#B89B6E] border-transparent hover:text-[#D4AF37] hover:bg-[#D4AF37]/5"
@@ -109,14 +113,14 @@ export default function BrochuresPage() {
                 <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Brochures</span>
                 <span className="hidden sm:inline text-xs bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded-full">
-                  {brochureItems.length}
+                  {brochureItems.length + 1}
                 </span>
               </button>
               <button
                 onClick={() => setActiveTab("floorplans")}
                 role="tab"
                 aria-selected={activeTab === "floorplans"}
-                className={`flex items-center gap-2 px-6 sm:px-10 py-4 text-sm sm:text-base font-medium transition-all duration-300 border-b-2 ${
+                className={`flex items-center gap-2 px-6 sm:px-10 py-4 text-sm sm:text-base font-medium transition-all duration-300 border-b-2 whitespace-nowrap ${
                   activeTab === "floorplans"
                     ? "text-[#D4AF37] border-[#D4AF37] bg-[#D4AF37]/5"
                     : "text-[#B89B6E] border-transparent hover:text-[#D4AF37] hover:bg-[#D4AF37]/5"
@@ -125,93 +129,149 @@ export default function BrochuresPage() {
                 <LayoutGrid className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Floor Plans</span>
                 <span className="hidden sm:inline text-xs bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded-full">
-                  {floorplanItems.length}
+                  {floorplanItems.length + 1}
                 </span>
+              </button>
+              <button
+                onClick={() => setActiveTab("masterplan")}
+                role="tab"
+                aria-selected={activeTab === "masterplan"}
+                className={`flex items-center gap-2 px-6 sm:px-10 py-4 text-sm sm:text-base font-medium transition-all duration-300 border-b-2 whitespace-nowrap ${
+                  activeTab === "masterplan"
+                    ? "text-[#D4AF37] border-[#D4AF37] bg-[#D4AF37]/5"
+                    : "text-[#B89B6E] border-transparent hover:text-[#D4AF37] hover:bg-[#D4AF37]/5"
+                }`}
+              >
+                <Map className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span>Masterplan</span>
               </button>
             </div>
           </div>
         </section>
 
-        {/* Download Cards Grid */}
-        <section className="py-12 lg:py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {items.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-[#B89B6E] text-lg">No {activeTab} available yet. Check back soon!</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {items.map((item) => (
-                  <div
-                    key={`${item.slug}-${item.downloadType}`}
-                    className="group rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/80 hover:border-[#D4AF37]/40 transition-all duration-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#D4AF37]/5"
-                  >
-                    {/* Image */}
-                    <div className="relative h-52 overflow-hidden">
-                      <Image
-                        src={item.imageUrl}
-                        alt={`${item.name} — ${item.bedrooms}-bedroom luxury villas at Grand Polo Club & Resort`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/40 to-transparent" />
+        {/* Masterplan Tab Content */}
+        {activeTab === "masterplan" && (
+          <section className="py-12 lg:py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Masterplan Hero Card */}
+              <div className="rounded-xl overflow-hidden border border-[#D4AF37]/30 bg-[#2A1506]/80 mb-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  {/* Left - Info */}
+                  <div className="p-8 lg:p-10 flex flex-col justify-center">
+                    <span className="text-[#D4AF37] text-xs tracking-[0.3em] uppercase font-medium mb-3">Community Overview</span>
+                    <h2 className="font-heading text-3xl lg:text-4xl font-bold text-[#FFFAF3] mb-4">
+                      Grand Polo Club & Resort Masterplan
+                    </h2>
+                    <div className="gold-divider max-w-xs mb-6" />
+                    <p className="text-[#B89B6E] leading-relaxed mb-6">
+                      A visionary 5.54 million square metre community designed around the equestrian lifestyle — where polo fields, private stables, and a luxury clubhouse form the beating heart of 22 residential clusters and 6,661 homes.
+                    </p>
 
-                      {/* Type badge */}
-                      <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1 rounded text-xs font-bold gold-gradient text-[#2A1506]">
-                          {item.clusterTag}
-                        </span>
-                      </div>
-
-                      {/* Document type badge */}
-                      <div className="absolute top-3 right-3">
-                        <span className="px-3 py-1 rounded text-xs font-bold bg-[#2A1506]/80 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center gap-1">
-                          {item.downloadType === "brochure" ? (
-                            <><FileText className="w-3 h-3" /> Brochure</>
-                          ) : (
-                            <><LayoutGrid className="w-3 h-3" /> Floor Plan</>
-                          )}
-                        </span>
-                      </div>
-
-                      {/* Name overlay */}
-                      <div className="absolute bottom-3 left-3 right-3">
-                        <h2 className="font-heading text-xl font-bold text-[#FFFAF3]">{item.name}</h2>
-                        <p className="text-[#D4AF37] text-sm">{item.tagline}</p>
-                      </div>
+                    {/* Key Stats */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+                      {[
+                        { label: "Total Area", value: "5.54M SqM" },
+                        { label: "Residences", value: "6,661" },
+                        { label: "Clusters", value: "22" },
+                        { label: "Polo Fields", value: "3" },
+                        { label: "Amenities", value: "23" },
+                        { label: "Airport", value: "5 Min" },
+                      ].map((stat) => (
+                        <div key={stat.label} className="rounded-lg p-3 text-center border border-[#D4AF37]/15 bg-[#3D2510]/50">
+                          <p className="text-[#D4AF37] text-sm font-bold">{stat.value}</p>
+                          <p className="text-[#B89B6E] text-[10px]">{stat.label}</p>
+                        </div>
+                      ))}
                     </div>
 
-                    {/* Details */}
-                    <div className="p-5">
-                      <div className="grid grid-cols-3 gap-3 mb-5">
-                        <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
-                          <p className="text-[#FFFAF3] text-xs font-bold">{item.bedrooms} Bed</p>
-                          <p className="text-[#B89B6E] text-[10px]">Bedrooms</p>
+                    {/* Download buttons */}
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href="/api/download?type=brochure&file=grand-polo-masterplan-brochure.pdf"
+                        className="flex items-center justify-center gap-2 h-12 px-6 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity"
+                      >
+                        <FileText className="w-4 h-4" />
+                        Download Brochure
+                      </a>
+                      <a
+                        href="/api/download?type=floorplan&file=grand-polo-masterplan-floorplan.pdf"
+                        className="flex items-center justify-center gap-2 h-12 px-6 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"
+                      >
+                        <LayoutGrid className="w-4 h-4" />
+                        Download Community Layout
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Right - Visual / Quick links */}
+                  <div className="relative min-h-[350px] bg-gradient-to-br from-[#3D2510] to-[#2A1506]">
+                    <div className="absolute inset-0 flex items-center justify-center p-8">
+                      <div className="text-center">
+                        <div className="w-24 h-24 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
+                          <Map className="w-10 h-10 text-[#2A1506]" />
                         </div>
-                        <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
-                          <p className="text-[#D4AF37] text-xs font-bold">{formatPrice(item.startingPrice)}</p>
-                          <p className="text-[#B89B6E] text-[10px]">Starting</p>
-                        </div>
-                        <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
-                          <p className="text-[#FFFAF3] text-xs font-bold">{item.clusterTag}</p>
-                          <p className="text-[#B89B6E] text-[10px]">Cluster</p>
+                        <h3 className="font-heading text-2xl font-bold text-[#FFFAF3] mb-3">22 Residential Clusters</h3>
+                        <p className="text-[#B89B6E] text-sm mb-6">3 Available Now · 10 Launching Soon · 9 Future Phases</p>
+                        <div className="space-y-2">
+                          <Link
+                            href="/masterplan"
+                            className="flex items-center justify-center gap-2 h-11 px-6 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"
+                          >
+                            View Full Masterplan <ChevronRight className="w-4 h-4" />
+                          </Link>
+                          <Link
+                            href="/projects"
+                            className="flex items-center justify-center gap-2 h-11 px-6 rounded-lg border border-[#D4AF37]/15 text-[#B89B6E] hover:text-[#D4AF37] hover:border-[#D4AF37]/30 text-sm transition-colors"
+                          >
+                            View All Properties <ChevronRight className="w-4 h-4" />
+                          </Link>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                      {/* Download button */}
-                      <a
-                        href={getDownloadUrl(item)}
-                        className="flex items-center justify-center gap-2 w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity"
-                      >
-                        <Download className="w-4 h-4" />
-                        Download {item.downloadType === "brochure" ? "Brochure" : "Floor Plan"}
-                      </a>
-
-                      {/* View property link */}
+              {/* Available Properties on Masterplan */}
+              <h3 className="font-heading text-xl font-bold text-[#FFFAF3] mb-6">Available Properties</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                {projects.filter((p) => p.status !== "Launching Soon").map((project) => (
+                  <div
+                    key={project.id}
+                    className="group rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/80 hover:border-[#D4AF37]/40 transition-all duration-400"
+                  >
+                    <div className="relative h-44 overflow-hidden">
+                      <Image
+                        src={project.imageUrl}
+                        alt={`${project.name} — luxury villas at Grand Polo Club & Resort`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/40 to-transparent" />
+                      <div className="absolute bottom-3 left-3">
+                        <h4 className="font-heading text-lg font-bold text-[#FFFAF3]">{project.name}</h4>
+                        <p className="text-[#D4AF37] text-sm">{project.tagline}</p>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <div className="grid grid-cols-3 gap-2 mb-4 text-center">
+                        <div className="rounded-md p-2 border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                          <p className="text-[#FFFAF3] text-xs font-bold">{project.bedrooms} Bed</p>
+                          <p className="text-[#B89B6E] text-[9px]">Bedrooms</p>
+                        </div>
+                        <div className="rounded-md p-2 border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                          <p className="text-[#D4AF37] text-xs font-bold">{formatPrice(project.startingPrice)}</p>
+                          <p className="text-[#B89B6E] text-[9px]">From</p>
+                        </div>
+                        <div className="rounded-md p-2 border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                          <p className="text-[#FFFAF3] text-xs font-bold">{project.facts.totalUnits}</p>
+                          <p className="text-[#B89B6E] text-[9px]">Units</p>
+                        </div>
+                      </div>
                       <Link
-                        href={`/projects/${item.slug}`}
-                        className="flex items-center justify-center gap-1 w-full h-10 mt-2 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"
+                        href={`/projects/${project.slug}`}
+                        className="flex items-center justify-center gap-1 w-full h-10 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"
                       >
                         View Property <ChevronRight className="w-4 h-4" />
                       </Link>
@@ -219,9 +279,232 @@ export default function BrochuresPage() {
                   </div>
                 ))}
               </div>
-            )}
-          </div>
-        </section>
+
+              {/* Coming Soon on Masterplan */}
+              <h3 className="font-heading text-xl font-bold text-[#FFFAF3] mb-6">Launching Soon</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                {projects.filter((p) => p.status === "Launching Soon").map((project) => (
+                  <Link
+                    key={project.id}
+                    href={`/projects/${project.slug}`}
+                    className="group rounded-xl p-4 border border-[#D4AF37]/10 bg-[#2A1506]/60 hover:border-[#D4AF37]/30 text-center transition-all"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-[#B89B6E]/20 flex items-center justify-center mx-auto mb-3">
+                      <Bell className="w-5 h-5 text-[#B89B6E]" />
+                    </div>
+                    <h4 className="font-heading text-sm font-bold text-[#FFFAF3] group-hover:text-[#D4AF37] transition-colors">
+                      {project.name}
+                    </h4>
+                    <p className="text-[#B89B6E] text-[10px] mt-1">{project.tagline}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Brochures / Floor Plans Tab Content */}
+        {activeTab !== "masterplan" && (
+          <section className="py-12 lg:py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Available Projects Section */}
+              {(() => {
+                const items = activeTab === "brochures" ? brochureItems : floorplanItems;
+                const availableItems = items.filter((item) => item.hasPdf);
+                const comingSoonItems = items.filter((item) => !item.hasPdf);
+
+                return (
+                  <>
+                    {/* Available Downloads */}
+                    {availableItems.length > 0 && (
+                      <>
+                        <h3 className="font-heading text-lg font-bold text-[#D4AF37] mb-6 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
+                          Available Now — Download Instantly
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                          {/* Masterplan card always first */}
+                          <div
+                            className="group rounded-xl overflow-hidden border border-[#D4AF37]/30 bg-[#2A1506]/80 hover:border-[#D4AF37]/50 transition-all duration-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#D4AF37]/5"
+                          >
+                            <div className="relative h-52 overflow-hidden bg-gradient-to-br from-[#3D2510] to-[#2A1506]">
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="text-center">
+                                  <Map className="w-12 h-12 text-[#D4AF37] mx-auto mb-2" />
+                                  <p className="text-[#D4AF37] text-xs tracking-[0.2em] uppercase font-medium">Community Overview</p>
+                                </div>
+                              </div>
+                              <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/40 to-transparent" />
+                              <div className="absolute top-3 left-3">
+                                <span className="px-3 py-1 rounded text-xs font-bold gold-gradient text-[#2A1506]">
+                                  Masterplan
+                                </span>
+                              </div>
+                              <div className="absolute top-3 right-3">
+                                <span className="px-3 py-1 rounded text-xs font-bold bg-[#2A1506]/80 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center gap-1">
+                                  {activeTab === "brochures" ? (
+                                    <><FileText className="w-3 h-3" /> Brochure</>
+                                  ) : (
+                                    <><LayoutGrid className="w-3 h-3" /> Layout</>
+                                  )}
+                                </span>
+                              </div>
+                              <div className="absolute bottom-3 left-3 right-3">
+                                <h2 className="font-heading text-xl font-bold text-[#FFFAF3]">Grand Polo Masterplan</h2>
+                                <p className="text-[#D4AF37] text-sm">Complete Community Overview</p>
+                              </div>
+                            </div>
+                            <div className="p-5">
+                              <div className="grid grid-cols-3 gap-3 mb-5">
+                                <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                                  <p className="text-[#D4AF37] text-xs font-bold">5.54M</p>
+                                  <p className="text-[#B89B6E] text-[10px]">SqM Area</p>
+                                </div>
+                                <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                                  <p className="text-[#D4AF37] text-xs font-bold">6,661</p>
+                                  <p className="text-[#B89B6E] text-[10px]">Residences</p>
+                                </div>
+                                <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                                  <p className="text-[#D4AF37] text-xs font-bold">22</p>
+                                  <p className="text-[#B89B6E] text-[10px]">Clusters</p>
+                                </div>
+                              </div>
+                              <a
+                                href={`/api/download?type=${activeTab === "brochures" ? "brochure" : "floorplan"}&file=grand-polo-masterplan-${activeTab === "brochures" ? "brochure" : "floorplan"}.pdf`}
+                                className="flex items-center justify-center gap-2 w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity"
+                              >
+                                <Download className="w-4 h-4" />
+                                Download {activeTab === "brochures" ? "Brochure" : "Community Layout"}
+                              </a>
+                              <Link
+                                href="/masterplan"
+                                className="flex items-center justify-center gap-1 w-full h-10 mt-2 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"
+                              >
+                                View Masterplan <ChevronRight className="w-4 h-4" />
+                              </Link>
+                            </div>
+                          </div>
+
+                          {/* Project download cards */}
+                          {availableItems.map((item) => (
+                            <div
+                              key={`${item.slug}-${item.downloadType}`}
+                              className="group rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/80 hover:border-[#D4AF37]/40 transition-all duration-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#D4AF37]/5"
+                            >
+                              <div className="relative h-52 overflow-hidden">
+                                <Image
+                                  src={item.imageUrl}
+                                  alt={`${item.name} — ${item.bedrooms}-bedroom luxury villas at Grand Polo Club & Resort`}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/40 to-transparent" />
+                                <div className="absolute top-3 left-3">
+                                  <span className="px-3 py-1 rounded text-xs font-bold gold-gradient text-[#2A1506]">
+                                    {item.clusterTag}
+                                  </span>
+                                </div>
+                                <div className="absolute top-3 right-3">
+                                  <span className="px-3 py-1 rounded text-xs font-bold bg-[#2A1506]/80 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center gap-1">
+                                    {item.downloadType === "brochure" ? (
+                                      <><FileText className="w-3 h-3" /> Brochure</>
+                                    ) : (
+                                      <><LayoutGrid className="w-3 h-3" /> Floor Plan</>
+                                    )}
+                                  </span>
+                                </div>
+                                <div className="absolute bottom-3 left-3 right-3">
+                                  <h2 className="font-heading text-xl font-bold text-[#FFFAF3]">{item.name}</h2>
+                                  <p className="text-[#D4AF37] text-sm">{item.tagline}</p>
+                                </div>
+                              </div>
+                              <div className="p-5">
+                                <div className="grid grid-cols-3 gap-3 mb-5">
+                                  <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                                    <p className="text-[#FFFAF3] text-xs font-bold">{item.bedrooms} Bed</p>
+                                    <p className="text-[#B89B6E] text-[10px]">Bedrooms</p>
+                                  </div>
+                                  <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                                    <p className="text-[#D4AF37] text-xs font-bold">{formatPrice(item.startingPrice)}</p>
+                                    <p className="text-[#B89B6E] text-[10px]">Starting</p>
+                                  </div>
+                                  <div className="rounded-lg p-2 text-center border border-[#D4AF37]/10 bg-[#3D2510]/50">
+                                    <p className="text-[#FFFAF3] text-xs font-bold">{item.clusterTag}</p>
+                                    <p className="text-[#B89B6E] text-[10px]">Cluster</p>
+                                  </div>
+                                </div>
+                                <a
+                                  href={getDownloadUrl(item)}
+                                  className="flex items-center justify-center gap-2 w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity"
+                                >
+                                  <Download className="w-4 h-4" />
+                                  Download {item.downloadType === "brochure" ? "Brochure" : "Floor Plan"}
+                                </a>
+                                <Link
+                                  href={`/projects/${item.slug}`}
+                                  className="flex items-center justify-center gap-1 w-full h-10 mt-2 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"
+                                >
+                                  View Property <ChevronRight className="w-4 h-4" />
+                                </Link>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+
+                    {/* Coming Soon Projects */}
+                    {comingSoonItems.length > 0 && (
+                      <>
+                        <h3 className="font-heading text-lg font-bold text-[#B89B6E] mb-6 flex items-center gap-2">
+                          <Bell className="w-4 h-4" />
+                          Launching Soon — Register for Updates
+                        </h3>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                          {comingSoonItems.map((item) => (
+                            <div
+                              key={`${item.slug}-${item.downloadType}`}
+                              className="group rounded-xl overflow-hidden border border-[#D4AF37]/10 bg-[#2A1506]/60 hover:border-[#D4AF37]/25 transition-all duration-300"
+                            >
+                              <div className="relative h-36 overflow-hidden">
+                                <Image
+                                  src={item.imageUrl}
+                                  alt={`${item.name} — coming soon at Grand Polo Club & Resort`}
+                                  fill
+                                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/60 to-[#2A1506]/30" />
+                                <div className="absolute top-2 left-2">
+                                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#B89B6E] text-[#FFFAF3]">
+                                    Coming Soon
+                                  </span>
+                                </div>
+                                <div className="absolute bottom-2 left-2 right-2">
+                                  <h4 className="font-heading text-sm font-bold text-[#FFFAF3] leading-tight">{item.name}</h4>
+                                </div>
+                              </div>
+                              <div className="p-3">
+                                <p className="text-[#B89B6E] text-[10px] mb-3 leading-tight">{item.tagline}</p>
+                                <Link
+                                  href="/contact"
+                                  className="flex items-center justify-center gap-1 w-full h-9 rounded-lg border border-[#D4AF37]/20 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-xs font-medium transition-colors"
+                                >
+                                  <Bell className="w-3 h-3" /> Register Interest
+                                </Link>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </>
+                );
+              })()}
+            </div>
+          </section>
+        )}
 
         {/* Info Banner */}
         <section className="py-12 bg-[#3D2510] border-t border-[#D4AF37]/10">

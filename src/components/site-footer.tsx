@@ -73,6 +73,16 @@ export default function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li className="pt-2 border-t border-[#D4AF37]/10 mt-2">
+                <p className="text-[#B89B6E] text-[10px] uppercase tracking-wider mb-1">Launching Soon</p>
+              </li>
+              {projects.filter((p) => p.status === "Launching Soon").slice(0, 4).map((p) => (
+                <li key={p.id}>
+                  <Link href={`/projects/${p.slug}`} className="text-[#B89B6E]/60 text-xs hover:text-[#D4AF37] transition-colors py-0.5 inline-block">
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link href="/projects" className="text-[#D4AF37] text-sm hover:underline">View All Properties →</Link>
               </li>

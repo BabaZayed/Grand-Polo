@@ -18,11 +18,13 @@ const ALLOWED_FILES: Record<string, string[]> = {
     "chevalia-estate-brochure.pdf",
     "chevalia-estate-2-brochure.pdf",
     "chevalia-fields-brochure.pdf",
+    "grand-polo-masterplan-brochure.pdf",
   ],
   floorplan: [
     "chevalia-estate-floorplan.pdf",
     "chevalia-estate-2-floorplan.pdf",
     "chevalia-fields-floorplan.pdf",
+    "grand-polo-masterplan-floorplan.pdf",
   ],
 };
 
