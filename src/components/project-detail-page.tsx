@@ -4,9 +4,11 @@ import { getProject, formatPrice, paymentPlans, unitTypes, getProjectGallery } f
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import { BedDouble, Home, Maximize, Calendar, ArrowLeft, Check, Phone, Mail } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { PHONE_NUMBER, EMAIL } from "@/lib/data";
+import { trackViewContent, getFbp, getFbc } from "@/lib/meta-pixel";
 
 interface ProjectDetailPageProps {
   slug: string;
@@ -20,6 +22,36 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   const milestones = paymentPlans[property.slug] || [];
   const units = unitTypes[property.slug as keyof typeof unitTypes] || [];
   const gallery = getProjectGallery(property.slug);
+
+  // Track ViewContent on mount (critical for real estate — high intent signal)
+  useEffect(() => {
+    const eventId = `vc-${property.slug}-${Date.now()}`;
+    // Client-side pixel with same eventId for deduplication
+    trackViewContent({
+      content_name: property.name,
+      content_category: "property",
+      content_ids: [property.slug],
+      content_type: "product",
+      value: property.startingPrice,
+      currency: "AED",
+    }, eventId);
+    // Server-side CAPI (fire-and-forget)
+    fetch("/api/meta-event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        eventName: "ViewContent",
+        eventId,
+        eventSourceUrl: window.location.href,
+        fbp: getFbp(),
+        fbc: getFbc(),
+        contentName: property.name,
+        contentCategory: "property",
+        currency: "AED",
+        value: property.startingPrice,
+      }),
+    }).catch(() => {}); // Non-blocking
+  }, [property.slug, property.name, property.startingPrice]);
 
   return (
     <div className="pt-16 lg:pt-20">

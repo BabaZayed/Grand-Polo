@@ -30,8 +30,8 @@ export function trackContact(eventId?: string) {
   fbqTrack("Contact", undefined, eventId);
 }
 
-export function trackViewContent(params?: Record<string, unknown>) {
-  fbqTrack("ViewContent", params);
+export function trackViewContent(params?: Record<string, unknown>, eventId?: string) {
+  fbqTrack("ViewContent", params, eventId);
 }
 
 export function trackInitiateCheckout() {

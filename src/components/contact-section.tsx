@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { PHONE_NUMBER, WHATSAPP_LINK, EMAIL, projects } from "@/lib/data";
-import { trackLead } from "@/lib/meta-pixel";
+import { trackLead, getFbp, getFbc } from "@/lib/meta-pixel";
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", propertyInterest: "" });
@@ -23,13 +23,17 @@ export default function ContactSection() {
       // Generate eventId for Meta deduplication
       const eventId = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
       
+      // Get Meta cookies for CAPI matching (critical for attribution)
+      const fbp = getFbp();
+      const fbc = getFbc();
+      
       // Track client-side event with same eventId for deduplication
       trackLead({ formType: "contact", propertyInterest: form.propertyInterest, eventId });
 
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, formType: "contact", eventId }),
+        body: JSON.stringify({ ...form, formType: "contact", eventId, fbp, fbc }),
       });
       if (!res.ok) throw new Error("Submission failed");
       setIsSuccess(true);

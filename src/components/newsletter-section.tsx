@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Send, Loader2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { trackLead, getFbp, getFbc } from "@/lib/meta-pixel";
 
 const GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbxybY7jvQzQVEg7-37XInWg9Oj-UxtZIG2P0Fr4WVSCpL4QwPslrhasEmMN4vXXoQnPQg/exec";
 
@@ -20,10 +21,18 @@ export default function NewsletterSection() {
     setIsSubmitting(true);
     setError("");
     try {
+      // Generate eventId for Meta deduplication
+      const eventId = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      const fbp = getFbp();
+      const fbc = getFbc();
+
+      // Track client-side Lead event with same eventId
+      trackLead({ formType: "newsletter", eventId });
+
       await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, formType: "newsletter" }),
+        body: JSON.stringify({ email, formType: "newsletter", eventId, fbp, fbc }),
       });
       // Also send directly to Google Sheets
       await fetch(GOOGLE_SHEETS_WEBHOOK, {
