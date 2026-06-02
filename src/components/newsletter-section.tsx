@@ -84,11 +84,12 @@ export default function NewsletterSection() {
             <Input
               id="newsletter-email"
               type="email"
+              autoComplete="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 text-sm flex-1 focus:border-[#D4AF37]/50"
+              className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 text-base sm:text-sm flex-1 focus:border-[#D4AF37]/50"
             />
             <Button
               type="submit"

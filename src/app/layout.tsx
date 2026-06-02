@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import UTMTracker from "@/components/utm-tracker";
@@ -106,6 +106,14 @@ const orgSchema = {
 
 // Removed low-value schemas (Residence, Speakable, EventSeries, HowTo) to reduce HTML bloat by ~15KB
 // Kept the 4 highest-impact schemas: LocalBusiness, FAQ, WebSite, Organization
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#5D3A1A",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";

@@ -94,7 +94,7 @@ export default function SiteHeader() {
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 text-[#FFFAF3] hover:text-[#D4AF37] transition-colors"
+                className="lg:hidden p-2.5 text-[#FFFAF3] hover:text-[#D4AF37] transition-colors"
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-menu"
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -125,7 +125,7 @@ export default function SiteHeader() {
                   <span className="font-heading text-lg font-bold tracking-[0.15em] text-[#D4AF37]">GRAND POLO</span>
                   <button
                     onClick={() => setMobileOpen(false)}
-                    className="p-2 text-[#FFFAF3]/70 hover:text-[#D4AF37] transition-colors"
+                    className="p-2.5 text-[#FFFAF3]/70 hover:text-[#D4AF37] transition-colors"
                     aria-label="Close navigation menu"
                   >
                     <X className="w-5 h-5" />

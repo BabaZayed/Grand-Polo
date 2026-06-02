@@ -371,4 +371,36 @@ html, body {
     min-height: 44px;
     min-width: 44px;
   }
+
+  /* Ensure form inputs meet 44px minimum height on touch devices */
+  input, select, textarea {
+    min-height: 44px;
+  }
+
+  /* Footer link spacing for mobile */
+  footer a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Dialog close buttons need larger tap area */
+  [data-slot="dialog-close"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Prevent iOS auto-zoom on input focus — ensure 16px minimum font */
+@supports (-webkit-touch-callout: none) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="url"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }

@@ -42,7 +42,7 @@ export default function GallerySection() {
           <div className="gold-divider max-w-xs mx-auto mb-4" />
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
           {categories.map((cat) => (
             <Button
               key={cat}
@@ -100,13 +100,13 @@ export default function GallerySection() {
                   className="object-contain"
                   sizes="100vw"
                 />
-                <button onClick={closeLightbox} aria-label="Close image viewer" className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
+                <button onClick={closeLightbox} aria-label="Close image viewer" className="absolute top-4 right-4 w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
                   <X className="w-5 h-5" />
                 </button>
-                <button onClick={goPrev} aria-label="Previous image" className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
+                <button onClick={goPrev} aria-label="Previous image" className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <button onClick={goNext} aria-label="Next image" className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
+                <button onClick={goNext} aria-label="Next image" className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors">
                   <ChevronRight className="w-5 h-5" />
                 </button>
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#FFFAF3]/60 text-sm">

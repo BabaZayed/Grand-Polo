@@ -166,8 +166,9 @@ export default function ContactSection() {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50 text-base"
                     placeholder="Your name"
+                    autoComplete="name"
                   />
                 </div>
                 <div>
@@ -179,8 +180,9 @@ export default function ContactSection() {
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50 text-base"
                     placeholder="your@email.com"
+                    autoComplete="email"
                   />
                 </div>
               </div>
@@ -194,8 +196,9 @@ export default function ContactSection() {
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50 text-base"
                     placeholder="+971 XX XXX XXXX"
+                    autoComplete="tel"
                   />
                 </div>
                 <div>
@@ -205,7 +208,7 @@ export default function ContactSection() {
                     name="propertyInterest"
                     value={form.propertyInterest}
                     onChange={(e) => setForm({ ...form, propertyInterest: e.target.value })}
-                    className="w-full h-9 rounded-md border border-[#D4AF37]/20 bg-[#2A1506] text-[#FFFAF3] text-sm px-3 focus:border-[#D4AF37]/50"
+                    className="w-full h-11 sm:h-9 rounded-md border border-[#D4AF37]/20 bg-[#2A1506] text-[#FFFAF3] text-base sm:text-sm px-3 focus:border-[#D4AF37]/50"
                   >
                     <option value="">Select a property</option>
                     {projects.map((p) => (
@@ -221,7 +224,7 @@ export default function ContactSection() {
                   name="message"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] min-h-[100px] focus:border-[#D4AF37]/50"
+                  className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] min-h-[100px] focus:border-[#D4AF37]/50 text-base"
                   placeholder="Tell us about your requirements..."
                 />
               </div>

@@ -92,7 +92,7 @@ export default function GalleryContent() {
               <button
                 onClick={() => setSelectedImage(null)}
                 aria-label="Close image viewer"
-                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors"
+                className="absolute top-3 right-3 z-10 w-11 h-11 sm:w-8 sm:h-8 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>

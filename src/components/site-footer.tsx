@@ -39,7 +39,7 @@ export default function SiteFooter() {
           <div>
             <h2 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Quick Links</h2>
             <div className="gold-divider max-w-[60px] mb-4" />
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {[
                 { label: "Home", href: "/" },
                 { label: "Properties", href: "/projects" },
@@ -53,7 +53,7 @@ export default function SiteFooter() {
                 { label: "Blog", href: "/blog" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors">
+                  <Link href={link.href} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors py-1 inline-block">
                     {link.label}
                   </Link>
                 </li>
@@ -65,10 +65,10 @@ export default function SiteFooter() {
           <div>
             <h2 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Properties</h2>
             <div className="gold-divider max-w-[60px] mb-4" />
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {projects.filter((p) => p.status !== "Launching Soon").map((p) => (
                 <li key={p.id}>
-                  <Link href={`/projects/${p.slug}`} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors">
+                  <Link href={`/projects/${p.slug}`} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors py-1 inline-block">
                     {p.name}
                   </Link>
                 </li>
@@ -110,7 +110,7 @@ export default function SiteFooter() {
                 { name: "Dubai Land Dept", url: "https://www.dubailand.gov.ae" },
                 { name: "RERA Dubai", url: "https://www.rpdubai.ae" },
               ].map((r) => (
-                <a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[#B89B6E] text-xs hover:text-[#D4AF37] transition-colors mb-1">
+                <a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[#B89B6E] text-xs hover:text-[#D4AF37] transition-colors mb-2 py-0.5">
                   <ExternalLink className="w-3 h-3" /> {r.name}
                 </a>
               ))}
