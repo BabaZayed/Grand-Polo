@@ -36,7 +36,7 @@ export default function ProjectsPageClient() {
       <section className="bg-[#3D2510] border-b border-[#D4AF37]/10 sticky top-16 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-center gap-2">
           {tabs.map((tab) => (
-            <button key={tab} onClick={() => setActiveTab(tab)} className={`px-5 py-2 rounded-full text-sm transition-all ${activeTab === tab ? "gold-gradient text-[#2A1506] font-semibold" : "text-[#8B6B47] hover:text-[#D4AF37] border border-[#D4AF37]/20 hover:border-[#D4AF37]/40"}`}>
+            <button key={tab} onClick={() => setActiveTab(tab)} aria-pressed={activeTab === tab} aria-label={`Filter by ${tab}`} className={`px-5 py-2 rounded-full text-sm transition-all ${activeTab === tab ? "gold-gradient text-[#2A1506] font-semibold" : "text-[#8B6B47] hover:text-[#D4AF37] border border-[#D4AF37]/20 hover:border-[#D4AF37]/40"}`}>
               {tab}
             </button>
           ))}

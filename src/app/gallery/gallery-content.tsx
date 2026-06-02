@@ -27,6 +27,8 @@ export default function GalleryContent() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
+                aria-pressed={activeCategory === cat}
+                aria-label={`Filter by ${cat}`}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   activeCategory === cat
                     ? "gold-gradient text-[#2A1506]"
@@ -52,6 +54,7 @@ export default function GalleryContent() {
               <button
                 key={img.id}
                 onClick={() => setSelectedImage(img)}
+                aria-label={`View ${img.alt}`}
                 className="relative aspect-[4/3] rounded-lg overflow-hidden group cursor-pointer border border-[#D4AF37]/10 hover:border-[#D4AF37]/40 transition-all duration-300 p-0 bg-transparent"
               >
                 <Image
@@ -88,6 +91,7 @@ export default function GalleryContent() {
             <div className="relative">
               <button
                 onClick={() => setSelectedImage(null)}
+                aria-label="Close image viewer"
                 className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-[#2A1506]/80 flex items-center justify-center text-[#FFFAF3] hover:text-[#D4AF37] transition-colors"
               >
                 <X className="w-4 h-4" />
