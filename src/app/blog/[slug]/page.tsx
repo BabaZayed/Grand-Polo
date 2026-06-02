@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     return (
       <>
         <SiteHeader />
-        <main className="min-h-screen flex items-center justify-center bg-[#5D3A1A] pt-20">
+        <main id="main-content" className="min-h-screen flex items-center justify-center bg-[#5D3A1A] pt-20">
           <div className="text-center px-4">
             <h1 className="font-heading text-4xl text-[#D4AF37] mb-4">Article Not Found</h1>
             <Link href="/blog" className="text-[#B89B6E] hover:text-[#D4AF37] transition-colors">
@@ -88,25 +88,54 @@ export default async function BlogPostPage({ params }: PageProps) {
   const shareText = post.title;
 
   function renderContent(content: string) {
-    return content.split("\n").map((line, i) => {
-      if (line.startsWith("# "))
-        return <h2 key={i} className="font-heading text-3xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("# ", "")}</h2>;
-      if (line.startsWith("## "))
-        return <h3 key={i} className="font-heading text-2xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("## ", "")}</h3>;
-      if (line.startsWith("### "))
-        return <h3 key={i} className="font-heading text-xl font-bold text-[#FFFAF3] mt-8 mb-3">{line.replace("### ", "")}</h3>;
-      if (line.startsWith("- "))
-        return <li key={i} className="text-[#B89B6E] ml-6 list-disc mb-1">{line.replace("- ", "")}</li>;
-      if (line.trim() === "") return <div key={i} className="h-2" />;
-      return <p key={i} className="text-[#B89B6E] leading-relaxed mb-4">{line}</p>;
-    });
+    const lines = content.split("\n");
+    const elements: React.ReactNode[] = [];
+    let listItems: string[] = [];
+    let keyIndex = 0;
+
+    const flushList = () => {
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={`ul-${keyIndex++}`} className="text-[#B89B6E] ml-6 list-disc mb-4">
+            {listItems.map((item, j) => (
+              <li key={j} className="mb-1">{item}</li>
+            ))}
+          </ul>
+        );
+        listItems = [];
+      }
+    };
+
+    for (const line of lines) {
+      if (line.startsWith("# ")) {
+        flushList();
+        elements.push(<h2 key={keyIndex++} className="font-heading text-3xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("# ", "")}</h2>);
+      } else if (line.startsWith("## ")) {
+        flushList();
+        elements.push(<h3 key={keyIndex++} className="font-heading text-2xl font-bold text-[#FFFAF3] mt-10 mb-4">{line.replace("## ", "")}</h3>);
+      } else if (line.startsWith("### ")) {
+        flushList();
+        elements.push(<h4 key={keyIndex++} className="font-heading text-xl font-bold text-[#FFFAF3] mt-8 mb-3">{line.replace("### ", "")}</h4>);
+      } else if (line.startsWith("- ")) {
+        listItems.push(line.replace("- ", ""));
+      } else if (line.trim() === "") {
+        flushList();
+        elements.push(<div key={keyIndex++} className="h-2" />);
+      } else {
+        flushList();
+        elements.push(<p key={keyIndex++} className="text-[#B89B6E] leading-relaxed mb-4">{line}</p>);
+      }
+    }
+    flushList();
+
+    return elements;
   }
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <SiteHeader />
-      <main className="pt-16 lg:pt-20">
+      <main id="main-content" className="pt-16 lg:pt-20">
         <section className="relative py-16 lg:py-20 bg-[#2A1506]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <Link href="/blog" className="inline-flex items-center text-[#B89B6E] hover:text-[#D4AF37] text-sm mb-6 transition-colors">

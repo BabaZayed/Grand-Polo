@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     return (
       <>
         <SiteHeader />
-        <main className="min-h-screen flex items-center justify-center bg-[#5D3A1A] pt-20">
+        <main id="main-content" className="min-h-screen flex items-center justify-center bg-[#5D3A1A] pt-20">
           <div className="text-center px-4">
             <h1 className="font-heading text-4xl text-[#D4AF37] mb-4">Property Not Found</h1>
             <Link href="/projects" className="text-[#B89B6E] hover:text-[#D4AF37] transition-colors">Back to Properties</Link>
@@ -102,7 +102,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listingLd) }} />
       <SiteHeader />
-      <main className="pt-16 lg:pt-20">
+      <main id="main-content" className="pt-16 lg:pt-20">
         <section className="relative h-[60vh] min-h-[420px]">
           <Image src={property.imageUrl} alt={`${property.name} — ${property.bedrooms}-bedroom luxury villas at Grand Polo Club & Resort`} fill className="object-cover" priority sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-[#2A1506]/60 to-[#2A1506]/30" />
@@ -218,6 +218,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <div className="rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/50">
                 <div className="overflow-x-auto">
                   <table className="w-full">
+                    <caption className="sr-only">Unit types available at {property.name}</caption>
                     <thead>
                       <tr className="border-b border-[#D4AF37]/10 bg-[#2A1506]">
                         <th className="text-left p-4 text-[#D4AF37] text-sm font-medium">Type</th>

@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Search } from "lucide-react";
+import SiteHeader from "@/components/site-header";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#5D3A1A]">
+    <>
+      <SiteHeader />
+      <main id="main-content" className="min-h-screen flex items-center justify-center bg-[#5D3A1A]">
       <div className="text-center px-4 max-w-lg">
         <h1 className="font-heading text-7xl sm:text-8xl text-[#D4AF37] mb-4">404</h1>
         <p className="text-[#FFFAF3] text-xl sm:text-2xl font-heading mb-3">Page Not Found</p>
@@ -29,6 +32,7 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

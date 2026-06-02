@@ -95,9 +95,11 @@ export default function BrochuresPage() {
         {/* Tab Navigation */}
         <section className="bg-[#3D2510] border-y border-[#D4AF37]/10 sticky top-16 lg:top-20 z-30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex gap-0">
+            <div className="flex gap-0" role="tablist" aria-label="Document type">
               <button
                 onClick={() => setActiveTab("brochures")}
+                role="tab"
+                aria-selected={activeTab === "brochures"}
                 className={`flex items-center gap-2 px-6 sm:px-10 py-4 text-sm sm:text-base font-medium transition-all duration-300 border-b-2 ${
                   activeTab === "brochures"
                     ? "text-[#D4AF37] border-[#D4AF37] bg-[#D4AF37]/5"
@@ -112,6 +114,8 @@ export default function BrochuresPage() {
               </button>
               <button
                 onClick={() => setActiveTab("floorplans")}
+                role="tab"
+                aria-selected={activeTab === "floorplans"}
                 className={`flex items-center gap-2 px-6 sm:px-10 py-4 text-sm sm:text-base font-medium transition-all duration-300 border-b-2 ${
                   activeTab === "floorplans"
                     ? "text-[#D4AF37] border-[#D4AF37] bg-[#D4AF37]/5"

@@ -53,36 +53,38 @@ export default function SocialProof() {
   const Icon = n.icon;
 
   return (
-    <AnimatePresence mode="wait">
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0, x: -50, scale: 0.95 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          exit={{ opacity: 0, x: -50, scale: 0.95 }}
-          transition={{ duration: 0.4 }}
-          className="fixed bottom-20 left-4 z-40 max-w-xs"
-        >
-          <div className="bg-[#2A1506]/95 backdrop-blur-xl border border-[#D4AF37]/20 rounded-xl p-4 shadow-2xl">
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
-                <Icon className="w-4 h-4 text-[#2A1506]" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-[#FFFAF3] text-xs leading-relaxed">{n.text}</p>
-                <div className="flex items-center gap-2 mt-1">
-                  <Clock className="w-3 h-3 text-[#B89B6E]" />
-                  <span className="text-[#B89B6E] text-[10px]">Just now</span>
-                  {n.location && (
-                    <span className="flex items-center gap-1 text-[10px] text-[#D4AF37]">
-                      <MapPin className="w-3 h-3" /> {n.location}
-                    </span>
-                  )}
+    <div aria-live="polite" aria-atomic="true">
+      <AnimatePresence mode="wait">
+        {visible && (
+          <motion.div
+            initial={{ opacity: 0, x: -50, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -50, scale: 0.95 }}
+            transition={{ duration: 0.4 }}
+            className="fixed bottom-20 left-4 z-40 max-w-xs"
+          >
+            <div className="bg-[#2A1506]/95 backdrop-blur-xl border border-[#D4AF37]/20 rounded-xl p-4 shadow-2xl">
+              <div className="flex items-start gap-3">
+                <div className="w-9 h-9 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-4 h-4 text-[#2A1506]" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[#FFFAF3] text-xs leading-relaxed">{n.text}</p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <Clock className="w-3 h-3 text-[#B89B6E]" />
+                    <span className="text-[#B89B6E] text-[10px]">Just now</span>
+                    {n.location && (
+                      <span className="flex items-center gap-1 text-[10px] text-[#D4AF37]">
+                        <MapPin className="w-3 h-3" /> {n.location}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

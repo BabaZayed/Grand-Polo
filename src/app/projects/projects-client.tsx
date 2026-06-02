@@ -22,7 +22,7 @@ export default function ProjectsPageClient() {
       : projects.filter((p) => p.status === "Launching Soon");
 
   return (
-    <main>
+    <main id="main-content">
       <SiteHeader />
       <section className="pt-32 pb-16 bg-[#2A1506]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

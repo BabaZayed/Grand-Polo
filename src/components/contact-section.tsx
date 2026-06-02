@@ -152,7 +152,7 @@ export default function ContactSection() {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50"
                     placeholder="Your name"
                   />
                 </div>
@@ -165,7 +165,7 @@ export default function ContactSection() {
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -180,7 +180,7 @@ export default function ContactSection() {
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 focus:border-[#D4AF37]/50"
+                    className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] focus:border-[#D4AF37]/50"
                     placeholder="+971 XX XXX XXXX"
                   />
                 </div>
@@ -207,7 +207,7 @@ export default function ContactSection() {
                   name="message"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#B89B6E]/50 min-h-[100px] focus:border-[#D4AF37]/50"
+                  className="bg-[#2A1506] border-[#D4AF37]/20 text-[#FFFAF3] placeholder:text-[#D4C4A0] min-h-[100px] focus:border-[#D4AF37]/50"
                   placeholder="Tell us about your requirements..."
                 />
               </div>

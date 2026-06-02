@@ -37,7 +37,7 @@ export default function SiteFooter() {
 
           {/* Quick Links */}
           <div>
-            <div role="heading" aria-level={2} className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Quick Links</div>
+            <h2 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Quick Links</h2>
             <div className="gold-divider max-w-[60px] mb-4" />
             <ul className="space-y-2">
               {[
@@ -63,7 +63,7 @@ export default function SiteFooter() {
 
           {/* Properties */}
           <div>
-            <div role="heading" aria-level={2} className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Properties</div>
+            <h2 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Properties</h2>
             <div className="gold-divider max-w-[60px] mb-4" />
             <ul className="space-y-2">
               {projects.filter((p) => p.status !== "Launching Soon").map((p) => (
@@ -74,14 +74,14 @@ export default function SiteFooter() {
                 </li>
               ))}
               <li>
-                <Link href="/projects" className="text-[#D4AF37] text-sm hover:underline">View All →</Link>
+                <Link href="/projects" className="text-[#D4AF37] text-sm hover:underline">View All Properties →</Link>
               </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <div role="heading" aria-level={2} className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Contact</div>
+            <h2 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Contact</h2>
             <div className="gold-divider max-w-[60px] mb-4" />
             <ul className="space-y-3">
               <li>
@@ -96,7 +96,7 @@ export default function SiteFooter() {
               </li>
               <li>
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-400 text-sm hover:text-green-300 transition-colors">
-                  WhatsApp
+                  Chat on WhatsApp
                 </a>
               </li>
               <li className="flex items-start gap-2 text-[#B89B6E] text-sm">
@@ -104,7 +104,7 @@ export default function SiteFooter() {
               </li>
             </ul>
             <div className="mt-4 pt-4 border-t border-[#D4AF37]/10">
-              <div role="heading" aria-level={3} className="text-[#B89B6E] text-xs tracking-wide mb-2">Trusted Resources</div>
+              <h3 className="text-[#B89B6E] text-xs tracking-wide mb-2">Trusted Resources</h3>
               {[
                 { name: "Emaar Properties", url: "https://www.emaar.com" },
                 { name: "Dubai Land Dept", url: "https://www.dubailand.gov.ae" },

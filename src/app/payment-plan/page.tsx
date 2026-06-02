@@ -23,7 +23,7 @@ export default function PaymentPlanPage() {
   return (
     <>
       <SiteHeader />
-      <main className="pt-16 lg:pt-20">
+      <main id="main-content" className="pt-16 lg:pt-20">
         <section className="relative py-16 lg:py-24 bg-[#2A1506] overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(212,175,55,0.3) 1px, transparent 0)", backgroundSize: "40px 40px" }} />

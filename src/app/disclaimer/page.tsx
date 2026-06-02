@@ -33,7 +33,7 @@ export default function DisclaimerPage() {
   return (
     <>
       <SiteHeader />
-      <main className="pt-16 lg:pt-20">
+      <main id="main-content" className="pt-16 lg:pt-20">
         <section className="py-16 lg:py-24 bg-[#5D3A1A]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
             <h1 className="font-heading text-4xl sm:text-5xl font-bold text-[#FFFAF3] mb-4">Disclaimer</h1>

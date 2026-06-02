@@ -81,6 +81,7 @@ export default function SiteHeader() {
             <div className="flex items-center gap-4">
               <a
                 href={`tel:${PHONE_NUMBER}`}
+                aria-label="Call +971 52 691 9169"
                 className="hidden sm:flex items-center gap-2 text-[#FFFAF3]/70 hover:text-[#D4AF37] text-sm transition-colors whitespace-nowrap"
               >
                 <Phone className="w-4 h-4" />
@@ -117,7 +118,7 @@ export default function SiteHeader() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            <div className="absolute inset-0 bg-[#2A1506]/80" onClick={() => setMobileOpen(false)} />
+            <div className="absolute inset-0 bg-[#2A1506]/80" onClick={() => setMobileOpen(false)} role="presentation" aria-hidden="true" />
             <div className="absolute top-0 right-0 bottom-0 w-[280px] bg-[#2A1506] shadow-2xl" id="mobile-menu" role="dialog" aria-label="Navigation menu">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-8">
@@ -125,6 +126,7 @@ export default function SiteHeader() {
                   <button
                     onClick={() => setMobileOpen(false)}
                     className="p-2 text-[#FFFAF3]/70 hover:text-[#D4AF37] transition-colors"
+                    aria-label="Close navigation menu"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -156,7 +158,7 @@ export default function SiteHeader() {
                     <Phone className="w-4 h-4" /> {PHONE_NUMBER}
                   </a>
                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-400 mb-4 text-sm">
-                    WhatsApp
+                    Chat on WhatsApp
                   </a>
                   <Link href="/contact" onClick={() => setMobileOpen(false)}>
                     <Button className="w-full gold-gradient text-[#2A1506] font-semibold py-3 rounded-md gold-shimmer-hover">

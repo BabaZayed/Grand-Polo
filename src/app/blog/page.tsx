@@ -26,7 +26,7 @@ export default function BlogPage() {
   return (
     <>
       <SiteHeader />
-      <main className="pt-16 lg:pt-20">
+      <main id="main-content" className="pt-16 lg:pt-20">
         {/* Hero */}
         <section className="relative py-16 lg:py-24 bg-[#2A1506] overflow-hidden">
           <div className="absolute inset-0 opacity-10">
