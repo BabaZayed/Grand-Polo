@@ -10,16 +10,14 @@ import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
 
-const tabs = ["All", "Available", "Coming Soon"];
+const clusters = ["All", "Estate Villas", "Field Villas", "Equestra", "Equitera", "Montura", "Selvara"];
 
 export default function ProjectsPageClient() {
   const [activeTab, setActiveTab] = useState("All");
 
   const filtered = activeTab === "All"
     ? projects
-    : activeTab === "Available"
-      ? projects.filter((p) => p.status !== "Launching Soon")
-      : projects.filter((p) => p.status === "Launching Soon");
+    : projects.filter((p) => p.clusterTag === activeTab);
 
   return (
     <main id="main-content">
@@ -34,8 +32,8 @@ export default function ProjectsPageClient() {
       </section>
 
       <section className="bg-[#3D2510] border-b border-[#D4AF37]/10 sticky top-16 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-center gap-2">
-          {tabs.map((tab) => (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-center gap-2 flex-wrap">
+          {clusters.map((tab) => (
             <button key={tab} onClick={() => setActiveTab(tab)} aria-pressed={activeTab === tab} aria-label={`Filter by ${tab}`} className={`px-5 py-2 rounded-full text-sm transition-all ${activeTab === tab ? "gold-gradient text-[#2A1506] font-semibold" : "text-[#B89B6E] hover:text-[#D4AF37] border border-[#D4AF37]/20 hover:border-[#D4AF37]/40"}`}>
               {tab}
             </button>
@@ -49,12 +47,12 @@ export default function ProjectsPageClient() {
             {filtered.map((project, i) => (
               <motion.div key={project.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <Link href={`/projects/${project.slug}`} className="block group">
-                  <div className={`rounded-xl overflow-hidden border transition-all duration-400 hover:-translate-y-1 ${project.status !== "Launching Soon" ? "border-[#D4AF37]/15 bg-[#3D2510]/50 hover:border-[#D4AF37]/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3),0_0_20px_rgba(212,175,55,0.08)]" : "border-[#D4AF37]/10 bg-[#3D2510]/30"}`}>
+                  <div className="rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#3D2510]/50 hover:border-[#D4AF37]/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3),0_0_20px_rgba(212,175,55,0.08)] transition-all duration-400 hover:-translate-y-1">
                     <div className="relative h-56 overflow-hidden">
-                      <Image src={project.imageUrl} alt={`${project.name} — ${project.bedrooms}-bedroom luxury villas at Grand Polo Dubai`} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <Image src={project.imageUrl} alt={`${project.name} — ${project.bedrooms !== "TBA" ? project.bedrooms + "-bedroom" : ""} luxury villas at Grand Polo Dubai`} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-transparent to-transparent" />
                       <div className="absolute top-4 left-4">
-                        <span className={`text-[10px] font-bold px-3 py-1 rounded-full tracking-wide uppercase ${project.status === "Launching Soon" ? "bg-[#B89B6E] text-[#FFFAF3]" : "gold-gradient text-[#2A1506]"}`}>
+                        <span className="text-[10px] font-bold px-3 py-1 rounded-full tracking-wide uppercase gold-gradient text-[#2A1506]">
                           {project.clusterTag}
                         </span>
                       </div>

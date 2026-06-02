@@ -18,10 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
   ];
 
-  // Only include "Available" properties in sitemap — "Launching Soon" pages are noindex
-  const availableProjects = projects.filter((p) => p.status !== "Launching Soon");
-
-  const projectPages = availableProjects.map((p) => ({
+  // All properties in sitemap
+  const projectPages = projects.map((p) => ({
     url: `${baseUrl}/projects/${p.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,

@@ -37,8 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "website",
     },
     alternates: { canonical: `${SITE_URL}/projects/${slug}` },
-    // Noindex "Launching Soon" pages — they have placeholder content and duplicate images
-    robots: isLaunching ? { index: false, follow: true } : undefined,
+
   };
 }
 
@@ -62,7 +61,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     );
   }
 
-  const isLaunching = property.status === "Launching Soon";
   const milestones = paymentPlans[property.slug] || [];
   const units = unitTypes[property.slug as keyof typeof unitTypes] || [];
 
@@ -83,8 +81,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     description: property.description,
     url: `${SITE_URL}/projects/${property.slug}`,
     image: `${SITE_URL}${property.imageUrl}`,
-    datePosted: property.status === "Launching Soon" ? undefined : "2025-01-15",
-    offers: { "@type": "Offer", price: property.startingPrice > 0 ? property.startingPrice : undefined, priceCurrency: "AED", availability: isLaunching ? "PreOrder" : "InStock" },
+    datePosted: "2025-01-15",
+    offers: { "@type": "Offer", price: property.startingPrice > 0 ? property.startingPrice : undefined, priceCurrency: "AED", availability: "InStock" },
     address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
   };
 
@@ -112,8 +110,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <ArrowLeft className="w-4 h-4 mr-1" /> Back to Properties
               </Link>
               <div className="flex items-center gap-3 mb-3">
-                <span className={`px-3 py-1 rounded text-xs font-bold ${isLaunching ? "bg-[#B89B6E] text-[#FFFAF3]" : "gold-gradient text-[#2A1506]"}`}>
-                  {isLaunching ? "Launching Soon" : "Available"}
+                <span className="px-3 py-1 rounded text-xs font-bold gold-gradient text-[#2A1506]">
+                  Off-Plan
                 </span>
                 <span className="px-3 py-1 rounded text-xs font-medium border border-[#D4AF37]/30 text-[#D4AF37]">
                   {property.bedrooms} Bedroom{property.bedrooms !== "TBA" ? "s" : ""}
@@ -124,7 +122,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               </div>
               <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-[#FFFAF3] mb-2">{property.name}</h1>
               <p className="text-[#D4AF37] text-lg">{property.tagline}</p>
-              {!isLaunching && property.startingPrice > 0 && (
+              {property.startingPrice > 0 && (
                 <p className="text-[#D4AF37] font-heading text-3xl font-bold mt-4">Starting from {formatPrice(property.startingPrice)}</p>
               )}
             </div>
@@ -187,22 +185,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <div>
                 <div className="rounded-xl p-6 border border-[#D4AF37]/15 bg-[#3D2510]/50 sticky top-24">
                   <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-3">
-                    {isLaunching ? "Register Your Interest" : "Check Availability"}
+                    Check Availability
                   </h3>
                   <p className="text-[#B89B6E] text-sm mb-5">
-                    {isLaunching ? "Be the first to receive launch details, pricing, and priority selection when this community opens." : "Schedule a private viewing with our dedicated property consultants."}
+                    Schedule a private viewing with our dedicated property consultants.
                   </p>
                   <div className="space-y-3">
-                    <Link href="/contact" className="inline-flex items-center justify-center w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">{isLaunching ? "Register Interest" : "Check Availability"}</Link>
-                    {!isLaunching && (
-                      <>
-                        <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><FileText className="w-4 h-4" /> Download Brochure</a>
-                        <a href={`/api/download?type=floorplan&file=${property.slug}-floorplan.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><LayoutGrid className="w-4 h-4" /> Download Floor Plan</a>
-                      </>
-                    )}
-                    {isLaunching && (
-                      <a href="/brochures" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/20 text-[#B89B6E] hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] text-sm font-medium transition-colors"><FileText className="w-4 h-4" /> Brochure Coming Soon</a>
-                    )}
+                    <Link href="/contact" className="inline-flex items-center justify-center w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Check Availability</Link>
+                    <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><FileText className="w-4 h-4" /> Download Brochure</a>
+                    <a href={`/api/download?type=floorplan&file=${property.slug}-floorplan.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><LayoutGrid className="w-4 h-4" /> Download Floor Plan</a>
                     <a href="tel:+971526919169" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Phone className="w-4 h-4" /> Call Now</a>
                     <a href="mailto:info@thegrandpolo.com" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Mail className="w-4 h-4" /> Email Us</a>
                   </div>
@@ -303,15 +294,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <div className="relative h-48 overflow-hidden">
                     <Image src={p.imageUrl} alt={`${p.name} — luxury villas at Grand Polo Dubai`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-transparent to-transparent" />
-                    {p.status === "Launching Soon" && (
-                      <div className="absolute top-3 left-3">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#B89B6E] text-[#FFFAF3]">Coming Soon</span>
-                      </div>
-                    )}
+
                   </div>
                   <div className="p-4">
                     <h3 className="font-heading text-lg text-[#FFFAF3] group-hover:text-[#D4AF37] transition-colors">{p.name}</h3>
-                    <p className="text-[#D4AF37] text-sm font-semibold">{p.startingPrice > 0 ? `From ${formatPrice(p.startingPrice)}` : "Coming Soon"}</p>
+                    <p className="text-[#D4AF37] text-sm font-semibold">{p.startingPrice > 0 ? `From ${formatPrice(p.startingPrice)}` : "Contact for Price"}</p>
                     <p className="text-[#B89B6E] text-xs mt-1">{p.bedrooms} Beds • {p.facts.totalUnits > 0 ? `${p.facts.totalUnits} Units` : "TBA"}</p>
                   </div>
                 </Link>
@@ -322,16 +309,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         <section className="py-16 lg:py-20 bg-[#2A1506] border-t border-[#D4AF37]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-4">{isLaunching ? "Register for Priority Access" : "Check Availability at " + property.name}</h2>
-            <p className="text-[#B89B6E] max-w-xl mx-auto mb-8">{isLaunching ? "Be among the first to receive launch details and priority selection." : "Schedule a private viewing and discover the equestrian luxury lifestyle."}</p>
+            <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-4">Check Availability at {property.name}</h2>
+            <p className="text-[#B89B6E] max-w-xl mx-auto mb-8">Schedule a private viewing and discover the equestrian luxury lifestyle.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="inline-flex items-center justify-center h-12 px-8 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Check Availability</Link>
-              {!isLaunching && (
-                <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors gap-2"><Download className="w-4 h-4" /> Download Brochure</a>
-              )}
-              {!isLaunching && (
-                <Link href="/payment-plan" className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors">View Payment Plans</Link>
-              )}
+              <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors gap-2"><Download className="w-4 h-4" /> Download Brochure</a>
               <Link href="/brochures" className="inline-flex items-center justify-center h-12 px-8 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors">All Brochures & Floor Plans</Link>
             </div>
           </div>

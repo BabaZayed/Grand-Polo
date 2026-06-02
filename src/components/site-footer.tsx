@@ -65,26 +65,16 @@ export default function SiteFooter() {
           <div>
             <h2 className="font-heading text-[#D4AF37] text-sm tracking-wide mb-4">Properties</h2>
             <div className="gold-divider max-w-[60px] mb-4" />
-            <ul className="space-y-3">
-              {projects.filter((p) => p.status !== "Launching Soon").map((p) => (
+            <ul className="space-y-2">
+              {projects.slice(0, 7).map((p) => (
                 <li key={p.id}>
-                  <Link href={`/projects/${p.slug}`} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors py-1 inline-block">
-                    {p.name}
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-2 border-t border-[#D4AF37]/10 mt-2">
-                <p className="text-[#B89B6E] text-[10px] uppercase tracking-wider mb-1">Launching Soon</p>
-              </li>
-              {projects.filter((p) => p.status === "Launching Soon").slice(0, 4).map((p) => (
-                <li key={p.id}>
-                  <Link href={`/projects/${p.slug}`} className="text-[#B89B6E]/60 text-xs hover:text-[#D4AF37] transition-colors py-0.5 inline-block">
+                  <Link href={`/projects/${p.slug}`} className="text-[#B89B6E] text-sm hover:text-[#D4AF37] transition-colors py-0.5 inline-block">
                     {p.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/projects" className="text-[#D4AF37] text-sm hover:underline">View All Properties →</Link>
+                <Link href="/projects" className="text-[#D4AF37] text-sm hover:underline">View All 13 Clusters →</Link>
               </li>
             </ul>
           </div>
