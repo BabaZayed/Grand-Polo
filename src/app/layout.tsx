@@ -228,6 +228,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       </head>
+      {/* v-2026-05-23-deploy-test */}
       <body className="min-h-full flex flex-col bg-[#5D3A1A] text-[#FFFAF3]">
         {/* Skip to content - Accessibility */}
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#D4AF37] focus:text-[#2A1506] focus:rounded-md focus:font-semibold">
