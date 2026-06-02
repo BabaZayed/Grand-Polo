@@ -5,10 +5,14 @@ declare global {
   }
 }
 
-
-export function fbqTrack(event: string, params?: Record<string, unknown>) {
+export function fbqTrack(event: string, params?: Record<string, unknown>, eventId?: string) {
   if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", event, params);
+    if (eventId) {
+      // Send with eventID for server-side deduplication
+      window.fbq("track", event, params, { eventID: eventId });
+    } else {
+      window.fbq("track", event, params);
+    }
   }
 }
 
@@ -18,12 +22,12 @@ export function fbqTrackCustom(event: string, params?: Record<string, unknown>) 
   }
 }
 
-export function trackLead(params?: { formType?: string; propertyInterest?: string }) {
-  fbqTrack("Lead", params);
+export function trackLead(params?: { formType?: string; propertyInterest?: string; eventId?: string }) {
+  fbqTrack("Lead", params, params?.eventId);
 }
 
-export function trackContact() {
-  fbqTrack("Contact");
+export function trackContact(eventId?: string) {
+  fbqTrack("Contact", undefined, eventId);
 }
 
 export function trackViewContent(params?: Record<string, unknown>) {
@@ -52,4 +56,18 @@ export function trackPhoneCall() {
 
 export function trackEmailClick() {
   fbqTrackCustom("EmailClick");
+}
+
+// Get fbp cookie for CAPI matching
+export function getFbp(): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const match = document.cookie.match(/_fbp=([^;]+)/);
+  return match ? match[1] : undefined;
+}
+
+// Get fbc cookie for CAPI matching (click ID)
+export function getFbc(): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const match = document.cookie.match(/_fbc=([^;]+)/);
+  return match ? match[1] : undefined;
 }

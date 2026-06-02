@@ -12,6 +12,9 @@ const leadSchema = z.object({
   utmSource: z.string().optional(),
   utmMedium: z.string().optional(),
   utmCampaign: z.string().optional(),
+  eventId: z.string().optional(),
+  fbc: z.string().optional(),
+  fbp: z.string().optional(),
 });
 
 function hashPII(data: string): string {
@@ -24,20 +27,31 @@ async function sendMetaCAPI(data: {
   firstName?: string;
   eventName: string;
   eventId: string;
+  eventSourceUrl?: string;
+  fbc?: string;
+  fbp?: string;
+  currency?: string;
+  value?: number;
 }) {
   const token = process.env.META_CONVERSIONS_API_TOKEN;
   if (!token) {
     console.warn("META_CONVERSIONS_API_TOKEN not set — skipping CAPI event");
     return;
   }
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1013154287947335";
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1510715397129819";
 
   try {
     const userData: Record<string, string> = { em: hashPII(data.email) };
     if (data.phone) userData.ph = hashPII(data.phone);
     if (data.firstName) userData.fn = hashPII(data.firstName);
+    if (data.fbc) userData.fbc = data.fbc;
+    if (data.fbp) userData.fbp = data.fbp;
 
-    await fetch(`https://graph.facebook.com/v18.0/${pixelId}/events`, {
+    const customData: Record<string, unknown> = {};
+    if (data.currency) customData.currency = data.currency;
+    if (data.value) customData.value = data.value;
+
+    const response = await fetch(`https://graph.facebook.com/v18.0/${pixelId}/events`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -45,14 +59,20 @@ async function sendMetaCAPI(data: {
           event_name: data.eventName,
           event_time: Math.floor(Date.now() / 1000),
           event_id: data.eventId,
+          event_source_url: data.eventSourceUrl || "https://www.thegrandpolo.com/contact",
           user_data: userData,
           action_source: "website",
+          custom_data: Object.keys(customData).length > 0 ? customData : undefined,
         }],
         access_token: token,
       }),
     });
-  } catch {
-    // Non-blocking — don't fail main request
+
+    if (!response.ok) {
+      console.error("Meta CAPI error:", response.status, await response.text());
+    }
+  } catch (err) {
+    console.error("Meta CAPI failed:", err);
   }
 }
 
@@ -89,7 +109,10 @@ export async function POST(request: NextRequest) {
     if (parsed.propertyInterest) score += 20;
     if (parsed.phone && parsed.phone.length > 5) score += 10;
 
-    const eventId = crypto.randomUUID();
+    const eventId = parsed.eventId || crypto.randomUUID();
+
+    // Determine event name for Meta deduplication
+    const eventName = parsed.formType === "newsletter" ? "Lead" : "Contact";
 
     // Send to Google Sheets (non-blocking)
     sendToGoogleSheets({
@@ -105,16 +128,20 @@ export async function POST(request: NextRequest) {
       leadScore: score.toString(),
     });
 
-    // Meta CAPI (non-blocking)
+    // Meta CAPI with deduplication support (non-blocking)
     sendMetaCAPI({
       email: parsed.email,
       phone: parsed.phone,
       firstName: name.split(" ")[0] || undefined,
-      eventName: parsed.formType === "newsletter" ? "Lead" : "Contact",
+      eventName,
       eventId,
+      fbc: parsed.fbc,
+      fbp: parsed.fbp,
+      currency: "AED",
+      value: parsed.formType === "enquiry" ? 7340000 : undefined,
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, eventId });
   } catch (error) {
     console.error("Lead API error:", error);
     return NextResponse.json({ success: false, error: "Invalid request" }, { status: 400 });

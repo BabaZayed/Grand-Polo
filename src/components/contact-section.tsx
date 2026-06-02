@@ -20,13 +20,18 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setError("");
     try {
+      // Generate eventId for Meta deduplication
+      const eventId = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      
+      // Track client-side event with same eventId for deduplication
+      trackLead({ formType: "contact", propertyInterest: form.propertyInterest, eventId });
+
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, formType: "contact" }),
+        body: JSON.stringify({ ...form, formType: "contact", eventId }),
       });
       if (!res.ok) throw new Error("Submission failed");
-      trackLead({ formType: "contact", propertyInterest: form.propertyInterest });
       setIsSuccess(true);
       setForm({ name: "", email: "", phone: "", message: "", propertyInterest: "" });
       setTimeout(() => setIsSuccess(false), 5000);
