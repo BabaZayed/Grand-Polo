@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { trackLead, getFbp, getFbc } from "@/lib/meta-pixel";
 
-const GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbxybY7jvQzQVEg7-37XInWg9Oj-UxtZIG2P0Fr4WVSCpL4QwPslrhasEmMN4vXXoQnPQg/exec";
-
 export default function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,12 +31,6 @@ export default function NewsletterSection() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, formType: "newsletter", eventId, fbp, fbc }),
-      });
-      // Also send directly to Google Sheets
-      await fetch(GOOGLE_SHEETS_WEBHOOK, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ email, formType: "newsletter" }).toString(),
       });
       setIsSuccess(true);
       setEmail("");

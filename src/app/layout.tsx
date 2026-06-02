@@ -108,29 +108,39 @@ const orgSchema = {
 // Kept the 4 highest-impact schemas: LocalBusiness, FAQ, WebSite, Organization
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1510715397129819";
-  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-QPQCZZ61FN";
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "";
+  const pixelIdValid = pixelId && /^\d+$/.test(pixelId);
+  const gaIdValid = gaId && /^G-[A-Z0-9]+$/i.test(gaId);
 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
       <head>
-        {/* Meta Pixel */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `!function(e,t,n,o,a,c,f){e.fbq||(a=e.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},e._fbq||(e._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[])}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","${pixelId}");fbq("track","PageView");`,
-          }}
-        />
-        <noscript>
-          <img height="1" width="1" style={{ display: "none" }} src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`} alt="" />
-        </noscript>
+        {/* Meta Pixel — only rendered if valid pixel ID configured */}
+        {pixelIdValid && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `!function(e,t,n,o,a,c,f){e.fbq||(a=e.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},e._fbq||(e._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[])}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","${pixelId}");fbq("track","PageView");`,
+            }}
+          />
+        )}
+        {pixelIdValid && (
+          <noscript>
+            <img height="1" width="1" style={{ display: "none" }} src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`} alt="" />
+          </noscript>
+        )}
 
-        {/* Google Analytics */}
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","${gaId}");`,
-          }}
-        />
+        {/* Google Analytics — only rendered if valid GA ID configured */}
+        {gaIdValid && (
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+        )}
+        {gaIdValid && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","${gaId}");`,
+            }}
+          />
+        )}
 
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />

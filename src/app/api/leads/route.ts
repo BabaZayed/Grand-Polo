@@ -3,22 +3,36 @@ import { z } from "zod";
 import crypto from "crypto";
 
 const leadSchema = z.object({
-  name: z.string().optional().default(""),
+  name: z.string().max(200).optional().default(""),
   email: z.string().email(),
-  phone: z.string().optional().default(""),
-  message: z.string().optional(),
+  phone: z.string().max(30).optional().default(""),
+  message: z.string().max(2000).optional(),
   formType: z.enum(["contact", "newsletter", "enquiry"]).default("contact"),
-  propertyInterest: z.string().optional(),
-  utmSource: z.string().optional(),
-  utmMedium: z.string().optional(),
-  utmCampaign: z.string().optional(),
-  eventId: z.string().optional(),
-  fbc: z.string().optional(),
-  fbp: z.string().optional(),
+  propertyInterest: z.string().max(200).optional(),
+  utmSource: z.string().max(200).optional(),
+  utmMedium: z.string().max(200).optional(),
+  utmCampaign: z.string().max(200).optional(),
+  eventId: z.string().max(128).optional(),
+  fbc: z.string().max(128).optional(),
+  fbp: z.string().max(128).optional(),
+  // Honeypot field — should always be empty (bots fill hidden fields)
+  website: z.string().max(0).optional(),
 });
 
 function hashPII(data: string): string {
   return crypto.createHash("sha256").update(data.trim().toLowerCase()).digest("hex");
+}
+
+function validateOrigin(request: NextRequest): boolean {
+  const origin = request.headers.get("origin");
+  const host = request.headers.get("host");
+  if (!origin || !host) return false;
+  try {
+    const originHost = new URL(origin).host;
+    return originHost === host;
+  } catch {
+    return false;
+  }
 }
 
 async function sendMetaCAPI(data: {
@@ -38,7 +52,8 @@ async function sendMetaCAPI(data: {
     console.warn("META_CONVERSIONS_API_TOKEN not set — skipping CAPI event");
     return;
   }
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1510715397129819";
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+  if (!pixelId || !/^\d+$/.test(pixelId)) return;
 
   try {
     const userData: Record<string, string> = { em: hashPII(data.email) };
@@ -46,6 +61,12 @@ async function sendMetaCAPI(data: {
     if (data.firstName) userData.fn = hashPII(data.firstName);
     if (data.fbc) userData.fbc = data.fbc;
     if (data.fbp) userData.fbp = data.fbp;
+
+    // Validate eventSourceUrl belongs to our domain
+    let safeEventUrl = "https://www.thegrandpolo.com/contact";
+    if (data.eventSourceUrl && data.eventSourceUrl.startsWith("https://www.thegrandpolo.com")) {
+      safeEventUrl = data.eventSourceUrl;
+    }
 
     const customData: Record<string, unknown> = {};
     if (data.currency) customData.currency = data.currency;
@@ -59,7 +80,7 @@ async function sendMetaCAPI(data: {
           event_name: data.eventName,
           event_time: Math.floor(Date.now() / 1000),
           event_id: data.eventId,
-          event_source_url: data.eventSourceUrl || "https://www.thegrandpolo.com/contact",
+          event_source_url: safeEventUrl,
           user_data: userData,
           action_source: "website",
           custom_data: Object.keys(customData).length > 0 ? customData : undefined,
@@ -69,7 +90,7 @@ async function sendMetaCAPI(data: {
     });
 
     if (!response.ok) {
-      console.error("Meta CAPI error:", response.status, await response.text());
+      console.error("Meta CAPI error:", response.status);
     }
   } catch (err) {
     console.error("Meta CAPI failed:", err);
@@ -91,12 +112,29 @@ async function sendToGoogleSheets(data: Record<string, string>) {
 
 export async function POST(request: NextRequest) {
   try {
+    // CSRF protection — validate origin
+    if (!validateOrigin(request)) {
+      return NextResponse.json({ success: false, error: "Forbidden" }, { status: 403 });
+    }
+
     const body = await request.json();
     const parsed = leadSchema.parse(body);
 
+    // Honeypot check — if 'website' field is filled, it's a bot
+    if (parsed.website) {
+      // Silently accept but don't process (don't reveal honeypot detection)
+      return NextResponse.json({ success: true, eventId: parsed.eventId || crypto.randomUUID() });
+    }
+
     // Spam detection
     const name = parsed.name || "";
-    const isSpam = name.includes("http") || name.includes("www") || (name.length > 100);
+    const message = parsed.message || "";
+    const isSpam =
+      name.includes("http") ||
+      name.includes("www") ||
+      name.length > 100 ||
+      message.includes("[url") ||
+      message.includes("http://") && message.includes(".ru");
 
     if (isSpam) {
       return NextResponse.json({ success: false, error: "Invalid submission" }, { status: 400 });

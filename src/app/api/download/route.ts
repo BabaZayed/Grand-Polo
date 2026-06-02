@@ -103,6 +103,7 @@ export async function GET(request: NextRequest) {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename="${displayName}"`,
         "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+        "X-Robots-Tag": "noindex, nofollow",
       },
     });
   } catch (error) {

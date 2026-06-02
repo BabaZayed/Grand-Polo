@@ -10,7 +10,7 @@ import { PHONE_NUMBER, WHATSAPP_LINK, EMAIL, projects } from "@/lib/data";
 import { trackLead, getFbp, getFbc } from "@/lib/meta-pixel";
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", propertyInterest: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", propertyInterest: "", website: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -37,7 +37,7 @@ export default function ContactSection() {
       });
       if (!res.ok) throw new Error("Submission failed");
       setIsSuccess(true);
-      setForm({ name: "", email: "", phone: "", message: "", propertyInterest: "" });
+      setForm({ name: "", email: "", phone: "", message: "", propertyInterest: "", website: "" });
       setTimeout(() => setIsSuccess(false), 5000);
     } catch {
       setError("Something went wrong. Please try again.");
@@ -123,6 +123,7 @@ export default function ContactSection() {
                 width="100%"
                 height="220"
                 style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)" }}
+                sandbox="allow-scripts allow-same-origin allow-popups"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -143,6 +144,19 @@ export default function ContactSection() {
             viewport={{ once: true }}
           >
             <form onSubmit={handleSubmit} className="rounded-xl p-8 border border-[#D4AF37]/15 bg-[#3D2510]/50 space-y-5">
+              {/* Honeypot — hidden from users, bots auto-fill this */}
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="contact-website">Website</label>
+                <input
+                  type="text"
+                  id="contact-website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.website || ""}
+                  onChange={(e) => setForm({ ...form, website: e.target.value })}
+                />
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="contact-name" className="text-[#B89B6E] text-xs mb-1 block">Full Name</label>
