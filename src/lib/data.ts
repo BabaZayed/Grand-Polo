@@ -177,7 +177,10 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Estate Villas",
     floorPlanImages: [
-      { src: "/images/floorplans/chevalia-estate-floorplan.png", alt: "Chevalia Estate 5-Bedroom Villa Floor Plan", label: "5-Bedroom Estate Villa — 6,516 sqft BUA" }
+      { src: "/images/floorplans/chevalia-estate-fp-2.jpg", alt: "Chevalia Estate 5-Bed Villa — Ground Floor Plan", label: "5-Bed Estate Villa — Ground Floor" },
+      { src: "/images/floorplans/chevalia-estate-fp-3.jpg", alt: "Chevalia Estate 5-Bed Villa — First Floor Plan", label: "5-Bed Estate Villa — First Floor" },
+      { src: "/images/floorplans/chevalia-estate-fp-4.jpg", alt: "Chevalia Estate 5-Bed Villa — Second Floor Plan", label: "5-Bed Estate Villa — Second Floor" },
+      { src: "/images/floorplans/chevalia-estate-fp-5.jpg", alt: "Chevalia Estate 5-Bed Villa — Roof Plan", label: "5-Bed Estate Villa — Roof Plan" },
     ],
     subfolders: {},
     facts: {
@@ -230,7 +233,11 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Estate Villas",
     floorPlanImages: [
-      { src: "/images/floorplans/chevalia-estate-2-floorplan.png", alt: "Chevalia Estate 2 Floor Plans", label: "4 & 5-Bedroom Villas — 4,168 to 8,635 sqft BUA" }
+      { src: "/images/floorplans/chevalia-estate-2-fp-2.jpg", alt: "Chevalia Estate 2 — 4-Bed Villa Floor Plan", label: "4-Bed Luxury Villa — Floor Plan" },
+      { src: "/images/floorplans/chevalia-estate-2-fp-3.jpg", alt: "Chevalia Estate 2 — 5-Bed Ultra Luxury Villa Floor Plan", label: "5-Bed Ultra Luxury Villa — Floor Plan" },
+      { src: "/images/floorplans/chevalia-estate-2-fp-4.jpg", alt: "Chevalia Estate 2 — 5-Bed Equestrian Villa Floor Plan", label: "5-Bed Equestrian Villa — Floor Plan" },
+      { src: "/images/floorplans/chevalia-estate-2-fp-5.jpg", alt: "Chevalia Estate 2 — Villa Layout Detail", label: "Villa Layout Detail" },
+      { src: "/images/floorplans/chevalia-estate-2-fp-6.jpg", alt: "Chevalia Estate 2 — Villa Layout Detail 2", label: "Villa Layout Detail 2" },
     ],
     subfolders: {},
     facts: {
@@ -283,7 +290,11 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Field Villas",
     floorPlanImages: [
-      { src: "/images/floorplans/chevalia-fields-floorplan.png", alt: "Chevalia Fields Floor Plans", label: "4 & 5-Bedroom Field Villas — 4,166 to 5,873 sqft BUA" }
+      { src: "/images/floorplans/chevalia-fields-fp-2.jpg", alt: "Chevalia Fields — 4-Bed Field Villa Floor Plan", label: "4-Bed Field Villa — Floor Plan" },
+      { src: "/images/floorplans/chevalia-fields-fp-3.jpg", alt: "Chevalia Fields — 5-Bed Field Villa Floor Plan", label: "5-Bed Field Villa — Floor Plan" },
+      { src: "/images/floorplans/chevalia-fields-fp-4.jpg", alt: "Chevalia Fields — Villa Layout Detail", label: "Villa Layout Detail" },
+      { src: "/images/floorplans/chevalia-fields-fp-5.jpg", alt: "Chevalia Fields — Villa Upper Floor Plan", label: "Villa Upper Floor Plan" },
+      { src: "/images/floorplans/chevalia-fields-fp-6.jpg", alt: "Chevalia Fields — Villa Roof Plan", label: "Villa Roof Plan" },
     ],
     subfolders: {},
     facts: {
@@ -316,7 +327,12 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Equestra",
     floorPlanImages: [
-      { src: "/images/floorplans/equestra-floorplan.png", alt: "Equestra Floor Plans", label: "3 & 4-Bedroom Townhouses — 2,800 to 3,600 sqft BUA" }
+      { src: "/images/floorplans/equestra-fp-5.jpg", alt: "Equestra — 3-Bed Townhouse Floor Plan", label: "3-Bed Townhouse — Floor Plan" },
+      { src: "/images/floorplans/equestra-fp-7.jpg", alt: "Equestra — 4-Bed Townhouse Floor Plan", label: "4-Bed Townhouse — Floor Plan" },
+      { src: "/images/floorplans/equestra-fp-10.jpg", alt: "Equestra — Townhouse Layout Detail", label: "Townhouse Layout Detail" },
+      { src: "/images/floorplans/equestra-fp-12.jpg", alt: "Equestra — Townhouse Upper Floor Plan", label: "Townhouse Upper Floor" },
+      { src: "/images/floorplans/equestra-fp-14.jpg", alt: "Equestra — Townhouse Layout Detail 2", label: "Townhouse Layout Detail 2" },
+      { src: "/images/floorplans/equestra-fp-15.jpg", alt: "Equestra — Townhouse Roof Plan", label: "Townhouse Roof Plan" },
     ],
     subfolders: {},
     facts: {
@@ -349,7 +365,12 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Equitera",
     floorPlanImages: [
-      { src: "/images/floorplans/equitera-floorplan.png", alt: "Equitera Floor Plans", label: "4 & 5-Bedroom Villas — 4,200 to 5,800 sqft BUA" }
+      { src: "/images/floorplans/equitera-fp-2.jpg", alt: "Equitera — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/equitera-fp-4.jpg", alt: "Equitera — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/equitera-fp-6.jpg", alt: "Equitera — Villa Upper Floor Plan", label: "Villa Upper Floor" },
+      { src: "/images/floorplans/equitera-fp-14.jpg", alt: "Equitera — Villa Layout Detail", label: "Villa Layout Detail" },
+      { src: "/images/floorplans/equitera-fp-15.jpg", alt: "Equitera — Villa Layout Detail 2", label: "Villa Layout Detail 2" },
+      { src: "/images/floorplans/equitera-fp-16.jpg", alt: "Equitera — Villa Roof Plan", label: "Villa Roof Plan" },
     ],
     subfolders: {},
     facts: {
@@ -382,7 +403,12 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Equitera",
     floorPlanImages: [
-      { src: "/images/floorplans/equitera-2-floorplan.png", alt: "Equitera 2 Floor Plans", label: "4 & 5-Bedroom Villas — 4,400 to 6,200 sqft BUA" }
+      { src: "/images/floorplans/equitera-2-fp-2.jpg", alt: "Equitera 2 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/equitera-2-fp-3.jpg", alt: "Equitera 2 — Villa Upper Floor Plan", label: "4-Bed Villa — Upper Floor" },
+      { src: "/images/floorplans/equitera-2-fp-6.jpg", alt: "Equitera 2 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/equitera-2-fp-7.jpg", alt: "Equitera 2 — 5-Bed Villa Upper Floor Plan", label: "5-Bed Villa — Upper Floor" },
+      { src: "/images/floorplans/equitera-2-fp-8.jpg", alt: "Equitera 2 — Villa Layout Detail", label: "Villa Layout Detail" },
+      { src: "/images/floorplans/equitera-2-fp-15.jpg", alt: "Equitera 2 — Villa Roof Plan", label: "Villa Roof Plan" },
     ],
     subfolders: {},
     facts: {
@@ -415,7 +441,10 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Montura",
     floorPlanImages: [
-      { src: "/images/floorplans/montura-floorplan.png", alt: "Montura Floor Plans", label: "3 & 4-Bedroom Townhouses — 2,600 to 3,400 sqft BUA" }
+      { src: "/images/floorplans/montura-fp-2.jpg", alt: "Montura — 3-Bed Townhouse Floor Plan", label: "3-Bed Townhouse — Floor Plan" },
+      { src: "/images/floorplans/montura-fp-3.jpg", alt: "Montura — 4-Bed Townhouse Floor Plan", label: "4-Bed Townhouse — Floor Plan" },
+      { src: "/images/floorplans/montura-fp-4.jpg", alt: "Montura — Townhouse Upper Floor Plan", label: "Townhouse Upper Floor" },
+      { src: "/images/floorplans/montura-fp-5.jpg", alt: "Montura — Townhouse Roof Plan", label: "Townhouse Roof Plan" },
     ],
     subfolders: {},
     facts: {
@@ -448,7 +477,10 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Montura",
     floorPlanImages: [
-      { src: "/images/floorplans/montura-2-floorplan.png", alt: "Montura 2 Floor Plans", label: "4 & 5-Bedroom Villas — 4,000 to 5,600 sqft BUA" }
+      { src: "/images/floorplans/montura-2-fp-2.jpg", alt: "Montura 2 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/montura-2-fp-3.jpg", alt: "Montura 2 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/montura-2-fp-4.jpg", alt: "Montura 2 — Villa Upper Floor Plan", label: "Villa Upper Floor" },
+      { src: "/images/floorplans/montura-2-fp-5.jpg", alt: "Montura 2 — Villa Roof Plan", label: "Villa Roof Plan" },
     ],
     subfolders: {},
     facts: {
@@ -481,7 +513,10 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Montura",
     floorPlanImages: [
-      { src: "/images/floorplans/montura-3-floorplan.png", alt: "Montura 3 Floor Plans", label: "4 & 5-Bedroom Villas — 4,300 to 6,000 sqft BUA" }
+      { src: "/images/floorplans/montura-3-fp-2.jpg", alt: "Montura 3 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/montura-3-fp-3.jpg", alt: "Montura 3 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/montura-3-fp-4.jpg", alt: "Montura 3 — Villa Upper Floor Plan", label: "Villa Upper Floor" },
+      { src: "/images/floorplans/montura-3-fp-5.jpg", alt: "Montura 3 — Villa Roof Plan", label: "Villa Roof Plan" },
     ],
     subfolders: {},
     facts: {
@@ -514,7 +549,12 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
-      { src: "/images/floorplans/selvara-1-floorplan.png", alt: "Selvara 1 Floor Plans", label: "4 & 5-Bedroom Villas — 4,500 to 6,200 sqft BUA" }
+      { src: "/images/floorplans/selvara-1-fp-2.jpg", alt: "Selvara 1 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/selvara-1-fp-4.jpg", alt: "Selvara 1 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/selvara-1-fp-5.jpg", alt: "Selvara 1 — Villa Upper Floor Plan", label: "Villa Upper Floor" },
+      { src: "/images/floorplans/selvara-1-fp-6.jpg", alt: "Selvara 1 — Villa Layout Detail", label: "Villa Layout Detail" },
+      { src: "/images/floorplans/selvara-1-fp-7.jpg", alt: "Selvara 1 — Villa Roof Plan", label: "Villa Roof Plan" },
+      { src: "/images/floorplans/selvara-1-fp-10.jpg", alt: "Selvara 1 — Villa Elevation", label: "Villa Elevation" },
     ],
     subfolders: {},
     facts: { totalUnits: 80, communitySize: "5.54M sqm", poloFields: "3 Fields (340,000 SqM)", clubhouse: "5,600 SqM", developer: "Emaar Properties PJSC", location: "Grand Polo Club & Resort, Dubai", goldenVisa: true },
@@ -539,7 +579,12 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
-      { src: "/images/floorplans/selvara-2-floorplan.png", alt: "Selvara 2 Floor Plans", label: "5-Bedroom Villas — 5,800 to 7,200 sqft BUA" }
+      { src: "/images/floorplans/selvara-2-fp-2.jpg", alt: "Selvara 2 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/selvara-2-fp-3.jpg", alt: "Selvara 2 — 5-Bed Villa Upper Floor Plan", label: "5-Bed Villa — Upper Floor" },
+      { src: "/images/floorplans/selvara-2-fp-4.jpg", alt: "Selvara 2 — 5-Bed Premium Villa Floor Plan", label: "5-Bed Premium Villa — Floor Plan" },
+      { src: "/images/floorplans/selvara-2-fp-5.jpg", alt: "Selvara 2 — Premium Villa Upper Floor Plan", label: "Premium Villa — Upper Floor" },
+      { src: "/images/floorplans/selvara-2-fp-7.jpg", alt: "Selvara 2 — Villa Layout Detail", label: "Villa Layout Detail" },
+      { src: "/images/floorplans/selvara-2-fp-9.jpg", alt: "Selvara 2 — Villa Roof Plan", label: "Villa Roof Plan" },
     ],
     subfolders: {},
     facts: { totalUnits: 75, communitySize: "5.54M sqm", poloFields: "3 Fields (340,000 SqM)", clubhouse: "5,600 SqM", developer: "Emaar Properties PJSC", location: "Grand Polo Club & Resort, Dubai", goldenVisa: true },
@@ -564,7 +609,12 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
-      { src: "/images/floorplans/selvara-3-floorplan.png", alt: "Selvara 3 Floor Plans", label: "5 & 6-Bedroom Villas — 6,400 to 8,800 sqft BUA" }
+      { src: "/images/floorplans/selvara-3-fp-2.jpg", alt: "Selvara 3 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan" },
+      { src: "/images/floorplans/selvara-3-fp-3.jpg", alt: "Selvara 3 — 5-Bed Villa Upper Floor Plan", label: "5-Bed Villa — Upper Floor" },
+      { src: "/images/floorplans/selvara-3-fp-4.jpg", alt: "Selvara 3 — 6-Bed Signature Villa Floor Plan", label: "6-Bed Signature Villa — Floor Plan" },
+      { src: "/images/floorplans/selvara-3-fp-5.jpg", alt: "Selvara 3 — Signature Villa Upper Floor Plan", label: "Signature Villa — Upper Floor" },
+      { src: "/images/floorplans/selvara-3-fp-7.jpg", alt: "Selvara 3 — Villa Layout Detail", label: "Villa Layout Detail" },
+      { src: "/images/floorplans/selvara-3-fp-9.jpg", alt: "Selvara 3 — Villa Roof Plan", label: "Villa Roof Plan" },
     ],
     subfolders: {},
     facts: { totalUnits: 55, communitySize: "5.54M sqm", poloFields: "3 Fields (340,000 SqM)", clubhouse: "5,600 SqM", developer: "Emaar Properties PJSC", location: "Grand Polo Club & Resort, Dubai", goldenVisa: true },
@@ -589,7 +639,12 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
-      { src: "/images/floorplans/selvara-4-floorplan.png", alt: "Selvara 4 Floor Plans", label: "5 & 6-Bedroom Signature Villas — 7,000 to 9,500 sqft BUA" }
+      { src: "/images/floorplans/selvara-4-fp-2.jpg", alt: "Selvara 4 — 5-Bed Grand Villa Floor Plan", label: "5-Bed Grand Villa — Floor Plan" },
+      { src: "/images/floorplans/selvara-4-fp-3.jpg", alt: "Selvara 4 — 5-Bed Grand Villa Upper Floor Plan", label: "5-Bed Grand Villa — Upper Floor" },
+      { src: "/images/floorplans/selvara-4-fp-4.jpg", alt: "Selvara 4 — 6-Bed Signature Villa Floor Plan", label: "6-Bed Signature Villa — Floor Plan" },
+      { src: "/images/floorplans/selvara-4-fp-5.jpg", alt: "Selvara 4 — Signature Villa Upper Floor Plan", label: "Signature Villa — Upper Floor" },
+      { src: "/images/floorplans/selvara-4-fp-6.jpg", alt: "Selvara 4 — Villa Layout Detail", label: "Villa Layout Detail" },
+      { src: "/images/floorplans/selvara-4-fp-8.jpg", alt: "Selvara 4 — Villa Roof Plan", label: "Villa Roof Plan" },
     ],
     subfolders: {},
     facts: { totalUnits: 42, communitySize: "5.54M sqm", poloFields: "3 Fields (340,000 SqM)", clubhouse: "5,600 SqM", developer: "Emaar Properties PJSC", location: "Grand Polo Club & Resort, Dubai", goldenVisa: true },

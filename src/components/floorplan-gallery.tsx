@@ -41,15 +41,14 @@ export default function FloorPlanGallery({ images, projectName, slug }: FloorPla
             className="group relative rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/80 hover:border-[#D4AF37]/40 cursor-pointer transition-all hover:shadow-lg hover:shadow-[#D4AF37]/5"
             onClick={() => openLightbox(index)}
           >
-            <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="relative aspect-[3/2] overflow-hidden">
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-contain bg-white/95 transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506]/80 via-transparent to-transparent" />
               {/* Zoom icon */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="w-12 h-12 rounded-full bg-[#2A1506]/80 border border-[#D4AF37]/40 flex items-center justify-center backdrop-blur-sm">
@@ -57,9 +56,19 @@ export default function FloorPlanGallery({ images, projectName, slug }: FloorPla
                 </div>
               </div>
               {/* Label */}
-              <div className="absolute bottom-0 left-0 right-0 p-3">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#2A1506]/90 via-[#2A1506]/50 to-transparent p-3 pt-8">
                 <p className="text-[#FFFAF3] text-sm font-medium">{img.label}</p>
               </div>
+            </div>
+            {/* Download button below image */}
+            <div className="px-3 pb-3 pt-1">
+              <a
+                href={`/api/download-floorplan-image?file=${encodeURIComponent(img.src)}`}
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center justify-center gap-2 w-full h-9 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-xs font-medium transition-colors"
+              >
+                <Download className="w-3.5 h-3.5" /> Download Floor Plan
+              </a>
             </div>
           </div>
         ))}
@@ -68,7 +77,7 @@ export default function FloorPlanGallery({ images, projectName, slug }: FloorPla
       {/* Lightbox */}
       {lightboxOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm"
           onClick={closeLightbox}
           onKeyDown={(e) => {
             if (e.key === "Escape") closeLightbox();
@@ -107,18 +116,18 @@ export default function FloorPlanGallery({ images, projectName, slug }: FloorPla
             </button>
           )}
 
-          <div className="relative max-w-[90vw] max-h-[85vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
-            <div className="relative w-full max-w-4xl aspect-[4/3]">
+          <div className="relative max-w-[92vw] max-h-[88vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full max-w-5xl aspect-[3/2] bg-white rounded-lg overflow-hidden">
               <Image
                 src={images[currentIndex].src}
                 alt={images[currentIndex].alt}
                 fill
-                sizes="90vw"
+                sizes="92vw"
                 className="object-contain"
                 priority
               />
             </div>
-            <div className="mt-4 flex items-center justify-between w-full max-w-4xl bg-[#2A1506]/90 rounded-xl px-5 py-3 border border-[#D4AF37]/20">
+            <div className="mt-4 flex items-center justify-between w-full max-w-5xl bg-[#2A1506]/90 rounded-xl px-5 py-3 border border-[#D4AF37]/20">
               <div>
                 <p className="text-[#FFFAF3] text-sm font-medium">{images[currentIndex].label}</p>
                 <p className="text-[#B89B6E] text-xs">{projectName} Floor Plan</p>
