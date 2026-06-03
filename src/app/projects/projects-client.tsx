@@ -12,6 +12,15 @@ import WhatsAppButton from "@/components/whatsapp-button";
 
 const clusters = ["All", "Estate Villas", "Field Villas", "Equestra", "Equitera", "Montura", "Selvara"];
 
+const typeLabels: Record<string, string> = {
+  villa: "Villa",
+  townhouse: "Townhouse",
+  mansion: "Mansion",
+  apartment: "Apartment",
+  penthouse: "Penthouse",
+  "branded-villa": "Branded Villa",
+};
+
 export default function ProjectsPageClient() {
   const [activeTab, setActiveTab] = useState("All");
 
@@ -51,9 +60,12 @@ export default function ProjectsPageClient() {
                     <div className="relative h-56 overflow-hidden">
                       <Image src={project.imageUrl} alt={`${project.name} — ${project.bedrooms !== "TBA" ? project.bedrooms + "-bedroom" : ""} luxury villas at Grand Polo Dubai`} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#2A1506] via-transparent to-transparent" />
-                      <div className="absolute top-4 left-4">
+                      <div className="absolute top-4 left-4 flex gap-1.5">
                         <span className="text-[10px] font-bold px-3 py-1 rounded-full tracking-wide uppercase gold-gradient text-[#2A1506]">
                           {project.clusterTag}
+                        </span>
+                        <span className="text-[10px] font-medium px-2.5 py-1 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] bg-[#2A1506]/80">
+                          {typeLabels[project.type] || project.type}
                         </span>
                       </div>
                     </div>

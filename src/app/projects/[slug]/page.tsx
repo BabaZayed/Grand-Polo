@@ -211,8 +211,58 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {units.length > 0 && (
           <section className="py-16 lg:py-20 bg-[#3D2510] border-t border-[#D4AF37]/10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-2">Unit Types</h2>
-              <p className="text-[#B89B6E] mb-8">Available configurations within {property.name}</p>
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                <div>
+                  <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-2">Floor Plan — Unit Types</h2>
+                  <p className="text-[#B89B6E]">{units.length} configuration{units.length > 1 ? "s" : ""} available in {property.name}</p>
+                </div>
+                <a
+                  href={`/api/download?type=floorplan&file=${property.slug}-floorplan.pdf`}
+                  className="flex items-center gap-2 px-5 py-2.5 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap"
+                >
+                  <LayoutGrid className="w-4 h-4" /> Download Floor Plan PDF
+                </a>
+              </div>
+
+              {/* Unit Type Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+                {units.map((unit, i) => (
+                  <div key={i} className="rounded-xl border border-[#D4AF37]/15 bg-[#2A1506]/80 p-5 hover:border-[#D4AF37]/30 transition-all">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="px-3 py-1 rounded text-xs font-bold gold-gradient text-[#2A1506]">
+                        {unit.bedrooms} BED
+                      </span>
+                      <span className="text-[#B89B6E] text-xs">{unit.units} units</span>
+                    </div>
+                    <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-4">{unit.type}</h3>
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      <div className="rounded-lg p-3 bg-[#3D2510]/50 border border-[#D4AF37]/10">
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <Maximize className="w-3.5 h-3.5 text-[#D4AF37]" />
+                          <span className="text-[#B89B6E] text-[10px]">BUA</span>
+                        </div>
+                        <p className="text-[#FFFAF3] text-sm font-bold">{unit.avgBUA.toLocaleString()} sqft</p>
+                      </div>
+                      <div className="rounded-lg p-3 bg-[#3D2510]/50 border border-[#D4AF37]/10">
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <LandPlot className="w-3.5 h-3.5 text-[#D4AF37]" />
+                          <span className="text-[#B89B6E] text-[10px]">Plot Area</span>
+                        </div>
+                        <p className="text-[#FFFAF3] text-sm font-bold">{unit.avgPlot.toLocaleString()} sqft</p>
+                      </div>
+                    </div>
+                    <div className="rounded-lg p-3 bg-[#3D2510]/50 border border-[#D4AF37]/10">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <Tag className="w-3.5 h-3.5 text-[#D4AF37]" />
+                        <span className="text-[#B89B6E] text-[10px]">Starting From</span>
+                      </div>
+                      <p className="text-[#D4AF37] text-base font-bold">{formatPrice(unit.startingPrice)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Summary Table */}
               <div className="rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#2A1506]/50">
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -220,6 +270,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     <thead>
                       <tr className="border-b border-[#D4AF37]/10 bg-[#2A1506]">
                         <th className="text-left p-4 text-[#D4AF37] text-sm font-medium">Type</th>
+                        <th className="text-left p-4 text-[#D4AF37] text-sm font-medium">Beds</th>
                         <th className="text-left p-4 text-[#D4AF37] text-sm font-medium">Units</th>
                         <th className="text-left p-4 text-[#D4AF37] text-sm font-medium">Avg BUA (sqft)</th>
                         <th className="text-left p-4 text-[#D4AF37] text-sm font-medium">Avg Plot (sqft)</th>
@@ -230,6 +281,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                       {units.map((unit, i) => (
                         <tr key={i} className="border-b border-[#D4AF37]/5 last:border-0">
                           <td className="p-4 text-[#FFFAF3] text-sm font-medium">{unit.type}</td>
+                          <td className="p-4 text-[#FFFAF3] text-sm font-medium"><span className="px-2 py-0.5 rounded text-xs font-bold gold-gradient text-[#2A1506]">{unit.bedrooms}</span></td>
                           <td className="p-4 text-[#FFFAF3]/80 text-sm">{unit.units}</td>
                           <td className="p-4 text-[#FFFAF3]/80 text-sm">{unit.avgBUA.toLocaleString()}</td>
                           <td className="p-4 text-[#FFFAF3]/80 text-sm">{unit.avgPlot.toLocaleString()}</td>
