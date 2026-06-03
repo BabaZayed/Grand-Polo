@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FileText, LayoutGrid } from "lucide-react";
+import { LayoutGrid } from "lucide-react";
 import type { Project, UnitType, FloorPlanImage } from "@/lib/data";
 import { formatPrice } from "@/lib/data";
 import FloorPlanUnitCard from "@/components/floorplan-unit-card";
@@ -52,7 +52,7 @@ export default function FloorPlanSection({ property, units }: FloorPlanSectionPr
             </a>
           </div>
 
-          {/* Unified Grid of FloorPlanUnitCards */}
+          {/* Unified Grid of FloorPlanUnitCards — 2 columns on desktop, 1 on mobile */}
           {units.length > 0 ? (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               {units.map((unit, i) => (

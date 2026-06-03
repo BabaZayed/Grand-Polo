@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { X, Download, ChevronLeft, ChevronRight, BedDouble, Maximize, LandPlot, Tag, Users, MapPin } from "lucide-react";
+import { X, Download, ChevronLeft, ChevronRight, BedDouble, Maximize, LandPlot, Tag, Users, MapPin, FileText } from "lucide-react";
 import type { UnitType, FloorPlanImage } from "@/lib/data";
 import { formatPrice } from "@/lib/data";
 
@@ -70,7 +70,7 @@ export default function FloorPlanDetailModal({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
       onClick={onClose}
       role="dialog"
       aria-label={`${unit.type} — ${projectName} floor plan viewer`}
@@ -88,7 +88,7 @@ export default function FloorPlanDetailModal({
       {allImages.length > 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); goPrev(); }}
-          className="absolute left-4 z-10 w-10 h-10 rounded-full bg-[#2A1506]/90 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37]/20 transition-colors"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A1506]/90 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37]/20 transition-colors"
           aria-label="Previous image"
         >
           <ChevronLeft className="w-5 h-5" />
@@ -98,7 +98,7 @@ export default function FloorPlanDetailModal({
       {allImages.length > 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); goNext(); }}
-          className="absolute right-4 z-10 w-10 h-10 rounded-full bg-[#2A1506]/90 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37]/20 transition-colors"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A1506]/90 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] hover:bg-[#D4AF37]/20 transition-colors"
           aria-label="Next image"
         >
           <ChevronRight className="w-5 h-5" />
@@ -107,12 +107,12 @@ export default function FloorPlanDetailModal({
 
       {/* Main Content */}
       <div
-        className="relative max-w-[95vw] max-h-[92vh] flex flex-col lg:flex-row gap-0 lg:gap-0"
+        className="relative max-w-[95vw] max-h-[92vh] flex flex-col lg:flex-row gap-0"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Image Area */}
         <div className="flex-1 flex flex-col items-center min-w-0">
-          <div className="relative w-full max-w-4xl aspect-[3/2] bg-white rounded-l-lg lg:rounded-l-lg rounded-t-lg lg:rounded-tr-none overflow-hidden">
+          <div className="relative w-full max-w-4xl aspect-[3/2] bg-white rounded-t-lg lg:rounded-l-lg lg:rounded-tr-none overflow-hidden">
             <Image
               src={currentImage.src}
               alt={currentImage.alt}
@@ -144,7 +144,7 @@ export default function FloorPlanDetailModal({
         </div>
 
         {/* Details Sidebar */}
-        <div className="w-full lg:w-[300px] bg-[#2A1506] rounded-r-lg lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none border-l-0 lg:border-l border-[#D4AF37]/20 p-5 lg:p-6">
+        <div className="w-full lg:w-[320px] bg-[#2A1506] rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none border-l-0 lg:border-l border-t lg:border-t-0 border-[#D4AF37]/20 p-5 lg:p-6 overflow-y-auto max-h-[40vh] lg:max-h-none">
           {/* Unit Type Header */}
           <div className="mb-4">
             <span className="px-3 py-1 rounded text-xs font-bold gold-gradient text-[#2A1506] inline-block mb-2">
@@ -224,13 +224,21 @@ export default function FloorPlanDetailModal({
             </div>
           </div>
 
-          {/* Download All Button */}
-          <a
-            href={`/api/download?type=floorplan&file=${slug}-floorplan.pdf`}
-            className="flex items-center justify-center gap-2 w-full h-10 rounded-lg gold-gradient text-[#2A1506] font-bold text-sm hover:opacity-90 transition-opacity"
-          >
-            <Download className="w-4 h-4" /> Download Floor Plan PDF
-          </a>
+          {/* Download Buttons */}
+          <div className="space-y-2">
+            <a
+              href={`/api/download-floorplan-image?file=${encodeURIComponent(currentImage.src)}`}
+              className="flex items-center justify-center gap-2 w-full h-10 rounded-lg gold-gradient text-[#2A1506] font-bold text-sm hover:opacity-90 transition-opacity"
+            >
+              <Download className="w-4 h-4" /> Download Floor Plan
+            </a>
+            <a
+              href={`/api/download?type=floorplan&file=${slug}-floorplan.pdf`}
+              className="flex items-center justify-center gap-2 w-full h-10 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"
+            >
+              <FileText className="w-4 h-4" /> Download Floor Plan PDF
+            </a>
+          </div>
 
           {/* Image Thumbnails */}
           {allImages.length > 1 && (

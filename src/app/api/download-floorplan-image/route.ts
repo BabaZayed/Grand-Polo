@@ -8,9 +8,9 @@ const WEBSITE = "www.TheGrandPolo.com";
 
 // Dynamically allow any floorplan image in the floorplans directory
 function isAllowedFloorplanImage(filePath: string): boolean {
-  // Must be in /images/floorplans/ and be a jpg
+  // Must be in /images/floorplans/ and be a supported image format
   if (!filePath.startsWith("/images/floorplans/")) return false;
-  if (!filePath.endsWith(".jpg") && !filePath.endsWith(".jpeg") && !filePath.endsWith(".png")) return false;
+  if (!filePath.endsWith(".jpg") && !filePath.endsWith(".jpeg") && !filePath.endsWith(".png") && !filePath.endsWith(".webp")) return false;
   // No path traversal
   if (filePath.includes("..")) return false;
   return true;
@@ -66,8 +66,24 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const filePath = join(process.cwd(), "public", file);
-    const imageBuffer = await readFile(filePath);
+    // Resolve the actual file path on disk.
+    // If a .webp path is requested, try the .jpg version first (the actual file on disk),
+    // since the watermarked output is always JPEG for maximum compatibility.
+    // If .jpg is not found, fall back to the .webp file — sharp can read both.
+    let filePath = join(process.cwd(), "public", file);
+    let imageBuffer: Buffer;
+
+    if (file.endsWith(".webp")) {
+      const jpgPath = join(process.cwd(), "public", file.replace(/\.webp$/, ".jpg"));
+      try {
+        imageBuffer = await readFile(jpgPath);
+      } catch {
+        // .jpg not found on disk, try the .webp file itself
+        imageBuffer = await readFile(filePath);
+      }
+    } else {
+      imageBuffer = await readFile(filePath);
+    }
 
     // Get image metadata — sharp auto-detects format regardless of extension
     const metadata = await sharp(imageBuffer).metadata();
@@ -78,7 +94,7 @@ export async function GET(request: NextRequest) {
     const watermarkSvg = await createWatermarkSvg(width, height);
 
     // Composite: original image + watermark overlay
-    // sharp auto-detects input format, so it works with JPEG-in-.png too
+    // sharp auto-detects input format, so it works with JPEG, WebP, PNG etc.
     const watermarkedBuffer = await sharp(imageBuffer)
       .composite([{
         input: watermarkSvg,
@@ -88,9 +104,9 @@ export async function GET(request: NextRequest) {
       .jpeg({ quality: 92 })
       .toBuffer();
 
-    // Determine download filename
+    // Determine download filename — always output as .jpg
     const originalName = file.split("/").pop() || "floorplan.jpg";
-    const downloadName = originalName.replace(/\.(jpg|jpeg|png)$/i, "-watermarked.jpg");
+    const downloadName = originalName.replace(/\.(jpg|jpeg|png|webp)$/i, "-watermarked.jpg");
 
     return new NextResponse(new Uint8Array(watermarkedBuffer), {
       status: 200,

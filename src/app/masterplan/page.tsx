@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
+import MasterplanImageSection from "@/components/masterplan-image-section";
 import { masterPlanFacts, amenities, SITE_URL } from "@/lib/data";
 import {
   MapPin, Building2, TreePine, Users, Home, Trophy, Plane,
@@ -92,6 +93,9 @@ export default function MasterplanPage() {
             </div>
           </div>
         </section>
+
+        {/* Master Plan Image Section */}
+        <MasterplanImageSection />
 
         {/* The Green Core */}
         <section className="py-16 lg:py-20 bg-[#5D3A1A]">

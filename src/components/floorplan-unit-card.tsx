@@ -25,13 +25,15 @@ export default function FloorPlanUnitCard({
   // Use specific images if available, otherwise fall back to shared images
   const displayImages = images.length > 0 ? images : sharedImages;
   const primaryImage = displayImages[0];
+  // Derive the JPG fallback from the WebP src
+  const jpgFallback = primaryImage?.src.replace(/\.webp$/, ".jpg");
 
   return (
-    <div className="rounded-xl border border-[#D4AF37]/15 bg-[#2A1506]/80 overflow-hidden hover:border-[#D4AF37]/30 transition-all group">
+    <div className="rounded-xl border border-[#D4AF37]/15 bg-[#2A1506]/80 overflow-hidden hover:border-[#D4AF37]/30 transition-all duration-300 group">
       <div className="flex flex-col sm:flex-row">
         {/* Left — Floor Plan Thumbnail */}
         <div
-          className="relative w-full sm:w-48 lg:w-56 shrink-0 cursor-pointer overflow-hidden"
+          className="relative w-full sm:w-52 lg:w-60 shrink-0 cursor-pointer overflow-hidden"
           onClick={onView}
         >
           {primaryImage ? (
@@ -40,7 +42,7 @@ export default function FloorPlanUnitCard({
                 src={primaryImage.src}
                 alt={primaryImage.alt}
                 fill
-                sizes="(max-width: 640px) 100vw, 224px"
+                sizes="(max-width: 640px) 100vw, 240px"
                 className="object-contain transition-transform duration-500 group-hover:scale-105"
               />
               {/* Hover overlay */}
@@ -57,28 +59,23 @@ export default function FloorPlanUnitCard({
               )}
             </div>
           ) : (
-            <div className="relative aspect-[3/2] sm:aspect-auto sm:h-full bg-[#3D2510]/50 flex items-center justify-center min-h-[120px]">
+            <div className="relative aspect-[3/2] sm:aspect-auto sm:h-full bg-[#3D2510]/50 flex items-center justify-center min-h-[140px]">
               <BedDouble className="w-8 h-8 text-[#D4AF37]/30" />
             </div>
           )}
         </div>
 
         {/* Right — Unit Details */}
-        <div className="flex-1 p-4 lg:p-5 flex flex-col">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-3">
-            <span className="px-3 py-1 rounded text-xs font-bold gold-gradient text-[#2A1506]">
+        <div className="flex-1 p-4 lg:p-5 flex flex-col min-w-0">
+          {/* Header: Type name + Badge */}
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <h3 className="font-heading text-lg font-bold text-[#FFFAF3] group-hover:text-[#D4AF37] transition-colors leading-tight">
+              {unit.type}
+            </h3>
+            <span className="px-3 py-1 rounded text-xs font-bold gold-gradient text-[#2A1506] shrink-0">
               {unit.bedrooms} BED
             </span>
-            <span className="text-[#B89B6E] text-xs flex items-center gap-1">
-              <Users className="w-3 h-3" /> {unit.units} units
-            </span>
           </div>
-
-          {/* Type Name */}
-          <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-3 group-hover:text-[#D4AF37] transition-colors">
-            {unit.type}
-          </h3>
 
           {/* Specs Grid */}
           <div className="grid grid-cols-2 gap-2 mb-3">
@@ -96,15 +93,20 @@ export default function FloorPlanUnitCard({
               </div>
               <p className="text-[#FFFAF3] text-sm font-bold">{unit.avgPlot.toLocaleString()} sqft</p>
             </div>
-          </div>
-
-          {/* Price */}
-          <div className="rounded-lg p-2.5 bg-[#3D2510]/50 border border-[#D4AF37]/10 mb-4">
-            <div className="flex items-center gap-1.5 mb-1">
-              <Tag className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span className="text-[#B89B6E] text-[10px]">Starting From</span>
+            <div className="rounded-lg p-2.5 bg-[#3D2510]/50 border border-[#D4AF37]/10">
+              <div className="flex items-center gap-1.5 mb-1">
+                <Users className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <span className="text-[#B89B6E] text-[10px]">Units</span>
+              </div>
+              <p className="text-[#FFFAF3] text-sm font-bold">{unit.units}</p>
             </div>
-            <p className="text-[#D4AF37] text-base font-bold">{formatPrice(unit.startingPrice)}</p>
+            <div className="rounded-lg p-2.5 bg-[#3D2510]/50 border border-[#D4AF37]/10">
+              <div className="flex items-center gap-1.5 mb-1">
+                <Tag className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <span className="text-[#B89B6E] text-[10px]">Starting</span>
+              </div>
+              <p className="text-[#D4AF37] text-sm font-bold">{formatPrice(unit.startingPrice)}</p>
+            </div>
           </div>
 
           {/* Action Buttons */}

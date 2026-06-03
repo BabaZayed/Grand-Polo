@@ -69,7 +69,7 @@ export default function BrochuresPage() {
           </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-[#FFFAF3] mb-4">
-              Brochures & Floor Plans
+              Brochures <span className="font-heading">&</span> Floor Plans
             </h1>
             <p className="text-[#B89B6E] text-lg max-w-2xl mx-auto mb-2">
               Explore floor plan unit types, download brochures and floor plans for all Grand Polo Club & Resort properties.
