@@ -58,6 +58,12 @@ export function getProjectGallery(slug: string): GalleryImage[] {
   return galleryImages.filter((img) => prefixes.some((prefix) => img.imageUrl.includes(prefix)));
 }
 
+export interface FloorPlanImage {
+  src: string;
+  alt: string;
+  label: string;
+}
+
 export interface Project {
   id: string;
   name: string;
@@ -77,6 +83,7 @@ export interface Project {
   imageGradient: string;
   imageUrl: string;
   clusterTag: string;
+  floorPlanImages: FloorPlanImage[];
   driveFolderId?: string;
   driveFolderUrl?: string;
   subfolders: Record<string, string>;
@@ -169,6 +176,9 @@ export const projects: Project[] = [
     imageGradient: "from-emerald-900 via-emerald-700 to-teal-500",
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Estate Villas",
+    floorPlanImages: [
+      { src: "/images/floorplans/chevalia-estate-floorplan.png", alt: "Chevalia Estate 5-Bedroom Villa Floor Plan", label: "5-Bedroom Estate Villa — 6,516 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 80,
@@ -219,6 +229,9 @@ export const projects: Project[] = [
     imageGradient: "from-amber-900 via-amber-700 to-yellow-600",
     imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Estate Villas",
+    floorPlanImages: [
+      { src: "/images/floorplans/chevalia-estate-2-floorplan.png", alt: "Chevalia Estate 2 Floor Plans", label: "4 & 5-Bedroom Villas — 4,168 to 8,635 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 120,
@@ -269,6 +282,9 @@ export const projects: Project[] = [
     imageGradient: "from-green-900 via-emerald-700 to-lime-500",
     imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Field Villas",
+    floorPlanImages: [
+      { src: "/images/floorplans/chevalia-fields-floorplan.png", alt: "Chevalia Fields Floor Plans", label: "4 & 5-Bedroom Field Villas — 4,166 to 5,873 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 179,
@@ -299,6 +315,9 @@ export const projects: Project[] = [
     imageGradient: "from-indigo-900 via-indigo-700 to-blue-500",
     imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Equestra",
+    floorPlanImages: [
+      { src: "/images/floorplans/equestra-floorplan.png", alt: "Equestra Floor Plans", label: "3 & 4-Bedroom Townhouses — 2,800 to 3,600 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 100,
@@ -329,6 +348,9 @@ export const projects: Project[] = [
     imageGradient: "from-violet-900 via-violet-700 to-purple-500",
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Equitera",
+    floorPlanImages: [
+      { src: "/images/floorplans/equitera-floorplan.png", alt: "Equitera Floor Plans", label: "4 & 5-Bedroom Villas — 4,200 to 5,800 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 100,
@@ -359,6 +381,9 @@ export const projects: Project[] = [
     imageGradient: "from-rose-900 via-rose-700 to-pink-500",
     imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Equitera",
+    floorPlanImages: [
+      { src: "/images/floorplans/equitera-2-floorplan.png", alt: "Equitera 2 Floor Plans", label: "4 & 5-Bedroom Villas — 4,400 to 6,200 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 85,
@@ -389,6 +414,9 @@ export const projects: Project[] = [
     imageGradient: "from-teal-900 via-teal-700 to-cyan-500",
     imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Montura",
+    floorPlanImages: [
+      { src: "/images/floorplans/montura-floorplan.png", alt: "Montura Floor Plans", label: "3 & 4-Bedroom Townhouses — 2,600 to 3,400 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 120,
@@ -419,6 +447,9 @@ export const projects: Project[] = [
     imageGradient: "from-sky-900 via-sky-700 to-blue-400",
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Montura",
+    floorPlanImages: [
+      { src: "/images/floorplans/montura-2-floorplan.png", alt: "Montura 2 Floor Plans", label: "4 & 5-Bedroom Villas — 4,000 to 5,600 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 85,
@@ -449,6 +480,9 @@ export const projects: Project[] = [
     imageGradient: "from-cyan-900 via-cyan-700 to-teal-400",
     imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Montura",
+    floorPlanImages: [
+      { src: "/images/floorplans/montura-3-floorplan.png", alt: "Montura 3 Floor Plans", label: "4 & 5-Bedroom Villas — 4,300 to 6,000 sqft BUA" }
+    ],
     subfolders: {},
     facts: {
       totalUnits: 73,
@@ -479,6 +513,9 @@ export const projects: Project[] = [
     imageGradient: "from-slate-900 via-slate-700 to-slate-400",
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Selvara",
+    floorPlanImages: [
+      { src: "/images/floorplans/selvara-1-floorplan.png", alt: "Selvara 1 Floor Plans", label: "4 & 5-Bedroom Villas — 4,500 to 6,200 sqft BUA" }
+    ],
     subfolders: {},
     facts: { totalUnits: 80, communitySize: "5.54M sqm", poloFields: "3 Fields (340,000 SqM)", clubhouse: "5,600 SqM", developer: "Emaar Properties PJSC", location: "Grand Polo Club & Resort, Dubai", goldenVisa: true },
   },
@@ -501,6 +538,9 @@ export const projects: Project[] = [
     imageGradient: "from-zinc-900 via-zinc-700 to-zinc-400",
     imageUrl: "/images/projects/chevalia-estate-2.webp",
     clusterTag: "Selvara",
+    floorPlanImages: [
+      { src: "/images/floorplans/selvara-2-floorplan.png", alt: "Selvara 2 Floor Plans", label: "5-Bedroom Villas — 5,800 to 7,200 sqft BUA" }
+    ],
     subfolders: {},
     facts: { totalUnits: 75, communitySize: "5.54M sqm", poloFields: "3 Fields (340,000 SqM)", clubhouse: "5,600 SqM", developer: "Emaar Properties PJSC", location: "Grand Polo Club & Resort, Dubai", goldenVisa: true },
   },
@@ -523,6 +563,9 @@ export const projects: Project[] = [
     imageGradient: "from-stone-900 via-stone-700 to-stone-400",
     imageUrl: "/images/projects/chevalia-fields.webp",
     clusterTag: "Selvara",
+    floorPlanImages: [
+      { src: "/images/floorplans/selvara-3-floorplan.png", alt: "Selvara 3 Floor Plans", label: "5 & 6-Bedroom Villas — 6,400 to 8,800 sqft BUA" }
+    ],
     subfolders: {},
     facts: { totalUnits: 55, communitySize: "5.54M sqm", poloFields: "3 Fields (340,000 SqM)", clubhouse: "5,600 SqM", developer: "Emaar Properties PJSC", location: "Grand Polo Club & Resort, Dubai", goldenVisa: true },
   },
@@ -545,6 +588,9 @@ export const projects: Project[] = [
     imageGradient: "from-neutral-900 via-neutral-700 to-neutral-400",
     imageUrl: "/images/projects/chevalia-estate.webp",
     clusterTag: "Selvara",
+    floorPlanImages: [
+      { src: "/images/floorplans/selvara-4-floorplan.png", alt: "Selvara 4 Floor Plans", label: "5 & 6-Bedroom Signature Villas — 7,000 to 9,500 sqft BUA" }
+    ],
     subfolders: {},
     facts: { totalUnits: 42, communitySize: "5.54M sqm", poloFields: "3 Fields (340,000 SqM)", clubhouse: "5,600 SqM", developer: "Emaar Properties PJSC", location: "Grand Polo Club & Resort, Dubai", goldenVisa: true },
   },

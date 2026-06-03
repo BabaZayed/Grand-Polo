@@ -6,6 +6,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
+import FloorPlanGallery from "@/components/floorplan-gallery";
 import { projects, formatPrice, SITE_URL, PHONE_NUMBER, masterPlanFacts, unitTypes } from "@/lib/data";
 import type { PropertyType, UnitType } from "@/lib/data";
 import { Download, FileText, LayoutGrid, Phone, ChevronRight, MapPin, Map, BedDouble, Maximize, LandPlot, Tag, Users, Search } from "lucide-react";
@@ -246,6 +247,21 @@ export default function BrochuresPage() {
 
                       {/* Unit Types Grid */}
                       <div className="p-4 sm:p-6">
+                        {/* Floor Plan Images */}
+                        {project.floorPlanImages && project.floorPlanImages.length > 0 && (
+                          <div className="mb-6">
+                            <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-3">
+                              Floor Plan Images
+                            </h3>
+                            <p className="text-[#B89B6E] text-xs mb-4">Click to enlarge — download includes watermark</p>
+                            <FloorPlanGallery
+                              images={project.floorPlanImages}
+                              projectName={project.name}
+                              slug={project.slug}
+                            />
+                          </div>
+                        )}
+
                         <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-4">
                           Unit Configurations ({displayUnits.length} type{displayUnits.length > 1 ? "s" : ""})
                         </h3>

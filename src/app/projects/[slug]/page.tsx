@@ -5,6 +5,7 @@ import { projects, paymentPlans, unitTypes, formatPrice, SITE_URL } from "@/lib/
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
+import FloorPlanGallery from "@/components/floorplan-gallery";
 import { BedDouble, Maximize, LandPlot, Users, Calendar, Tag, Check, ArrowLeft, Phone, Mail, ShieldCheck, Download, FileText, LayoutGrid } from "lucide-react";
 
 interface PageProps {
@@ -207,6 +208,31 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Floor Plan Images Gallery */}
+        {property.floorPlanImages && property.floorPlanImages.length > 0 && (
+          <section className="py-16 lg:py-20 bg-[#5D3A1A] border-t border-[#D4AF37]/10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                <div>
+                  <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#FFFAF3] mb-2">Floor Plans</h2>
+                  <p className="text-[#B89B6E]">Click on any floor plan to enlarge. Download includes watermark with our contact details.</p>
+                </div>
+                <a
+                  href={`/api/download?type=floorplan&file=${property.slug}-floorplan.pdf`}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors whitespace-nowrap"
+                >
+                  <FileText className="w-4 h-4" /> Download Full PDF
+                </a>
+              </div>
+              <FloorPlanGallery
+                images={property.floorPlanImages}
+                projectName={property.name}
+                slug={property.slug}
+              />
+            </div>
+          </section>
+        )}
 
         {units.length > 0 && (
           <section className="py-16 lg:py-20 bg-[#3D2510] border-t border-[#D4AF37]/10">
