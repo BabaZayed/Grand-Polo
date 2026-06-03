@@ -6,9 +6,10 @@ import Link from "next/link";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
-import FloorPlanGallery from "@/components/floorplan-gallery";
+import FloorPlanUnitCard from "@/components/floorplan-unit-card";
+import FloorPlanDetailModal from "@/components/floorplan-detail-modal";
 import { projects, formatPrice, SITE_URL, PHONE_NUMBER, masterPlanFacts, unitTypes } from "@/lib/data";
-import type { PropertyType, UnitType } from "@/lib/data";
+import type { PropertyType, UnitType, FloorPlanImage } from "@/lib/data";
 import { Download, FileText, LayoutGrid, Phone, ChevronRight, MapPin, Map, BedDouble, Maximize, LandPlot, Tag, Users, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -25,6 +26,9 @@ export default function BrochuresPage() {
   const [activeTab, setActiveTab] = useState<TabType>("floorplans");
   const [clusterFilter, setClusterFilter] = useState("All");
   const [bedFilter, setBedFilter] = useState("All");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalProjectSlug, setModalProjectSlug] = useState("");
+  const [modalUnitIndex, setModalUnitIndex] = useState(0);
 
   // Build floor plan data: combine projects with their unit types
   const floorPlanData = useMemo(() => {
@@ -245,89 +249,34 @@ export default function BrochuresPage() {
                         </div>
                       </div>
 
-                      {/* Unit Types Grid */}
+                      {/* Unit Types Grid — Unified with Floor Plans */}
                       <div className="p-4 sm:p-6">
-                        {/* Floor Plan Images */}
-                        {project.floorPlanImages && project.floorPlanImages.length > 0 && (
-                          <div className="mb-6">
-                            <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-3">
-                              Floor Plan Images
-                            </h3>
-                            <p className="text-[#B89B6E] text-xs mb-4">Click to enlarge — download includes watermark</p>
-                            <FloorPlanGallery
-                              images={project.floorPlanImages}
-                              projectName={project.name}
-                              slug={project.slug}
-                            />
-                          </div>
-                        )}
-
                         <h3 className="font-heading text-lg font-bold text-[#FFFAF3] mb-4">
                           Unit Configurations ({displayUnits.length} type{displayUnits.length > 1 ? "s" : ""})
                         </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                          {displayUnits.map((unit, idx) => (
-                            <div
-                              key={idx}
-                              className="rounded-lg border border-[#D4AF37]/15 bg-[#3D2510]/60 p-4 hover:border-[#D4AF37]/30 transition-all group"
-                            >
-                              {/* Unit Type Header */}
-                              <div className="flex items-center justify-between mb-3">
-                                <span className="px-2.5 py-1 rounded text-[10px] font-bold gold-gradient text-[#2A1506]">
-                                  {unit.bedrooms} BED
-                                </span>
-                                <span className="text-[#B89B6E] text-[10px]">{unit.units} units</span>
-                              </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                          {displayUnits.map((unit, idx) => {
+                            // Find the original index in the full units array for image mapping
+                            const originalIdx = project.units.indexOf(unit);
+                            const unitImages = project.floorPlanImages.filter((img) => img.unitTypeIndex === originalIdx);
+                            const sharedImages = project.floorPlanImages.filter((img) => img.unitTypeIndex === -1 || img.unitTypeIndex === undefined);
 
-                              {/* Unit Type Name */}
-                              <h4 className="font-heading text-sm font-bold text-[#FFFAF3] mb-3 group-hover:text-[#D4AF37] transition-colors">
-                                {unit.type}
-                              </h4>
-
-                              {/* Specs Grid */}
-                              <div className="grid grid-cols-2 gap-2 mb-3">
-                                <div className="rounded p-2 bg-[#2A1506]/50 border border-[#D4AF37]/10">
-                                  <div className="flex items-center gap-1 mb-0.5">
-                                    <Maximize className="w-3 h-3 text-[#D4AF37]" />
-                                    <span className="text-[#B89B6E] text-[9px]">BUA</span>
-                                  </div>
-                                  <p className="text-[#FFFAF3] text-xs font-semibold">{unit.avgBUA.toLocaleString()} sqft</p>
-                                </div>
-                                <div className="rounded p-2 bg-[#2A1506]/50 border border-[#D4AF37]/10">
-                                  <div className="flex items-center gap-1 mb-0.5">
-                                    <LandPlot className="w-3 h-3 text-[#D4AF37]" />
-                                    <span className="text-[#B89B6E] text-[9px]">Plot</span>
-                                  </div>
-                                  <p className="text-[#FFFAF3] text-xs font-semibold">{unit.avgPlot.toLocaleString()} sqft</p>
-                                </div>
-                              </div>
-
-                              {/* Price */}
-                              <div className="rounded p-2 bg-[#2A1506]/50 border border-[#D4AF37]/10 mb-3">
-                                <div className="flex items-center gap-1 mb-0.5">
-                                  <Tag className="w-3 h-3 text-[#D4AF37]" />
-                                  <span className="text-[#B89B6E] text-[9px]">Starting From</span>
-                                </div>
-                                <p className="text-[#D4AF37] text-sm font-bold">{formatPrice(unit.startingPrice)}</p>
-                              </div>
-
-                              {/* Actions */}
-                              <div className="flex gap-2">
-                                <Link
-                                  href={`/projects/${project.slug}`}
-                                  className="flex-1 flex items-center justify-center gap-1 h-8 rounded text-[10px] font-medium border border-[#D4AF37]/20 text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors"
-                                >
-                                  View <ChevronRight className="w-3 h-3" />
-                                </Link>
-                                <a
-                                  href={getDownloadUrl(project.slug, "floorplan")}
-                                  className="flex-1 flex items-center justify-center gap-1 h-8 rounded text-[10px] font-bold gold-gradient text-[#2A1506] hover:opacity-90 transition-opacity"
-                                >
-                                  <Download className="w-3 h-3" /> PDF
-                                </a>
-                              </div>
-                            </div>
-                          ))}
+                            return (
+                              <FloorPlanUnitCard
+                                key={idx}
+                                unit={unit}
+                                images={unitImages}
+                                sharedImages={sharedImages}
+                                projectName={project.name}
+                                slug={project.slug}
+                                onView={() => {
+                                  setModalProjectSlug(project.slug);
+                                  setModalUnitIndex(originalIdx);
+                                  setModalOpen(true);
+                                }}
+                              />
+                            );
+                          })}
                         </div>
 
                         {/* Project Summary Bar */}
@@ -678,6 +627,28 @@ export default function BrochuresPage() {
       </main>
       <SiteFooter />
       <WhatsAppButton />
+
+      {/* Floor Plan Detail Modal */}
+      {(() => {
+        const modalProject = projects.find((p) => p.slug === modalProjectSlug);
+        const modalUnits = modalProject ? (unitTypes[modalProject.slug] || []) : [];
+        const modalUnit = modalUnits[modalUnitIndex];
+        if (!modalOpen || !modalProject || !modalUnit) return null;
+        const modalUnitImages = modalProject.floorPlanImages.filter((img) => img.unitTypeIndex === modalUnitIndex);
+        const modalSharedImages = modalProject.floorPlanImages.filter((img) => img.unitTypeIndex === -1 || img.unitTypeIndex === undefined);
+        return (
+          <FloorPlanDetailModal
+            isOpen={modalOpen}
+            onClose={() => setModalOpen(false)}
+            unit={modalUnit}
+            images={modalUnitImages}
+            sharedImages={modalSharedImages}
+            projectName={modalProject.name}
+            slug={modalProject.slug}
+            clusterTag={modalProject.clusterTag}
+          />
+        );
+      })()}
     </>
   );
 }
