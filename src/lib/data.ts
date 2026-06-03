@@ -325,8 +325,8 @@ export const projects: Project[] = [
     features: ["Equestrian-Inspired Design", "Polo Field Views", "Green Core Proximity", "Luxury Finishes"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Community Parks", "Fitness Areas"],
     imageGradient: "from-indigo-900 via-indigo-700 to-blue-500",
-    imageUrl: "/images/projects/chevalia-fields.webp",
-    clusterTag: "Equestra",
+    imageUrl: "/images/projects/equestra.webp",
+    clusterTag: "Townhouse",
     floorPlanImages: [
       { src: "/images/floorplans/equestra-fp-5.webp", alt: "Equestra — 3-Bed Townhouse Floor Plan", label: "3-Bed Townhouse — Floor Plan", unitTypeIndex: 0 },
       { src: "/images/floorplans/equestra-fp-7.webp", alt: "Equestra — 4-Bed Townhouse Floor Plan", label: "4-Bed Townhouse — Floor Plan", unitTypeIndex: 1 },
@@ -363,7 +363,7 @@ export const projects: Project[] = [
     features: ["Equestrian Heritage Design", "Premium Location", "Luxury Interiors", "Community Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Riding School", "Fitness Areas"],
     imageGradient: "from-violet-900 via-violet-700 to-purple-500",
-    imageUrl: "/images/projects/chevalia-estate.webp",
+    imageUrl: "/images/projects/equitera.webp",
     clusterTag: "Equitera",
     floorPlanImages: [
       { src: "/images/floorplans/equitera-fp-2.webp", alt: "Equitera — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -401,7 +401,7 @@ export const projects: Project[] = [
     features: ["Equestrian Design", "Green Spaces", "Luxury Villas", "Premium Finishes"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Parks", "Sports Facilities"],
     imageGradient: "from-rose-900 via-rose-700 to-pink-500",
-    imageUrl: "/images/projects/chevalia-estate-2.webp",
+    imageUrl: "/images/projects/equitera-2.webp",
     clusterTag: "Equitera",
     floorPlanImages: [
       { src: "/images/floorplans/equitera-2-fp-2.webp", alt: "Equitera 2 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -439,7 +439,7 @@ export const projects: Project[] = [
     features: ["Equestrian Theme", "Polo Lifestyle", "Luxury Townhouses", "Community Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Parks", "Recreational Facilities"],
     imageGradient: "from-teal-900 via-teal-700 to-cyan-500",
-    imageUrl: "/images/projects/chevalia-fields.webp",
+    imageUrl: "/images/projects/montura.webp",
     clusterTag: "Montura",
     floorPlanImages: [
       { src: "/images/floorplans/montura-fp-2.webp", alt: "Montura — 3-Bed Townhouse Floor Plan", label: "3-Bed Townhouse — Floor Plan", unitTypeIndex: 0 },
@@ -475,7 +475,7 @@ export const projects: Project[] = [
     features: ["Equestrian Heritage", "Contemporary Design", "Luxury Villas", "Green Spaces"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Community Centers", "Parks"],
     imageGradient: "from-sky-900 via-sky-700 to-blue-400",
-    imageUrl: "/images/projects/chevalia-estate.webp",
+    imageUrl: "/images/projects/montura-2.webp",
     clusterTag: "Montura",
     floorPlanImages: [
       { src: "/images/floorplans/montura-2-fp-2.webp", alt: "Montura 2 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -511,7 +511,7 @@ export const projects: Project[] = [
     features: ["Equestrian Luxury", "World-Class Finishes", "Green Core Access", "Premium Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Riding School", "Sports Facilities"],
     imageGradient: "from-cyan-900 via-cyan-700 to-teal-400",
-    imageUrl: "/images/projects/chevalia-estate-2.webp",
+    imageUrl: "/images/projects/montura-3.webp",
     clusterTag: "Montura",
     floorPlanImages: [
       { src: "/images/floorplans/montura-3-fp-2.webp", alt: "Montura 3 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -547,7 +547,7 @@ export const projects: Project[] = [
     features: ["Equestrian Design", "Polo Field Access", "Luxury Finishes", "Community Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Parks", "Sports Facilities"],
     imageGradient: "from-slate-900 via-slate-700 to-slate-400",
-    imageUrl: "/images/projects/chevalia-estate.webp",
+    imageUrl: "/images/projects/selvara.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
       { src: "/images/floorplans/selvara-1-fp-2.webp", alt: "Selvara 1 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -577,7 +577,7 @@ export const projects: Project[] = [
     features: ["Equestrian Design", "Green Core Proximity", "Premium Finishes", "Landscaped Gardens"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Riding Arenas", "Community Parks"],
     imageGradient: "from-zinc-900 via-zinc-700 to-zinc-400",
-    imageUrl: "/images/projects/chevalia-estate-2.webp",
+    imageUrl: "/images/projects/selvara.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
       { src: "/images/floorplans/selvara-2-fp-2.webp", alt: "Selvara 2 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -607,7 +607,7 @@ export const projects: Project[] = [
     features: ["Contemporary Architecture", "Panoramic Views", "Curated Amenities", "Equestrian Access"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Fitness Areas", "Children's Play"],
     imageGradient: "from-stone-900 via-stone-700 to-stone-400",
-    imageUrl: "/images/projects/chevalia-fields.webp",
+    imageUrl: "/images/projects/selvara.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
       { src: "/images/floorplans/selvara-3-fp-2.webp", alt: "Selvara 3 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -637,7 +637,7 @@ export const projects: Project[] = [
     features: ["Signature Finishes", "Expansive Layouts", "Privileged Position", "Exclusive Address"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Premium Parks", "Concierge Services"],
     imageGradient: "from-neutral-900 via-neutral-700 to-neutral-400",
-    imageUrl: "/images/projects/chevalia-estate.webp",
+    imageUrl: "/images/projects/selvara-4.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
       { src: "/images/floorplans/selvara-4-fp-2.webp", alt: "Selvara 4 — 5-Bed Grand Villa Floor Plan", label: "5-Bed Grand Villa — Floor Plan", unitTypeIndex: 0 },

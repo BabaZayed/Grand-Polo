@@ -10,6 +10,7 @@ import Image from "next/image";
 export default function PropertiesSection() {
   const available = projects.filter((p) => p.status !== "Launching Soon");
   const comingSoon = projects.filter((p) => p.status === "Launching Soon");
+  const allLaunched = comingSoon.length === 0;
 
   return (
     <section className="luxury-section-padding bg-[#5D3A1A]">
@@ -108,31 +109,56 @@ export default function PropertiesSection() {
           ))}
         </div>
 
-        {/* Coming Soon Grid */}
+        {/* All Clusters Available Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-xl overflow-hidden border border-[#D4AF37]/15 bg-[#3D2510]/50 p-8 text-center"
         >
-          <h3 className="font-heading text-2xl text-[#FFFAF3] mb-3">
-            <span className="gold-text">{comingSoon.length} More Clusters</span> Launching Soon
-          </h3>
-          <p className="text-[#B89B6E] text-sm mb-6 max-w-lg mx-auto">
-            Equestra, Equitera, Montura, Selvara, and more — register your interest for priority access at launch.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
-            {comingSoon.map((p) => (
-              <span key={p.id} className="px-3 py-1 rounded-full text-xs border border-[#D4AF37]/20 text-[#B89B6E]">
-                {p.name}
-              </span>
-            ))}
-          </div>
-          <Link href="/contact">
-            <Button className="gold-gradient text-[#2A1506] font-semibold px-8 py-3 rounded-md text-sm hover:opacity-90 transition-opacity gold-shimmer-hover">
-              Register Interest
-            </Button>
-          </Link>
+          {allLaunched ? (
+            <>
+              <h3 className="font-heading text-2xl text-[#FFFAF3] mb-3">
+                <span className="gold-text">All {available.length} Clusters</span> Now Available
+              </h3>
+              <p className="text-[#B89B6E] text-sm mb-6 max-w-lg mx-auto">
+                From Estate Villas to Signature Residences — every cluster at Grand Polo Club & Resort is now launched and selling. Contact us for priority access and best available units.
+              </p>
+              <div className="flex flex-wrap justify-center gap-2 mb-6">
+                {available.slice(0, 7).map((p) => (
+                  <Link key={p.id} href={`/projects/${p.slug}`} className="px-3 py-1 rounded-full text-xs border border-[#D4AF37]/20 text-[#B89B6E] hover:text-[#D4AF37] hover:border-[#D4AF37]/40 transition-colors">
+                    {p.name}
+                  </Link>
+                ))}
+              </div>
+              <Link href="/contact">
+                <Button className="gold-gradient text-[#2A1506] font-semibold px-8 py-3 rounded-md text-sm hover:opacity-90 transition-opacity gold-shimmer-hover">
+                  Enquire Now
+                </Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <h3 className="font-heading text-2xl text-[#FFFAF3] mb-3">
+                <span className="gold-text">{comingSoon.length} More Clusters</span> Launching Soon
+              </h3>
+              <p className="text-[#B89B6E] text-sm mb-6 max-w-lg mx-auto">
+                Register your interest for priority access at launch.
+              </p>
+              <div className="flex flex-wrap justify-center gap-2 mb-6">
+                {comingSoon.map((p) => (
+                  <span key={p.id} className="px-3 py-1 rounded-full text-xs border border-[#D4AF37]/20 text-[#B89B6E]">
+                    {p.name}
+                  </span>
+                ))}
+              </div>
+              <Link href="/contact">
+                <Button className="gold-gradient text-[#2A1506] font-semibold px-8 py-3 rounded-md text-sm hover:opacity-90 transition-opacity gold-shimmer-hover">
+                  Register Interest
+                </Button>
+              </Link>
+            </>
+          )}
         </motion.div>
       </div>
     </section>

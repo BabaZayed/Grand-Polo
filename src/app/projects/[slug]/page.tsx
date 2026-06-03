@@ -63,6 +63,21 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   }
 
   const milestones = paymentPlans[property.slug] || [];
+
+  // Helper: parse milestone date string to a Date object for comparison
+  function parseMilestoneDate(dateStr: string): Date | null {
+    if (dateStr === "On Booking" || dateStr === "On Completion") return null;
+    const match = dateStr.match(/^(\w{3})\s+(\d{4})$/);
+    if (!match) return null;
+    const months: Record<string, number> = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11 };
+    const month = months[match[1]];
+    const year = parseInt(match[2]);
+    if (month === undefined) return null;
+    // Return the LAST day of that month so "Jul 2025" means "completed by end of Jul 2025"
+    return new Date(year, month + 1, 0);
+  }
+
+  const today = new Date();
   const units = unitTypes[property.slug as keyof typeof unitTypes] || [];
 
   const breadcrumbLd = {
@@ -219,25 +234,41 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <p className="text-[#B89B6E] mb-8">{property.paymentPlan} — Flexible construction-linked milestones</p>
               <div className="rounded-xl p-6 lg:p-8 max-w-3xl border border-[#D4AF37]/15 bg-[#3D2510]/50">
                 <div className="flex h-4 rounded-full overflow-hidden mb-8 bg-[#2A1506]">
-                  {milestones.map((m, i) => (
-                    <div key={i} className={`${i === 0 ? "bg-[#D4AF37]" : i === milestones.length - 1 ? "bg-[#B89B6E]" : "bg-[#D4AF37]/40"}`} style={{ width: `${m.percentage}%` }} />
-                  ))}
+                  {milestones.map((m, i) => {
+                    const milestoneDate = parseMilestoneDate(m.date);
+                    const isCompleted = milestoneDate ? milestoneDate < today : i === 0;
+                    return (
+                      <div key={i} className={`${isCompleted ? "bg-[#D4AF37]" : i === milestones.length - 1 ? "bg-[#B89B6E]" : "bg-[#D4AF37]/40"}`} style={{ width: `${m.percentage}%` }} />
+                    );
+                  })}
                 </div>
                 <div className="space-y-0">
-                  {milestones.map((milestone, index) => (
-                    <div key={index} className="relative">
-                      <div className="flex items-center gap-4 py-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${index === 0 ? "gold-gradient text-[#2A1506]" : index === milestones.length - 1 ? "bg-[#B89B6E] text-[#FFFAF3]" : "bg-[#2A1506] border border-[#D4AF37]/30 text-[#D4AF37]"}`}>
-                          {milestone.percentage}%
+                  {milestones.map((milestone, index) => {
+                    const milestoneDate = parseMilestoneDate(milestone.date);
+                    const isCompleted = milestoneDate ? milestoneDate < today : index === 0;
+                    return (
+                      <div key={index} className="relative">
+                        <div className="flex items-center gap-4 py-3">
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${isCompleted ? "bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30" : index === milestones.length - 1 ? "bg-[#B89B6E] text-[#FFFAF3]" : "bg-[#2A1506] border border-[#D4AF37]/30 text-[#D4AF37]"}`}>
+                            {milestone.percentage}%
+                          </div>
+                          <div className="flex-1">
+                            <p className={`text-sm font-medium ${isCompleted ? "text-[#B89B6E] line-through decoration-[#D4AF37]/30" : "text-[#FFFAF3]"}`}>
+                              {milestone.label}
+                            </p>
+                            <p className="text-xs">
+                              {isCompleted ? (
+                                <span className="text-[#D4AF37]">Completed</span>
+                              ) : (
+                                <span className="text-[#B89B6E]">{milestone.date}</span>
+                              )}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex-1">
-                          <p className="text-[#FFFAF3] text-sm font-medium">{milestone.label}</p>
-                          <p className="text-[#B89B6E] text-xs">{milestone.date}</p>
-                        </div>
+                        {index < milestones.length - 1 && <div className={`absolute left-[19px] top-[52px] bottom-0 w-px ${isCompleted ? "bg-[#D4AF37]/20" : "bg-[#D4AF37]/10"}`} />}
                       </div>
-                      {index < milestones.length - 1 && <div className="absolute left-[19px] top-[52px] bottom-0 w-px bg-[#D4AF37]/10" />}
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
                 <div className="mt-8 pt-6 border-t border-[#D4AF37]/10">
                   <div className="grid grid-cols-3 gap-4 text-center">

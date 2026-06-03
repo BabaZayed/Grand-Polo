@@ -37,13 +37,13 @@ export default function FloorPlanUnitCard({
           onClick={onView}
         >
           {primaryImage ? (
-            <div className="relative aspect-[3/2] sm:aspect-auto sm:h-full bg-white/95">
+            <div className="relative aspect-[3/2] bg-white/95">
               <Image
                 src={primaryImage.src}
                 alt={primaryImage.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, 240px"
-                className="object-contain transition-transform duration-500 group-hover:scale-105"
+                className="object-contain p-1"
               />
               {/* Hover overlay */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#2A1506]/30">
