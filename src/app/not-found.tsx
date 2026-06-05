@@ -6,6 +6,8 @@ import SiteHeader from "@/components/site-header";
 export default function NotFound() {
   return (
     <>
+      <title>Page Not Found | Grand Polo Club & Resort</title>
+      <meta name="robots" content="noindex, nofollow" />
       <SiteHeader />
       <main id="main-content" className="min-h-screen flex items-center justify-center bg-[#5D3A1A]">
       <div className="text-center px-4 max-w-lg">

@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { PDFDocument, StandardFonts, rgb, degrees } from "pdf-lib";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { PHONE_NUMBER } from "@/lib/data";
 
-const PHONE = "+971 52 691 9169";
 const WEBSITE = "www.TheGrandPolo.com";
 
 // Allowed download types and their subdirectories
@@ -55,7 +55,7 @@ async function addWatermark(pdfBytes: Buffer): Promise<Uint8Array> {
 
   for (const page of pages) {
     const { width, height } = page.getSize();
-    const watermarkText = `${PHONE}  |  ${WEBSITE}`;
+    const watermarkText = `${PHONE_NUMBER}  |  ${WEBSITE}`;
 
     // Diagonal watermark across the center
     const textWidth = font.widthOfTextAtSize(watermarkText, 28);
@@ -79,7 +79,7 @@ async function addWatermark(pdfBytes: Buffer): Promise<Uint8Array> {
       opacity: 0.9,
     });
 
-    const footerText = `${PHONE}  |  ${WEBSITE}`;
+    const footerText = `${PHONE_NUMBER}  |  ${WEBSITE}`;
     const footerWidth = font.widthOfTextAtSize(footerText, 9);
     page.drawText(footerText, {
       x: width / 2 - footerWidth / 2,

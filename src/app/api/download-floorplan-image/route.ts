@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import sharp from "sharp";
+import { PHONE_NUMBER } from "@/lib/data";
 
-const PHONE = "+971 52 691 9169";
 const WEBSITE = "www.TheGrandPolo.com";
 
 // Dynamically allow any floorplan image in the floorplans directory
@@ -33,7 +33,7 @@ async function createWatermarkSvg(width: number, height: number): Promise<Buffer
     text-anchor="middle"
     dominant-baseline="central"
     transform="rotate(-30, ${width / 2}, ${height / 2})"
-  >${PHONE}  |  ${WEBSITE}</text>
+  >${PHONE_NUMBER}  |  ${WEBSITE}</text>
 
   <!-- Bottom bar background -->
   <rect x="0" y="${height - barHeight}" width="${width}" height="${barHeight}" fill="rgba(42, 21, 6, 0.9)"/>
@@ -51,7 +51,7 @@ async function createWatermarkSvg(width: number, height: number): Promise<Buffer
     fill="#D4AF37"
     text-anchor="middle"
     dominant-baseline="central"
-  >${PHONE}  |  ${WEBSITE}</text>
+  >${PHONE_NUMBER}  |  ${WEBSITE}</text>
 </svg>`;
 
   return Buffer.from(svg);

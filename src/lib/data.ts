@@ -4,6 +4,7 @@ export type PropertyType = "villa" | "mansion" | "townhouse" | "apartment" | "pe
 export const SITE_URL = "https://www.thegrandpolo.com";
 export const SITE_NAME = "Grand Polo Club & Resort";
 export const PHONE_NUMBER = "+971 52 691 9169";
+export const PHONE_RAW = "+971526919169";
 export const WHATSAPP_LINK = "https://wa.me/971526919169";
 export const EMAIL = "info@thegrandpolo.com";
 export const ADDRESS = "Grand Polo Club & Resort, Near Al Maktoum International Airport, Dubai, UAE";

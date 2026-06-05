@@ -4,19 +4,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PHONE_NUMBER, WHATSAPP_LINK } from "@/lib/data";
+import { PHONE_NUMBER, WHATSAPP_LINK, navLinks } from "@/lib/data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Properties" },
-  { href: "/masterplan", label: "Masterplan" },
-  { href: "/brochures", label: "Brochures" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
 
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -81,7 +71,7 @@ export default function SiteHeader() {
             <div className="flex items-center gap-4">
               <a
                 href={`tel:${PHONE_NUMBER}`}
-                aria-label="Call +971 52 691 9169"
+                aria-label={`Call ${PHONE_NUMBER}`}
                 className="hidden sm:flex items-center gap-2 text-[#FFFAF3]/70 hover:text-[#D4AF37] text-sm transition-colors whitespace-nowrap"
               >
                 <Phone className="w-4 h-4" />

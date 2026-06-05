@@ -107,8 +107,8 @@ export default function SiteFooter() {
               <h3 className="text-[#B89B6E] text-xs tracking-wide mb-2">Trusted Resources</h3>
               {[
                 { name: "Emaar Properties", url: "https://www.emaar.com" },
-                { name: "Dubai Land Dept", url: "https://www.dubailand.gov.ae" },
-                { name: "RERA Dubai", url: "https://www.rpdubai.ae" },
+                { name: "Dubai Land Dept", url: "https://dubairest.gov.ae" },
+                { name: "RERA Dubai", url: "https://www.rera.ae" },
               ].map((r) => (
                 <a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[#B89B6E] text-xs hover:text-[#D4AF37] transition-colors mb-2 py-0.5">
                   <ExternalLink className="w-3 h-3" /> {r.name}

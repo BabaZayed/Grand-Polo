@@ -188,7 +188,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { name: "Emaar Properties", url: "https://www.emaar.com", desc: "Developer of Grand Polo Club & Resort and Dubai's most iconic landmarks" },
-                { name: "Dubai Land Department (DLD)", url: "https://www.dubailand.gov.ae", desc: "Government authority regulating Dubai's real estate sector" },
+                { name: "Dubai Land Department (DLD)", url: "https://dubairest.gov.ae", desc: "Government authority regulating Dubai's real estate sector" },
                 { name: "RERA", url: "https://www.rera.ae", desc: "Real Estate Regulatory Agency — protecting buyer rights and regulating brokers" },
                 { name: "Dubai REST", url: "https://dubairest.gov.ae", desc: "Dubai Real Estate Strategic Trust — secure digital property transactions" },
               ].map((item) => (

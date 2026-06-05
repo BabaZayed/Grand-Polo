@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "thegrandpolo.com" }],
+        destination: "https://www.thegrandpolo.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

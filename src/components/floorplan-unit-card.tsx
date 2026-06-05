@@ -22,11 +22,10 @@ export default function FloorPlanUnitCard({
   slug: _slug,
   onView,
 }: FloorPlanUnitCardProps) {
+  void _projectName; void _slug;
   // Use specific images if available, otherwise fall back to shared images
   const displayImages = images.length > 0 ? images : sharedImages;
   const primaryImage = displayImages[0];
-  // Derive the JPG fallback from the WebP src
-  const jpgFallback = primaryImage?.src.replace(/\.webp$/, ".jpg");
 
   return (
     <div className="rounded-xl border border-[#D4AF37]/15 bg-[#2A1506]/80 overflow-hidden hover:border-[#D4AF37]/30 transition-all duration-300 group">

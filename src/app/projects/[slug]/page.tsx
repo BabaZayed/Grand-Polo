@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { projects, paymentPlans, unitTypes, formatPrice, SITE_URL } from "@/lib/data";
+import { projects, paymentPlans, unitTypes, formatPrice, SITE_URL, PHONE_RAW } from "@/lib/data";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
@@ -210,7 +210,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     <Link href="/contact" className="inline-flex items-center justify-center w-full h-11 gold-gradient text-[#2A1506] font-bold text-sm rounded-lg hover:opacity-90 transition-opacity">Check Availability</Link>
                     <a href={`/api/download?type=brochure&file=${property.slug}-brochure.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><FileText className="w-4 h-4" /> Download Brochure</a>
                     <a href={`/api/download?type=floorplan&file=${property.slug}-floorplan.pdf`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><LayoutGrid className="w-4 h-4" /> Download Floor Plan</a>
-                    <a href="tel:+971526919169" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Phone className="w-4 h-4" /> Call Now</a>
+                    <a href={`tel:${PHONE_RAW}`} className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Phone className="w-4 h-4" /> Call Now</a>
                     <a href="mailto:info@thegrandpolo.com" className="flex items-center justify-center gap-2 w-full h-11 rounded-lg border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-sm font-medium transition-colors"><Mail className="w-4 h-4" /> Email Us</a>
                   </div>
                   <div className="mt-5 pt-5 border-t border-[#D4AF37]/10 text-xs text-[#B89B6E] space-y-1">
