@@ -10,7 +10,8 @@ import Image from "next/image";
 export default function PropertiesSection() {
   const available = projects.filter((p) => p.status !== "Launching Soon");
   const comingSoon = projects.filter((p) => p.status === "Launching Soon");
-  const allLaunched = comingSoon.length === 0;
+  // All clusters are launched — always show "All Available" banner since no cluster is "Launching Soon"
+  const allLaunched = comingSoon.length === 0 || available.length === projects.length;
 
   return (
     <section className="luxury-section-padding bg-[#5D3A1A]">

@@ -327,7 +327,7 @@ export const projects: Project[] = [
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Community Parks", "Fitness Areas"],
     imageGradient: "from-indigo-900 via-indigo-700 to-blue-500",
     imageUrl: "/images/projects/equestra.webp",
-    clusterTag: "Townhouse",
+    clusterTag: "Equestra",
     floorPlanImages: [
       { src: "/images/floorplans/equestra-fp-5.webp", alt: "Equestra — 3-Bed Townhouse Floor Plan", label: "3-Bed Townhouse — Floor Plan", unitTypeIndex: 0 },
       { src: "/images/floorplans/equestra-fp-7.webp", alt: "Equestra — 4-Bed Townhouse Floor Plan", label: "4-Bed Townhouse — Floor Plan", unitTypeIndex: 1 },
@@ -548,7 +548,7 @@ export const projects: Project[] = [
     features: ["Equestrian Design", "Polo Field Access", "Luxury Finishes", "Community Living"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Parks", "Sports Facilities"],
     imageGradient: "from-slate-900 via-slate-700 to-slate-400",
-    imageUrl: "/images/projects/selvara.webp",
+    imageUrl: "/images/projects/selvara-1.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
       { src: "/images/floorplans/selvara-1-fp-2.webp", alt: "Selvara 1 — 4-Bed Villa Floor Plan", label: "4-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -578,7 +578,7 @@ export const projects: Project[] = [
     features: ["Equestrian Design", "Green Core Proximity", "Premium Finishes", "Landscaped Gardens"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Riding Arenas", "Community Parks"],
     imageGradient: "from-zinc-900 via-zinc-700 to-zinc-400",
-    imageUrl: "/images/projects/selvara.webp",
+    imageUrl: "/images/projects/selvara-2.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
       { src: "/images/floorplans/selvara-2-fp-2.webp", alt: "Selvara 2 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan", unitTypeIndex: 0 },
@@ -608,7 +608,7 @@ export const projects: Project[] = [
     features: ["Contemporary Architecture", "Panoramic Views", "Curated Amenities", "Equestrian Access"],
     amenities: ["Three Polo Fields", "Luxury Clubhouse", "Private Stables", "Fitness Areas", "Children's Play"],
     imageGradient: "from-stone-900 via-stone-700 to-stone-400",
-    imageUrl: "/images/projects/selvara.webp",
+    imageUrl: "/images/projects/selvara-3.webp",
     clusterTag: "Selvara",
     floorPlanImages: [
       { src: "/images/floorplans/selvara-3-fp-2.webp", alt: "Selvara 3 — 5-Bed Villa Floor Plan", label: "5-Bed Villa — Floor Plan", unitTypeIndex: 0 },
