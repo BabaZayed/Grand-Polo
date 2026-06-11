@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // Prevent large static assets from bloating serverless function
+  outputFileTracingExcludes: {
+    '/public/floorplans/*': ['**/*'],
+    '/public/render/*': ['**/*'],
+    '/public/brochure/*': ['**/*'],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
