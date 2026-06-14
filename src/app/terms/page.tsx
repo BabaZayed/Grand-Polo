@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description:
     "Terms of service for Grand Polo Club & Resort website — usage terms, property disclaimers, intellectual property, and legal notices.",
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Terms of Service — Grand Polo Club & Resort",
     description: "Usage terms, disclaimers, and legal notices for our website.",

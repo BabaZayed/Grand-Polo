@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Privacy policy for Grand Polo Club & Resort — how we collect, use, and protect your personal data in compliance with UAE and DIFC regulations.",
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Privacy Policy — Grand Polo Club & Resort",
     description: "How we collect, use, and protect your personal data.",
