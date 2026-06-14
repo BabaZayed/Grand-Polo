@@ -51,7 +51,6 @@ const nextConfig: NextConfig = {
   // Exclude large binaries from serverless function bundle
   outputFileTracingExcludes: {
     "*": [
-      "node_modules/.pnpm/**",
       "node_modules/@swc/**",
       "node_modules/@next/swc-*/**",
       "node_modules/sharp/vendor/**",
@@ -59,6 +58,7 @@ const nextConfig: NextConfig = {
       "node_modules/prisma/engines/**",
       "node_modules/prisma/**/engine-*",
       "node_modules/better-sqlite3/build/**",
+      "node_modules/esbuild/**",
     ],
   },
   // Use minimal serverless function packaging
