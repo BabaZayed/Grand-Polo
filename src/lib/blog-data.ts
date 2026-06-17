@@ -323,6 +323,115 @@ When your property reaches completion, several UAE banks offer mortgage financin
 
 The key is to secure a pre-approval before handover so your mortgage is ready when the final payment is due. This avoids any late payment penalties from the developer.`,
   },
+  {
+    slug: "grand-polo-construction-update-june-2026",
+    title: "Grand Polo Construction Update — June 2026 (DLD Verified)",
+    excerpt:
+      "Official DLD construction status for all 13 Grand Polo sub-projects. Selvara 2 leads at 4.04%, with Chevalia Estate, Montura, and Equiterra under active construction.",
+    category: "Community",
+    tags: [
+      "grand polo construction update",
+      "grand polo project status",
+      "arabian ranches construction",
+      "grand polo selvara",
+      "grand polo chevalia",
+      "dubai land department grand polo",
+      "dld grand polo",
+      "arabian ranches new development",
+      "dubai equestrian community",
+    ],
+    date: "2026-06-17",
+    readTime: "7 min read",
+    content: \`## Official DLD Construction Status — June 2026
+
+Data sourced directly from the **Dubai Land Department** (dubailand.gov.ae) — the government authority for all UAE real estate projects.
+
+---
+
+### Grand Polo: All 13 Sub-Projects
+
+| Sub-Project | DLD Number | Completion | Status |
+|------------|-----------|-----------|--------|
+| **Selvara 2** | #3823 | **4.04%** | Active |
+| Selvara 3 | #3866 | 2.98% | Active |
+| **Montura** | #3700 | 2.88% | Active |
+| Selvara 4 | #3875 | 2.88% | Active |
+| Selvara | #3822 | 2.81% | Active |
+| Chevalia Estate | #3699 | 2.28% | Active |
+| Montura 2 | #3704 | 1.99% | Active |
+| Chevalia Fields | #3701 | 1.36% | Active |
+| Montura 3 | #3703 | 1.06% | Active |
+| Equiterra 2 | #4162 | 1.04% | Active |
+| Equestra | #4186 | 1.02% | Active |
+| Equiterra | #4185 | 0.83% | Active |
+| Chevalia Estate 2 | #4067 | 0.55% | Active |
+
+---
+
+### What This Means
+
+**Early Construction Phase**
+
+All 13 Grand Polo sub-projects are registered and active with the DLD — a significant milestone. Construction is in the earliest stages, with earthworks and foundation work underway across the estate.
+
+**Selvara 2 Leads the Pack (4.04%)**
+
+The most advanced phase. Selvara's location within the Grand Polo masterplan positions it as one of the first residential clusters. Early buyers here will see the fastest construction progress.
+
+**Chevalia Estate — The Signature Address**
+
+At 2.28% completion with two additional phases registered (Chevalia Fields and Chevalia Estate 2), Chevalia represents the estate's largest residential cluster. These are premium equestrian-facing villas with direct paddock access.
+
+---
+
+### Arabian Ranches Context
+
+Grand Polo sits within **Arabian Ranches**, one of Dubai's most established communities. Recent DLD data shows:
+
+| Arabian Ranches Phase | Completion |
+|----------------------|-----------|
+| Anya | 95.06% |
+| Anya 2 | 94.93% |
+| Multiple phases | 100% (Completed) |
+
+Arabian Ranches has a proven track record of developer delivery. Grand Polo benefits from this established infrastructure — schools, retail, golf, and equestrian facilities already operational.
+
+---
+
+### DLD Escrow Protection
+
+All Grand Polo payments are held in DLD-regulated escrow accounts:
+
+1. **Developer paid on milestones** — Funds released only when construction targets are verified
+2. **Full buyer protection** — DLD guarantees refunds for cancelled projects  
+3. **Government-audited** — Completion percentages verified by independent surveyors
+
+---
+
+### Estimated Timeline
+
+Based on current construction pace and Arabian Ranches historical delivery patterns:
+
+| Milestone | Estimated |
+|----------|----------|
+| Foundation completion | Q3—Q4 2026 |
+| Structural framework | Q1—Q2 2027 |
+| First handovers | Q4 2027 — Q1 2028 |
+
+*Timelines are estimates. Actual progress may vary based on construction conditions.*
+
+---
+
+### Register Your Interest
+
+Be among the first to access Grand Polo inventory as construction advances:
+
+📞 **+971 52 691 9169**
+🌐 **thegrandpolo.com**
+
+*Last updated: June 17, 2026. Data source: Dubai Land Department.*\`,
+  },
+
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
