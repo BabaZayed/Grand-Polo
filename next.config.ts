@@ -52,14 +52,9 @@ const nextConfig: NextConfig = {
       "node_modules/@next/swc-*/**",
       "node_modules/sharp/vendor/**",
       "node_modules/sharp/build/**",
-      "node_modules/prisma/engines/**",
-      "node_modules/prisma/**/engine-*",
-      "node_modules/better-sqlite3/build/**",
       "node_modules/esbuild/**",
     ],
   },
-  // Use minimal serverless function packaging
-  serverExternalPackages: ["sharp", "@prisma/client", "prisma", "better-sqlite3"],
 }
 
 export default nextConfig;
