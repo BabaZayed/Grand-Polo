@@ -25,11 +25,16 @@ function hashPII(data: string): string {
 
 function validateOrigin(request: NextRequest): boolean {
   const origin = request.headers.get("origin");
-  const host = request.headers.get("host");
-  if (!origin || !host) return false;
+  if (!origin) return false;
   try {
     const originHost = new URL(origin).host;
-    return originHost === host;
+    // Accept requests from our domains (handles Vercel preview + custom domain)
+    const allowedHosts = [
+      "www.thegrandpolo.com",
+      "thegrandpolo.com",
+      "grand-polo.vercel.app",
+    ];
+    return allowedHosts.some(h => originHost === h || originHost.endsWith(".vercel.app"));
   } catch {
     return false;
   }

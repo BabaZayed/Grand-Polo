@@ -342,7 +342,7 @@ The key is to secure a pre-approval before handover so your mortgage is ready wh
     ],
     date: "2026-06-17",
     readTime: "7 min read",
-    content: \`## Official DLD Construction Status — June 2026
+    content: `## Official DLD Construction Status — June 2026
 
 Data sourced directly from the **Dubai Land Department** (dubailand.gov.ae) — the government authority for all UAE real estate projects.
 
@@ -429,7 +429,7 @@ Be among the first to access Grand Polo inventory as construction advances:
 📞 **+971 52 691 9169**
 🌐 **thegrandpolo.com**
 
-*Last updated: June 17, 2026. Data source: Dubai Land Department.*\`,
+*Last updated: June 17, 2026. Data source: Dubai Land Department.*`,
   },
 
 ];

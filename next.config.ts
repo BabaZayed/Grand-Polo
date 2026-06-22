@@ -1,19 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Prevent large static assets from bloating serverless function
-  outputFileTracingExcludes: {
-    '/public/floorplans/*': ['**/*'],
-    '/public/render/*': ['**/*'],
-    '/public/brochure/*': ['**/*'],
-  },
+
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   poweredByHeader: false,
-  serverExternalPackages: ["better-sqlite3", "sharp"],
   async redirects() {
     return [
       {
@@ -48,8 +42,11 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // Exclude large binaries from serverless function bundle
+  // Exclude large files from serverless function bundle
   outputFileTracingExcludes: {
+    '/public/floorplans/*': ['**/*'],
+    '/public/render/*': ['**/*'],
+    '/public/brochure/*': ['**/*'],
     "*": [
       "node_modules/@swc/**",
       "node_modules/@next/swc-*/**",
