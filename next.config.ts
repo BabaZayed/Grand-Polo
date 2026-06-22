@@ -56,7 +56,6 @@ const nextConfig: NextConfig = {
     ],
   },
   // Use minimal serverless function packaging
-  serverExternalPackages: ["sharp", "@prisma/client", "prisma", "better-sqlite3"],
 }
 
 export default nextConfig;
