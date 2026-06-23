@@ -6,7 +6,7 @@ import { galleryImages } from "@/lib/data";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 
-const categories = ["All", "Exterior", "Interior", "Amenities", "Equestrian", "Clubhouse", "Master Plan"] as const;
+const categories = ["All", "Exterior", "Interior", "Amenities", "Equestrian", "Clubhouse", "Master Plan", "Chevalia", "Equestra", "Equiterra", "Montura", "Selvara", "Overview", "Reference"] as const;
 
 export default function GalleryContent() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
