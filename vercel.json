@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/:path*", "has": [{"type": "host", "value": "thegrandpolo.com"}], "destination": "https://www.thegrandpolo.com/:path*", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",

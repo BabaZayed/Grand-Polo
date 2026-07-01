@@ -129,7 +129,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
-  const gaId = process.env.NEXT_PUBLIC_GA_ID || "";
+  const gaId = "G-V0RV1BE85R"; // Grand Polo GA4
   const pixelIdValid = pixelId && /^\d+$/.test(pixelId);
   const gaIdValid = gaId && /^G-[A-Z0-9]+$/i.test(gaId);
 
